@@ -1,29 +1,28 @@
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
+# Latex
+*.aux
+*.cls
+*.dvi
+*.idx
+*.log
+*.toc
+*.lof
 
-# Precompiled Headers
-*.gch
-*.pch
+# kile
+*.kilepr
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
+# Archives
+*gz
+*zip
 
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
+# Editors
+.kateproject
+.kateproject.d
 
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
+# Backups
+*~
+*.bak
+*.back
+*.backup
+
+# Other
+win_num*
