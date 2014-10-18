@@ -1,0 +1,79 @@
+\documentclass[ngerman]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\geometry{a4paper, top=25mm, left=25mm, right=25mm, bottom=30mm,
+headsep=10mm, footskip=12mm}
+\pagestyle{empty}
+\begin{document}
+\begin{flushright}
+\small{Namen: Farina Ohm, Janina Geiser, Michael Hufschmidt, Annika Seidel}\normalsize
+\end{flushright}
+\section*{Aufgabe 2:}
+\renewcommand{\labelenumi}{\alph{enumi})}
+\begin{enumerate}
+\item zu zeigen: strikt diagonaldominante Matrizen sind invertierbar\\
+\newline
+Sei $ A =
+\begin{pmatrix}
+a_{11}&\dots&a_{1n}\\
+\vdots&\ddots&\vdots\\
+a_{n1}&\dots&a_{nn}
+\end{pmatrix}
+\in \mathbb{K^{\text{nxn}}}
+\text{ und } x_1,...,x_2 \in \mathbb{R} \text{ dann gilt }
+0 = Ax = 
+\begin{pmatrix}
+a_{11}*x_1&\dots&a_{1n}*x_n\\
+\vdots&\ddots&\vdots\\
+a_{n1}*x_1&\dots&a_{nn}*x_n
+\end{pmatrix}$
+
+$\Rightarrow\begin{pmatrix}
+a_{11}*x_1&\dots&a_{1n}*x_n&=0\\
+\vdots&\ddots&\vdots&\vdots\\
+a_{n1}*x_1&\dots&a_{nn}*x_n&=0
+\end{pmatrix}$(*)
+
+Sei weiterhin i $\in \{1,...,n\}$, s.d. $|x_i| \ge |x_j|\forall k=\{1,...,n\}$.\\
+\newline
+Aus (*) folgt dann für die i-te Zeile: $\sum_{j=1}^n x_j a_{ij} = 0 \Leftrightarrow x_i a_{ii}+\sum_{\underset{j\neq i}{j=1}}^n x_j a_{ij} = 0 $\\
+\newline
+Wir nehmen nun an das $x_i \neq 0$ ist und führen dies zum Widerspruch:\\
+\newline
+$|x_i||a_{ii}| = |\sum_{j=1, j\neq i}^n x_j a_{ij}| \le \sum_{j=1, j\neq i}^n |x_j| |a_{ij}| = |x_j| \sum_{j=1, j\neq i}^n |a_{ij}| \le |x_i| \sum_{j=1, j\neq i}^n |a_{ij}| < |x_i| |a_{ii}|$\\
+\newline
+Der letzte Schritt folgt dabei direkt aus der strikten Diagonaldominanz von A.\\
+Wir erhalten also: $|x_i| |a_{ii}|< |x_i| |a_{ii}|$ Widerspruch! $\Rightarrow x_i = 0$.\newline
+Da aber $|x_i| \ge |x_j|\;\forall j=\{1,...,n\}$ gilt, folgt auch $x_j=0\;\forall j=\{1,...,n\}$\newline
+Der Kern von A ist trivial $\Leftrightarrow$ A ist invertierbar
+\newline
+\item zu zeigen: A hermitisch, diagonaldominant und $a_{11},...,a_{nn} \text{ nicht negativ}\ \Rightarrow A \ge 0$\\
+\newline
+Sei $\lambda \in \mathbb{R}$ ein Eigenwert und $ x \in \mathbb{R^\text{n}}$ Einheitsvektor von A, dann gilt $Ax = \lambda x$. Nomieren wir weiterhin die Einheitsvektoren mit der Maxinumsnorm, sodass $||x||_\infty = 1$ und wählen $ i \in {1,...,n}$ s.d. $|x_i|=1$, dann gilt:\\
+\newline
+$\sum_{j=1}^n a_{ij}x_j = \lambda x_i \Leftrightarrow a_{ii}x_i + \sum_{j=1, j\neq i}^n a_{ij}x_j = \lambda x_i $ \\
+\newline
+Wir substrahieren auf beiden Seiten der Gleichung $a_{ii} x_i$:\\
+$\lambda x_i - a_{ii} x_i = (\lambda - a_{ii})* x_i = \sum_{j=1, j\neq i}^n a_{ij}x_j $\\
+$|\lambda - a_{ii}|* \underset{=1}{|x_i|} = |\sum_{j=1, j\neq i}^n a_{ij}x_j| \le \sum_{j=1, j\neq i}^n |a_{ij}|\underset{\le1}{|x_j|} \le \sum_{j=1, j\neq i}^n |a_{ij}| $\\
+Also folgt daraus: $|\lambda - a_{ii}| \le \sum_{j=1, j\neq i}^n |a_ij|$\\
+Mit der Formel für die Diagonaldominanz $|a_{ii}| \ge \sum_{j=1, j\neq i}^n |a_{ij}| \Leftrightarrow |a_{ii}| - \sum_{j=1, j\neq i}^n |a_{ij}| \ge 0 $ folgt dann:\\
+\newline
+$0 \le a_{ii}-\sum_{j=1, j\neq i}^n |a_{ij}| \le \lambda \le a_{ii} + \sum_{j=1, j\neq i}^n |a_{ij}| $ \\
+\newline
+Es folgt also $\lambda \ge 0 \Rightarrow \text{alle Eigenwerte sind nicht negativ}\Rightarrow A \text{ ist positiv semidefinit}$
+\newline
+
+\item zu zeigen: A hermitisch, strikt diagonaldominant und $a_{11},...,a_{nn} \text{ nicht negativ}\ \Rightarrow A > 0$\\
+\newline
+Der Beweis ist analog zu b). Nur folgt aus der strikten Diagonaldominanz
+$|a_{ii}| < \sum_{j=1, j\neq i}^n |a_ij| \Leftrightarrow |a_{ii}| - \sum_{j=1, j\neq i}^n |a_ij| < 0 $ folgendes:\\
+\newline
+$0 < a_{ii}-\sum_{j=1, j\neq i}^n |a_ij| \le \lambda \le a_{ii} + \sum_{j=1, j\neq i}^n |a_ij| $ \\
+\newline
+Es folgt also $\lambda > 0 \Rightarrow \text{alle Eigenwerte sind positiv}\Rightarrow A \text{ ist positiv definit}$
+\end{enumerate}
+
+\end{document}
