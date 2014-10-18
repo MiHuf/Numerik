@@ -156,7 +156,7 @@ Der Kern von A ist trivial $\Leftrightarrow$ A ist invertierbar
 \newline
 \item zu zeigen: A hermitisch, diagonaldominant und $a_{11},...,a_{nn} \text{ nicht negativ}\ \Rightarrow A \ge 0$\\
 \newline
-Sei $\lambda \in \mathbb{R}$ ein Eigenwert und $ x \in \mathbb{R^\text{n}}$ Einheitsvektor von A, dann gilt $Ax = \lambda x$. Nomieren wir weiterhin die Einheitsvektoren mit der Maxinumsnorm, sodass $||x||_\infty = 1$ und wählen $ i \in {1,...,n}$ s.d. $|x_i|=1$, dann gilt:\\
+Sei $\lambda \in \mathbb{R}$ ein Eigenwert und $ x \in \mathbb{R^\text{n}}$ Einheitsvektor von A, dann gilt $Ax = \lambda x$. Nomieren wir weiterhin die Einheitsvektoren mit der Maxinumsnorm, sodass $||x||_\infty = 1$ und wählen $ i \in \{1,...,n\}$ s.d. $|x_i|=1$, dann gilt:\\
 \newline
 $\sum_{j=1}^n a_{ij}x_j = \lambda x_i \Leftrightarrow a_{ii}x_i + \sum_{j=1, j\neq i}^n a_{ij}x_j = \lambda x_i $ \\
 \newline
@@ -174,9 +174,9 @@ Es folgt also $\lambda \ge 0 \Rightarrow \text{alle Eigenwerte sind nicht negati
 \item zu zeigen: A hermitisch, strikt diagonaldominant und $a_{11},...,a_{nn} \text{ nicht negativ}\ \Rightarrow A > 0$\\
 \newline
 Der Beweis ist analog zu b). Nur folgt aus der strikten Diagonaldominanz
-$|a_{ii}| < \sum_{j=1, j\neq i}^n |a_ij| \Leftrightarrow |a_{ii}| - \sum_{j=1, j\neq i}^n |a_ij| < 0 $ folgendes:\\
+$|a_{ii}| < \sum_{j=1, j\neq i}^n |a_{ij}| \Leftrightarrow |a_{ii}| - \sum_{j=1, j\neq i}^n |a_{ij}| < 0 $ folgendes:\\
 \newline
-$0 < a_{ii}-\sum_{j=1, j\neq i}^n |a_ij| \le \lambda \le a_{ii} + \sum_{j=1, j\neq i}^n |a_ij| $ \\
+$0 < a_{ii}-\sum_{j=1, j\neq i}^n |a_{ij}| \le \lambda \le a_{ii} + \sum_{j=1, j\neq i}^n |a_{ij}| $ \\
 \newline
 Es folgt also $\lambda > 0 \Rightarrow \text{alle Eigenwerte sind positiv}\Rightarrow A \text{ ist positiv definit}$
 \end{enumerate}
