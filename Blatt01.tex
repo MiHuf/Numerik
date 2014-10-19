@@ -150,12 +150,15 @@ a_{n1}*x_1&\dots&a_{nn}*x_n
 Sei weiterhin i $\in \{1,...,n\}$, s.d. $|x_i| \ge |x_j|\forall k=\{1,...,n\}$.
 Aus (\ref{eq8}) folgt dann für die i-te Zeile:
 \begin{align*}
-\sum_{j=1}^n x_j a_{ij} = 0 \Leftrightarrow x_i a_{ii}+\sum_{\underset{j\neq i}{j=1}}^n x_j a_{ij} = 0
+% \sum_{j=1}^n x_j a_{ij} = 0 \Leftrightarrow x_i a_{ii}+\sum_{\underset{j\neq i}{j=1}}^n x_j a_{ij} = 0
+\sum_{j=1}^n x_j a_{ij} = 0 \Leftrightarrow x_i a_{ii}+\sum_{\substack{j = 1 \\j \neq i}}^n x_j a_{ij} = 0
 \end{align*}
 Wir nehmen nun an das $x_i \neq 0$ ist und führen dies zum Widerspruch:
 \begin{align*}
-|x_i||a_{ii}| &= |\sum_{j=1, j\neq i}^n x_j a_{ij}| \le \sum_{j=1, j\neq i}^n |x_j| |a_{ij}| \\
-&= |x_j| \sum_{j=1, j\neq i}^n |a_{ij}| \le |x_i| \sum_{j=1, j\neq i}^n |a_{ij}| < |x_i| |a_{ii}|
+|x_i||a_{ii}| = \left|\sum_{\substack{j = 1 \\j \neq i}}^n x_j a_{ij} \right|
+  &\le \sum_{\substack{j = 1 \\j \neq i}}^n |x_j| |a_{ij}| = \\
+&= |x_j| \sum_{\substack{j = 1 \\j \neq i}}^n |a_{ij}|
+  \le |x_i| \sum_{\substack{j = 1 \\j \neq i}}^n |a_{ij}| < |x_i| |a_{ii}|
 \end{align*}
 Der letzte Schritt folgt dabei direkt aus der strikten Diagonaldominanz von A.
 \newline Wir erhalten also: $|x_i| |a_{ii}|< |x_i| |a_{ii}|$ Widerspruch!
@@ -170,22 +173,26 @@ Sei $\lambda \in \RR$ ein Eigenwert und $ x \in \RR^n$ Eigenvektor von A, dann g
 Nomieren wir weiterhin die Einheitsvektoren mit der Maxinumsnorm, sodass $\|x\|_\infty = 1$
 und wählen $ i \in \{1,...,n\}$ s.d. $|x_i|=1$, dann gilt:
 \begin{align*}
-\sum_{j=1}^n a_{ij}x_j = \lambda x_i \Leftrightarrow a_{ii}x_i + \sum_{j=1, j\neq i}^n a_{ij}x_j = \lambda x_i \end{align*}
-
+\sum_{j=1}^n a_{ij}x_j = \lambda x_i \Leftrightarrow a_{ii}x_i + \sum_{\substack{j = 1 \\
+  j \neq i}}^n a_{ij}x_j = \lambda x_i
+\end{align*}
 Wir substrahieren auf beiden Seiten der Gleichung $a_{ii} x_i$:
 \begin{align*}
 \lambda x_i - a_{ii} x_i &= (\lambda - a_{ii})* x_i = \sum_{j=1, j\neq i}^n a_{ij}x_j \\
-|\lambda - a_{ii}|* \underset{=1}{|x_i|} &= \left|\sum_{j=1, j\neq i}^n a_{ij}x_j \right|
-  \le \sum_{j=1, j\neq i}^n |a_{ij}|\underset{\le1}{|x_j|} \le \sum_{j=1, j\neq i}^n |a_{ij}|
+|\lambda - a_{ii}|* \underset{=1}{|x_i|} &= \left|\sum_{\substack{j = 1 \\j \neq i}}^n a_{ij}x_j \right|
+  \le \sum_{\substack{j = 1 \\j \neq i}}^n |a_{ij}|\underset{\le1}{|x_j|}
+  \le \sum_{\substack{j = 1 \\j \neq i}}^n |a_{ij}|
 \end{align*}
-Also folgt daraus: $|\lambda - a_{ii}| \le \sum_{j=1, j\neq i}^n |a_{ij}|$.
+Also folgt daraus: $|\lambda - a_{ii}| \le \sum_{\substack{j = 1 \\j \neq i}}^n |a_{ij}|$.
 Mit der Formel für die Diagonaldominanz
 \begin{align*}
-|a_{ii}| \ge \sum_{j=1, j\neq i}^n |a_{ij}| \Leftrightarrow |a_{ii}| - \sum_{j=1, j\neq i}^n |a_{ij}| \ge 0
+|a_{ii}| \ge \sum_{\substack{j = 1 \\j \neq i}}^n |a_{ij}|
+  \Leftrightarrow |a_{ii}| - \sum_{\substack{j = 1 \\j \neq i}}^n |a_{ij}| \ge 0
 \end{align*}
 folgt dann:
 \begin{align*}
-0 \le a_{ii}-\sum_{j=1, j\neq i}^n |a_{ij}| \le \lambda \le a_{ii} + \sum_{j=1, j\neq i}^n |a_{ij}|
+0 \le a_{ii}-\sum_{\substack{j = 1 \\j \neq i}}^n |a_{ij}|
+  \le \lambda \le a_{ii} + \sum_{\substack{j = 1 \\j \neq i}}^n |a_{ij}|
 \end{align*}
 Es folgt also $\lambda \ge 0 \Rightarrow$  alle Eigenwerte sind nicht negativ $\Rightarrow A $ ist positiv semidefinit.
 
@@ -194,9 +201,11 @@ Zu zeigen: A hermitisch, strikt diagonaldominant und $a_{11},...,a_{nn} \text{ p
 
 Der Beweis ist analog zu b). Nur folgt aus der strikten Diagonaldominanz
 \begin{align*}
-|a_{ii}| &< \sum_{j=1, j\neq i}^n |a_{ij}| \Leftrightarrow |a_{ii}| - \sum_{j=1, j\neq i}^n |a_{ij}| < 0\\
+|a_{ii}| &< \sum_{\substack{j = 1 \\j \neq i}}^n |a_{ij}| \Leftrightarrow
+  |a_{ii}| - \sum_{\substack{j = 1 \\j \neq i}}^n |a_{ij}| < 0\\
 \intertext{folgendes:}
-0 &< a_{ii}-\sum_{j=1, j\neq i}^n |a_{ij}| \le \lambda \le a_{ii} + \sum_{j=1, j\neq i}^n |a_{ij}|
+0 &< a_{ii}-\sum_{\substack{j = 1 \\j \neq i}}^n |a_{ij}|
+  \le \lambda \le a_{ii} + \sum_{\substack{j = 1 \\j \neq i}}^n |a_{ij}|
 \end{align*}
 Es folgt also $\lambda > 0 \Rightarrow $ alle Eigenwerte sind positiv $\Rightarrow A $ ist positiv definit.
 
