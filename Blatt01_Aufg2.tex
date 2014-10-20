@@ -15,7 +15,7 @@ Für ein $x \in \ker (A)$, gilt dann also $0 = A \cdot x$, d.h.
 \end{split}
 \end{align}
 Aus diesem Gleichungssystem wählen wir nun die $i$-te Zeile, wobei $i$ durch
-$|x_i| \ge |x_j| \; \forall \; j=\{1,...,n\}$ gegeben ist. Dann wird:
+$|x_i| \ge |x_j| \; \forall \; j=\{1, \cdots , n\}$ gegeben ist. Dann wird:
 \begin{align}
   \nonumber
   0 &= a_{i1} \cdot x_1 + a_{i2} \cdot x_2 + \dots + a_{in} \cdot x_n  =
@@ -27,15 +27,15 @@ $|x_i| \ge |x_j| \; \forall \; j=\{1,...,n\}$ gegeben ist. Dann wird:
 Dann gilt für die Beträge von Gleichung (\ref{eq9}):
 \begin{align}
   | a_{ii} \cdot x_i | &=
-    \left | \sum_{\substack{j = 1 \\j \neq i}}^n a_{ij} \cdot x_j \right | \le
-    \sum_{\substack{j = 1 \\j \neq i}}^n | a_{ij} \cdot x_j |
+    \left | \sum_{\substack{j = 1 \\j \neq i}}^n a_{ij} \cdot x_j \right |
+    \quad \overset{\text{Dreiecks-Ungleichung}}{\le} \quad
+    \sum_{\substack{j = 1 \\j \neq i}}^n | a_{ij} \cdot x_j | =
+    \sum_{\substack{j = 1 \\j \neq i}}^n | a_{ij} | \cdot  | x_j |
 \end{align}
- Wir können wir nun abschätzen, da $|x_i|$ die betragsmäßig
+ Wir können (\ref{eq9}) nun abschätzen, da $|x_i|$ die betragsmäßig
 größte Komponente von $x$ ist:
 \begin{align}\label{eq10}
   | a_{ii} \cdot x_i | &\le
-    \sum_{\substack{j = 1 \\j \neq i}}^n | a_{ij}  \cdot  x_j |
-    \quad \overset{\text{Dreiecks-Ungleichung}}{\le} \quad
     \sum_{\substack{j = 1 \\j \neq i}}^n | a_{ij} | \cdot | x_i | =
     |x_i| \cdot \sum_{\substack{j = 1 \\j \neq i}}^n | a_{ij} |
 \end{align}
@@ -45,16 +45,16 @@ Gleichung (\ref{eq10}) durch $|x_i| \ne 0$ dividiert ergibt:
   \overset{\text{strikte Diagonaldominanz}}{<} \quad
   | a_{ii} |
 \end{align}
-Wir erhalten also: $|a_{ii}|< |a_{ii}|$ Widerspruch! Die Annahme $|x_i| \ge 0$ ist
-also falsch. Da aber $|x_i| \ge |x_j|\;\forall j=\{1,...,n\}$ gilt, folgt auch
-$x_j=0\;\forall j=\{1,...,n\}$ Der Kern von A ist somit trivial und dann ist A invertierbar.
+Wir erhalten also: $|a_{ii}|< |a_{ii}|$ -- Widerspruch! Die Annahme $|x_i| \ge 0$ ist
+also falsch. Da aber $|x_i| \ge |x_j|\;\forall j=\{1, \cdots , n\}$ gilt, folgt auch
+$x_j=0\;\forall j=\{1, \cdots, n\}$ Der Kern von A ist somit trivial und dann ist A invertierbar.
 
 \paragraph*{b)}
-Zu zeigen: A hermitisch, diagonaldominant und $a_{11},...,a_{nn}$  nicht negativ $\Rightarrow A \ge 0$
+Zu zeigen: A hermitisch, diagonaldominant und $a_{11}, \cdots ,a_{nn}$  nicht negativ $\Rightarrow A \ge 0$
 
 Sei $\lambda \in \RR$ ein Eigenwert und $ x \in \RR^n$ Eigenvektor von A, dann gilt $Ax = \lambda x$.
 Nomieren wir weiterhin die Einheitsvektoren mit der Maxinumsnorm, sodass $\|x\|_\infty = 1$
-und wählen $ i \in \{1,...,n\}$ s.d. $|x_i|=1$, dann gilt:
+und wählen $ i \in \{1, \cdots ,n\}$ s.d. $|x_i|=1$, dann gilt:
 \begin{align*}
 \sum_{j=1}^n a_{ij}x_j = \lambda x_i \Leftrightarrow a_{ii}x_i + \sum_{\substack{j = 1 \\
   j \neq i}}^n a_{ij}x_j = \lambda x_i
@@ -80,7 +80,7 @@ folgt dann:
 Es folgt also $\lambda \ge 0 \Rightarrow$  alle Eigenwerte sind nicht negativ $\Rightarrow A $ ist positiv semidefinit.
 
 \paragraph*{c)}
-Zu zeigen: A hermitisch, strikt diagonaldominant und $a_{11},...,a_{nn} \text{ positiv}\ \Rightarrow A > 0$
+Zu zeigen: A hermitisch, strikt diagonaldominant und $a_{11}, \cdots ,a_{nn} \text{ positiv}\ \Rightarrow A > 0$
 
 Der Beweis ist analog zu b). Nur folgt aus der strikten Diagonaldominanz
 \begin{align*}
