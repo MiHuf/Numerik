@@ -1,0 +1,72 @@
+\subsection*{Aufgabe 1}
+Gegeben sind:
+\begin{align*}
+  x = \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} \; ; \qquad
+  A = \begin{pmatrix} 1 & 1 \\ 1 & 1,01\end{pmatrix} \; ; \qquad
+  b = \begin{pmatrix} b_1 \\ b_2 \end{pmatrix} =
+    \begin{pmatrix} 1000 \\ 1005 \end{pmatrix}
+\end{align*}
+
+\paragraph*{Lösung mit exaktem b:}
+Die exakte Lösung $x$ des linearen Gleichungssystems $A \cdot x = b$ ermitteln
+wir über die Cramersche Regel mit den Matrizen:
+\begin{align}
+  A =  \begin{pmatrix} 1 & 1 \\ 1 & 1,01\end{pmatrix} \; ; \qquad
+  A_1 = \begin{pmatrix} b_1 & 1 \\ b_2 & 1,01\end{pmatrix} \; ; \qquad
+  A_2 = \begin{pmatrix} 1 & b_1 \\ 1 & b_2\end{pmatrix}
+\end{align}
+Diese haben die Determinanten:
+\begin{align}
+  \Det(A) = 1,01 - 1 = \frac{1}{100} \; ; \qquad
+  \Det(A_1) = 1,01 \cdot b_1 - b_2 \; ; \qquad
+  \Det(A_2) = b_2 - b_1
+\end{align}
+Das ergibt:
+\begin{align} \label{eq1}
+\begin{split}
+  x_1 &= \frac{\Det(A_1)}{\Det(A)} = 100 \cdot (1,01 \cdot b_1 - b_2) \\
+  x_2 &= \frac{\Det(A_2)}{\Det(A)} = 100 \cdot (b_2 - b_1)
+\end{split}
+\end{align}
+Mit dem Zahlenwerten für $b$ ergibt das $x_1 = 500$ und $x_2 = 500$.
+
+\paragraph*{Lösung mit ungenauem b:}
+Für fehlerbehaftete $\tilde{b}_i = (1 + \varepsilon_i)\cdot b_i$ ergeben sich
+fehlerbehaftete Lösungen $\tilde{x}_i$. Durch Einestzen der $\tilde{b}_i$ in
+Gleichung (\ref{eq1}) ergibt sich:
+\begin{align} \label{eq2}
+\begin{split}
+  \tilde{x}_1 &= 100 \cdot (1,01 \cdot \tilde{b}_1 - \tilde{b}_2)
+  = 100 \cdot (1,01 \cdot (1 + \varepsilon_1)\cdot b_1 - (1 + \varepsilon_2)\cdot b_2)) \\
+  &= x_1 + 100 \cdot (1,01 \cdot \varepsilon_1 \cdot b_1 - \varepsilon_2 \cdot b_2)\\
+  \tilde{x}_2 &= 100 \cdot (\tilde{b}_2 - \tilde{b}_1)
+  = 100 \cdot ((1 + \varepsilon_2)\cdot b_2 - (1 + \varepsilon_1)\cdot b_1))\\
+  &= x_2 + 100 \cdot (\varepsilon_2 \cdot b_2 - \varepsilon_1 \cdot b_1)
+\end{split}
+\end{align}
+Mit dem Zahlenwerten für $b$ ergibt das
+\begin{align} \label{eq3}
+\begin{split}
+  \tilde{x}_1 &= x_1 + 101000 \cdot \varepsilon_1 - 100500 \cdot \varepsilon_2\\
+  \tilde{x}_2 &= x_2 + 105000 \cdot \varepsilon_2 - 100000 \cdot \varepsilon_1
+\end{split}
+\end{align}
+Da die Vorzeichen der Fehler $\varepsilon_i$ unbekannt sind, können sie im
+ungünstigen Fall auch verschieden sein; dann addieren sich die beiden Fehler-Terme.
+Mit $\varepsilon := \max(|\varepsilon_1 |, |\varepsilon_2 | )$ kann man dann den
+"`worst case"' absoluten Fehler $| \tilde{\tilde{x}}_i - x_i |$ abschätzen:
+\begin{align} \label{eq4}
+\begin{split}
+  | \tilde{\tilde{x}}_1 - x_1 | &\le 101000 \cdot |\varepsilon_1| +
+    100500 \cdot |\varepsilon_2| \le 201500 \cdot \varepsilon\\
+  | \tilde{\tilde{x}}_2 - x_2 | &\le 100500 \cdot |\varepsilon_1| +
+    100000 \cdot |\varepsilon_2|\le 200500 \cdot \varepsilon
+\end{split}
+\end{align}
+Und für die relativen Fehler ergibt sich dann mit $x_1 = x_2 = 500$:
+\begin{align} \label{eq5}
+  \left| \frac{\tilde{\tilde{x}}_1 - x_1}{x_1} \right| \le
+     403 \cdot \varepsilon \; ; \qquad
+  \left| \frac{\tilde{\tilde{x}}_2 - x_2}{x_2} \right| \le
+     401 \cdot \varepsilon
+\end{align}

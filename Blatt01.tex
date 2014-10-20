@@ -8,23 +8,19 @@
 \setlength\mathindent{10mm}
 \usepackage{amssymb}
 \usepackage{amsthm}
-\usepackage{fancyhdr}
+% \usepackage{fancyhdr}
 \usepackage{units}
 \usepackage{times, eurosym}
 \usepackage{verbatim}%Für Verwendung von multiline Comments mittels \begin{comment}...\end{comment}
 
 
 % FORMATIERUNG
-\usepackage[paper=a4paper,left=25mm,right=25mm,top=25mm,bottom=45mm]{geometry}
+\usepackage[paper=a4paper,left=25mm,right=25mm,top=25mm,bottom=25mm]{geometry}
 \setlength{\parindent}{0cm}
 \setlength{\parskip}{1mm plus1mm minus1mm}
 
 % PAGESTYLE
-\pagestyle{fancy}
-\setlength\headheight{60pt}
-\lhead{Janina Geiser, Mat Nr. 6420269\\Michael Hufschmidt, Mat.Nr.
-6436122\\Farina Ohm, Mat Nr. 6314051\\Annika Seidel, Mat Nr. 6420536}
-\rhead{Übungen zur Vorlesung\\Numerische Mathematik\\WS 2014/15\\Blatt 01 zum 20.10.2014}
+
 
 %MATH SHORTCUTS
 \newcommand{\NN}{\mathbb N}
@@ -34,179 +30,30 @@
 \newcommand{\eqx}{\overset{!}{=}}
 \newcommand{\Det}{\mathrm{Det}}
 
+\newcommand{\cond}{\mathrm{cond}_{\| \cdot \|}}
+
 
 \begin{document}
 
-\subsection*{Aufgabe 1}
-Gegeben sind:
-\begin{align*}
-  x = \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} \; ; \qquad
-  A = \begin{pmatrix} 1 & 1 \\ 1 & 1,01\end{pmatrix} \; ; \qquad
-  b = \begin{pmatrix} b_1 \\ b_2 \end{pmatrix} =
-    \begin{pmatrix} 1000 \\ 1005 \end{pmatrix}
-\end{align*}
+\begin{center}
+\textbf{
+Übungen zur Vorlesung Numerische Mathematik, WS 2014/15\\
+Blatt 01 zum 20.10.2014\\
+}
 
-\paragraph*{Lösung mit exaktem b:}
-Die exakte Lösung $x$ des linearen Gleichungssystems $A \cdot x = b$ ermitteln
-wir über die Cramersche Regel mit den Matrizen:
-\begin{align}
-  A =  \begin{pmatrix} 1 & 1 \\ 1 & 1,01\end{pmatrix} \; ; \qquad
-  A_1 = \begin{pmatrix} b_1 & 1 \\ b_2 & 1,01\end{pmatrix} \; ; \qquad
-  A_2 = \begin{pmatrix} 1 & b_1 \\ 1 & b_2\end{pmatrix}
-\end{align}
-Diese haben die Determinanten:
-\begin{align}
-  \Det(A) = 1,01 - 1 = \frac{1}{100} \; ; \qquad
-  \Det(A_1) = 1,01 \cdot b_1 - b_2 \; ; \qquad
-  \Det(A_2) = b_2 - b_1
-\end{align}
-Das ergibt:
-\begin{align} \label{eq1}
-\begin{split}
-  x_1 &= \frac{\Det(A_1)}{\Det(A)} = 100 \cdot (1,01 \cdot b_1 - b_2) \\
-  x_2 &= \frac{\Det(A_2)}{\Det(A)} = 100 \cdot (b_2 - b_1)
-\end{split}
-\end{align}
-Mit dem Zahlenwerten für $b$ ergibt das $x_1 = 500$ und $x_2 = 500$.
+\begin{tabular}{lll}
+& \\
+von & Janina Geiser & Mat Nr. 6420269\\
+& Michael Hufschmidt & Mat.Nr. 6436122\\
+& Farina Ohm & Mat Nr. 6314051\\
+& Annika Seidel & Mat Nr. 6420536\\
+\\
+\hline
+\end{tabular}
+\end{center}
 
-\paragraph*{Lösung mit ungenauem b:}
-Für fehlerbehaftete $\tilde{b}_i = (1 + \varepsilon_i)\cdot b_i$ ergeben sich
-fehlerbehaftete Lösungen $\tilde{x}_i$. Durch Einestzen der $\tilde{b}_i$ in
-Gleichung (\ref{eq1}) ergibt sich:
-\begin{align} \label{eq2}
-\begin{split}
-  \tilde{x}_1 &= 100 \cdot (1,01 \cdot \tilde{b}_1 - \tilde{b}_2)
-  = 100 \cdot (1,01 \cdot (1 + \varepsilon_1)\cdot b_1 - (1 + \varepsilon_2)\cdot b_2)) \\
-  &= x_1 + 100 \cdot (1,01 \cdot \varepsilon_1 \cdot b_1 - \varepsilon_2 \cdot b_2)\\
-  \tilde{x}_2 &= 100 \cdot (\tilde{b}_2 - \tilde{b}_1)
-  = 100 \cdot ((1 + \varepsilon_2)\cdot b_2 - (1 + \varepsilon_1)\cdot b_1))\\
-  &= x_2 + 100 \cdot (\varepsilon_2 \cdot b_2 - \varepsilon_1 \cdot b_1)
-\end{split}
-\end{align}
-Mit dem Zahlenwerten für $b$ ergibt das
-\begin{align} \label{eq3}
-\begin{split}
-  \tilde{x}_1 &= x_1 + 101000 \cdot \varepsilon_1 - 100500 \cdot \varepsilon_2\\
-  \tilde{x}_2 &= x_2 + 105000 \cdot \varepsilon_2 - 100000 \cdot \varepsilon_1
-\end{split}
-\end{align}
-Da die Vorzeichen der Fehler $\varepsilon_i$ unbekannt sind, können sie im
-ungünstigen Fall auch verschieden sein; dann addieren sich die beiden Fehler-Terme.
-Mit $\varepsilon := \max(|\varepsilon_1 |, |\varepsilon_2 | )$ kann man dann den
-"`worst case"' absoluten Fehler $| \tilde{\tilde{x}}_i - x_i |$ abschätzen:
-\begin{align} \label{eq4}
-\begin{split}
-  | \tilde{\tilde{x}}_1 - x_1 | &\le 101000 \cdot |\varepsilon_1| +
-    100500 \cdot |\varepsilon_2| \le 201500 \cdot \varepsilon\\
-  | \tilde{\tilde{x}}_2 - x_2 | &\le 100500 \cdot |\varepsilon_1| +
-    100000 \cdot |\varepsilon_2|\le 200500 \cdot \varepsilon
-\end{split}
-\end{align}
-Und für die relativen Fehler ergibt sich dann mit $x_1 = x_2 = 500$:
-\begin{align} \label{eq5}
-  \left| \frac{\tilde{\tilde{x}}_1 - x_1}{x_1} \right| \le
-     403 \cdot \varepsilon \; ; \qquad
-  \left| \frac{\tilde{\tilde{x}}_2 - x_2}{x_2} \right| \le
-     401 \cdot \varepsilon
-\end{align}
+\input{Blatt01_Aufg1.tex}
 
-\newpage
-\subsection*{Aufgabe 2}
-\begin{comment}
-%\begin{flushright}
-%\small{Namen: Farina Ohm, Janina Geiser, Michael Hufschmidt, Annika Seidel}\normalsize
-%\end{flushright}
-\renewcommand{\labelenumi}{\alph{enumi})}
-\begin{enumerate}
-\item zu zeigen: strikt diagonaldominante Matrizen sind invertierbar\\
-\end{comment}
-\paragraph*{a)} Zu zeigen: Strikt diagonaldominante Matrizen sind invertierbar. Sei
-\begin{align*}
-A =
-\begin{pmatrix}
-a_{11}&\dots&a_{1n}\\
-\vdots&\ddots&\vdots\\
-a_{n1}&\dots&a_{nn}
-\end{pmatrix}
-\in \KK^{nxn}
-\text{ und } x_1,...,x_2 \in \RR
-\end{align*}
-Dann gilt:
-\begin{align}\label{eq8}
-0 = Ax =
-\begin{pmatrix}
-a_{11}*x_1&\dots&a_{1n}*x_n\\
-\vdots&\ddots&\vdots\\
-a_{n1}*x_1&\dots&a_{nn}*x_n
-\end{pmatrix}
-\Rightarrow
-\begin{pmatrix}
-  a_{11}*x_1&\dots&a_{1n}*x_n&=0\\
-  \vdots&\ddots&\vdots&\vdots\\
-  a_{n1}*x_1&\dots&a_{nn}*x_n&=0
-\end{pmatrix}
-\end{align}
-
-Sei weiterhin i $\in \{1,...,n\}$, s.d. $|x_i| \ge |x_j|\forall k=\{1,...,n\}$.
-Aus (\ref{eq8}) folgt dann für die i-te Zeile:
-\begin{align*}
-% \sum_{j=1}^n x_j a_{ij} = 0 \Leftrightarrow x_i a_{ii}+\sum_{\underset{j\neq i}{j=1}}^n x_j a_{ij} = 0
-\sum_{j=1}^n x_j a_{ij} = 0 \Leftrightarrow x_i a_{ii}+\sum_{\substack{j = 1 \\j \neq i}}^n x_j a_{ij} = 0
-\end{align*}
-Wir nehmen nun an das $x_i \neq 0$ ist und führen dies zum Widerspruch:
-\begin{align*}
-|x_i||a_{ii}| = \left|\sum_{\substack{j = 1 \\j \neq i}}^n x_j a_{ij} \right|
-  &\le \sum_{\substack{j = 1 \\j \neq i}}^n |x_j| |a_{ij}| = \\
-&= |x_j| \sum_{\substack{j = 1 \\j \neq i}}^n |a_{ij}|
-  \le |x_i| \sum_{\substack{j = 1 \\j \neq i}}^n |a_{ij}| < |x_i| |a_{ii}|
-\end{align*}
-Der letzte Schritt folgt dabei direkt aus der strikten Diagonaldominanz von A.
-\newline Wir erhalten also: $|x_i| |a_{ii}|< |x_i| |a_{ii}|$ Widerspruch!
-\newline $\Rightarrow x_i = 0$. Da aber $|x_i| \ge |x_j|\;\forall j=\{1,...,n\}$ gilt,
-folgt auch $x_j=0\;\forall j=\{1,...,n\}$
-Der Kern von A ist trivial $\Leftrightarrow$ A ist invertierbar.
-
-\paragraph*{b)}
-Zu zeigen: A hermitisch, diagonaldominant und $a_{11},...,a_{nn}$  nicht negativ $\Rightarrow A \ge 0$
-
-Sei $\lambda \in \RR$ ein Eigenwert und $ x \in \RR^n$ Eigenvektor von A, dann gilt $Ax = \lambda x$.
-Nomieren wir weiterhin die Einheitsvektoren mit der Maxinumsnorm, sodass $\|x\|_\infty = 1$
-und wählen $ i \in \{1,...,n\}$ s.d. $|x_i|=1$, dann gilt:
-\begin{align*}
-\sum_{j=1}^n a_{ij}x_j = \lambda x_i \Leftrightarrow a_{ii}x_i + \sum_{\substack{j = 1 \\
-  j \neq i}}^n a_{ij}x_j = \lambda x_i
-\end{align*}
-Wir substrahieren auf beiden Seiten der Gleichung $a_{ii} x_i$:
-\begin{align*}
-\lambda x_i - a_{ii} x_i &= (\lambda - a_{ii})* x_i = \sum_{j=1, j\neq i}^n a_{ij}x_j \\
-|\lambda - a_{ii}|* \underset{=1}{|x_i|} &= \left|\sum_{\substack{j = 1 \\j \neq i}}^n a_{ij}x_j \right|
-  \le \sum_{\substack{j = 1 \\j \neq i}}^n |a_{ij}|\underset{\le1}{|x_j|}
-  \le \sum_{\substack{j = 1 \\j \neq i}}^n |a_{ij}|
-\end{align*}
-Also folgt daraus: $|\lambda - a_{ii}| \le \sum_{\substack{j = 1 \\j \neq i}}^n |a_{ij}|$.
-Mit der Formel für die Diagonaldominanz
-\begin{align*}
-|a_{ii}| \ge \sum_{\substack{j = 1 \\j \neq i}}^n |a_{ij}|
-  \Leftrightarrow |a_{ii}| - \sum_{\substack{j = 1 \\j \neq i}}^n |a_{ij}| \ge 0
-\end{align*}
-folgt dann:
-\begin{align*}
-0 \le a_{ii}-\sum_{\substack{j = 1 \\j \neq i}}^n |a_{ij}|
-  \le \lambda \le a_{ii} + \sum_{\substack{j = 1 \\j \neq i}}^n |a_{ij}|
-\end{align*}
-Es folgt also $\lambda \ge 0 \Rightarrow$  alle Eigenwerte sind nicht negativ $\Rightarrow A $ ist positiv semidefinit.
-
-\paragraph*{c)}
-Zu zeigen: A hermitisch, strikt diagonaldominant und $a_{11},...,a_{nn} \text{ positiv}\ \Rightarrow A > 0$
-
-Der Beweis ist analog zu b). Nur folgt aus der strikten Diagonaldominanz
-\begin{align*}
-|a_{ii}| &< \sum_{\substack{j = 1 \\j \neq i}}^n |a_{ij}| \Leftrightarrow
-  |a_{ii}| - \sum_{\substack{j = 1 \\j \neq i}}^n |a_{ij}| < 0\\
-\intertext{folgendes:}
-0 &< a_{ii}-\sum_{\substack{j = 1 \\j \neq i}}^n |a_{ij}|
-  \le \lambda \le a_{ii} + \sum_{\substack{j = 1 \\j \neq i}}^n |a_{ij}|
-\end{align*}
-Es folgt also $\lambda > 0 \Rightarrow $ alle Eigenwerte sind positiv $\Rightarrow A $ ist positiv definit.
+\input{Blatt01_Aufg2.tex}
 
 \end{document}
