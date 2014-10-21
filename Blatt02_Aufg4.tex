@@ -10,47 +10,47 @@ A=
 \end{pmatrix}
 \end{split}
 \end{align*}
-Nach Vorlesung gilt: \fbox{$\mathbf{cond_{||.||}(A)=||A||*||A^{-1}||}$}\\
+Nach Vorlesung gilt: \fbox{$\mathrm{\cond}(A)=\|A\|*\|A^{-1}\|$}\\
 
 Wir berechnen also $A^{-1}$ mithilfe des Gauss-Jordan-Verfahren und erhalten:
 %hier weis ich nicht, wie ich den senkrechten Strich in der Matrix zwischen A und Einheitsmatrix hinbekomme
 \begin{align*}
 (A|I)=
 \begin{split}
-\begin{pmatrix}
-\frac{1}{\sqrt2} & \frac{1}{\sqrt2} & |1 & 0 \\
--\frac{1}{\sqrt2} &\frac{1}{\sqrt2} & |0 & 1
-\end{pmatrix}
+\begin{array}({cc|cc})
+\frac{1}{\sqrt2} & \frac{1}{\sqrt2} & 1 & 0 \\
+-\frac{1}{\sqrt2} &\frac{1}{\sqrt2} & 0 & 1
+\end{array}
 \Rightarrow(I|A^{-1})=
-\begin{pmatrix}
- 1 & 0 & |\frac{\sqrt2}{2} & -\frac{\sqrt2}{2} \\
- 0 & 1 & |\frac{\sqrt2}{2} & \frac{\sqrt2}{2}
-\end{pmatrix}
+\begin{array}({cc|cc})
+ 1 & 0 & \frac{\sqrt2}{2} & -\frac{\sqrt2}{2} \\
+ 0 & 1 & \frac{\sqrt2}{2} & \frac{\sqrt2}{2}
+\end{array}
 \end{split}
 \end{align*}
 Daraus folgt:\\
 Spaltensummennorm:
 \begin{align*}
 \begin{split}
-&||A||_1=max\{|\frac{1}{\sqrt2}|+|-\frac{1}{\sqrt2}|, |\frac{1}{\sqrt2}|+|\frac{1}{\sqrt2}|\}=\frac{2}{\sqrt2}\\
-&||A^{-1}||_1=max\{|\frac{\sqrt2}{2}|+|\frac{\sqrt2}{2}|, |-\frac{\sqrt2}{2}|+|\frac{\sqrt2}{2}|\}={\sqrt2}\\
-& cond_{||.||_1}(A)=||A|_1*||A^{-1}||_1=\frac{2}{\sqrt2} * {\sqrt2} = 2\\
+&\|A\|_1=max\left\lbrace \left|\frac{1}{\sqrt2}\right|+\left|-\frac{1}{\sqrt2}\right|, \left|\frac{1}{\sqrt2}\right|+\left|\frac{1}{\sqrt2}\right|\right\rbrace=\frac{2}{\sqrt2}\\
+&\|A^{-1}\|_1=max\left\lbrace\left|\frac{\sqrt2}{2}\right|+\left|\frac{\sqrt2}{2}\right|, \left|-\frac{\sqrt2}{2}\right|+\left|\frac{\sqrt2}{2}\right|\right\rbrace={\sqrt2}\\
+& \conda(A)=\|A|_1*\|A^{-1}\|_1=\frac{2}{\sqrt2} * {\sqrt2} = 2\\
 \end{split}
 \end{align*}
 euklidische Norm:
 \begin{align*}
 \begin{split}
-&||A||_2=\sqrt{|\frac{1}{\sqrt2}|^2+|-\frac{1}{\sqrt2}|^2+|\frac{1}{\sqrt2}|^2+|\frac{1}{\sqrt2}|^2}=\sqrt{2}\\
-&||A^{-1}||_2=\sqrt{|\frac{\sqrt2}{2}|^2+|\frac{\sqrt2}{2}|^2 + |-\frac{\sqrt2}{2}|^2 +|\frac{\sqrt2}{2}|^2}=\sqrt{2}\\
-& cond_{||.||_2}(A)=||A|_2*||A^{-1}||_2=\sqrt{2}*\sqrt{2}=2\\
+&\|A\|_2=\sqrt{\left|\frac{1}{\sqrt2}\right|^2+\left|-\frac{1}{\sqrt2}\right|^2+\left|\frac{1}{\sqrt2}\right|^2+\left|\frac{1}{\sqrt2}\right|^2}=\sqrt{2}\\
+&\|A^{-1}\|_2=\sqrt{\left|\frac{\sqrt2}{2}\right|^2+\left|\frac{\sqrt2}{2}\right|^2 + \left|-\frac{\sqrt2}{2}\right|^2 + \left|\frac{\sqrt2}{2}\right|^2}=\sqrt{2}\\
+& \condb(A)=\|A|_2*\|A^{-1}\|_2=\sqrt{2}*\sqrt{2}=2\\
 \end{split}
 \end{align*}
 Zeilensummennorm:
 \begin{align*}
 \begin{split}
-&||A||_\infty =max\{|\frac{1}{\sqrt2}|+|\frac{1}{\sqrt2}|, |-\frac{1}{\sqrt2}|+|\frac{1}{\sqrt2}|\}=\frac{2}{\sqrt2}\\
-&||A^{-1}||_\infty=max\{|\frac{\sqrt2}{2}|+|-\frac{\sqrt2}{2}|, |\frac{\sqrt2}{2}|+|\frac{\sqrt2}{2}|\}={\sqrt2}\\
-& cond_{||.||_\infty}(A)=||A|_\infty*||A^{-1}||_\infty=\frac{2}{\sqrt2} * {\sqrt2} = 2\\
+&\|A\|_\infty =max\left\lbrace\left|\frac{1}{\sqrt2}\right|+\left|\frac{1}{\sqrt2}\right|, \left|-\frac{1}{\sqrt2}\right|+\left|\frac{1}{\sqrt2}\right|\right\rbrace=\frac{2}{\sqrt2}\\
+&\|A^{-1}\|_\infty=max\left\lbrace\left|\frac{\sqrt2}{2}\right|+\left|-\frac{\sqrt2}{2}\right|, \left|\frac{\sqrt2}{2}\right|+\left|\frac{\sqrt2}{2}\right|\right\rbrace={\sqrt2}\\
+& \condi(A)=\|A|_\infty*\|A^{-1}\|_\infty=\frac{2}{\sqrt2} * {\sqrt2} = 2\\
 \end{split}
 \end{align*}
 \newline
@@ -71,41 +71,41 @@ Analog zu oben berechnen wir $B^{-1}$:\\
 \begin{align*}
 (B|I)=
 \begin{split}
-\begin{pmatrix}
-1 & 2 & 0 & |1 & 0 & 0\\
-0 & 1 & 0 & |0 & 1 & 0\\
-0 & 1 & 1 & |0 & 0 & 1
-\end{pmatrix}
+\begin{array}({ccc|ccc})
+1 & 2 & 0 & 1 & 0 & 0\\
+0 & 1 & 0 & 0 & 1 & 0\\
+0 & 1 & 1 & 0 & 0 & 1
+\end{array}
 \Rightarrow(I|B^{-1})=
-\begin{pmatrix}
-1 & 0 & 0 &|1 & -2 & 0 \\
-0 & 1 & 0 &|0 & 1 & 0 \\
-0 & 0 & 1 &|0 & -1 & 1  
-\end{pmatrix}
+\begin{array}({ccc|ccc})
+1 & 0 & 0 &1 & -2 & 0 \\
+0 & 1 & 0 &0 & 1 & 0 \\
+0 & 0 & 1 &0 & -1 & 1  
+\end{array}
 \end{split}
 \end{align*}
 Daraus folgt:\\
 Spaltensummennorm:
 \begin{align*}
 \begin{split}
-&||B||_1=max\{|1|+|0|+|0|, |2|+|1|+|1|, |0|+|0|+|1|\} = 4\\
-&||B^{-1}||_1=max\{|1|+|0|+|0|, |-2|+|1|+|-1|, |0|+|0|+|1|\} = 4\\
-& cond_{||.||_1}(B)=||B|_1*||B^{-1}||_1= 4 * 4 = 16\\
+&\|B\|_1=max \left\lbrace|1|+|0|+|0|, |2|+|1|+|1|, |0|+|0|+|1|\right\rbrace = 4\\
+&\|B^{-1}\|_1=max \left\lbrace|1|+|0|+|0|, |-2|+|1|+|-1|, |0|+|0|+|1|\right\rbrace = 4\\
+&\conda(B)=\|B|_1*\|B^{-1}\|_1= 4 * 4 = 16\\
 \end{split}
 \end{align*}
 euklidische Norm:
 \begin{align*}
 \begin{split}
-&||B||_2=\sqrt{|1|^2+|0|^2+|0|^2+|2|^2+|1|^2+|1|^2+|0|^2+|0|^2+|1|^2}=\sqrt{8}\\
-&||B^{-1}||_2=\sqrt{|1|^2+|0|^2+|0|^2+|-2|^2+|1|^2+|-1|^2+|0|^2+|0|^2+|1|^2}=\sqrt{8}\\
-& cond_{||.||_2}(B)=||B|_2*||B^{-1}||_2=\sqrt{8}*\sqrt{8}=8\\
+&\|B\|_2=\sqrt{|1|^2+|0|^2+|0|^2+|2|^2+|1|^2+|1|^2+|0|^2+|0|^2+|1|^2}=\sqrt{8}\\
+&\|B^{-1}\|_2=\sqrt{|1|^2+|0|^2+|0|^2+|-2|^2+|1|^2+|-1|^2+|0|^2+|0|^2+|1|^2}=\sqrt{8}\\
+&\condb(B)=\|B|_2*\|B^{-1}\|_2=\sqrt{8}*\sqrt{8}=8\\
 \end{split}
 \end{align*}
 Zeilensummennorm:
 \begin{align*}
 \begin{split}
-&||B||_\infty = max\{|1|+|2|+|0|, |0|+|1|+|0|,|0|+|1|+|1|\} = 3\\
-&||B^{-1}||_\infty = max\{|1|+|-2|+|0|, |0|+|1|+|0|,|0|+|-1|+|1|\} = 3\\
-& cond_{||.||_\infty}(B)=||B|_\infty*||B^{-1}||_\infty = 3 * 3 = 9\\
+&\|B\|_\infty = max \left\lbrace|1|+|2|+|0|, |0|+|1|+|0|,|0|+|1|+|1|\right\rbrace = 3\\
+&\|B^{-1}\|_\infty = max \left\lbrace|1|+|-2|+|0|, |0|+|1|+|0|,|0|+|-1|+|1|\right\rbrace = 3\\
+&\condi(B)=\|B|_\infty*\|B^{-1}\|_\infty = 3 * 3 = 9\\
 \end{split}
 \end{align*}
