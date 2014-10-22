@@ -32,24 +32,24 @@ Daraus folgt:\\
 Spaltensummennorm:
 \begin{align*}
 \begin{split}
-&\|A\|_1=max\left\lbrace \left|\frac{1}{\sqrt2}\right|+\left|-\frac{1}{\sqrt2}\right|, \left|\frac{1}{\sqrt2}\right|+\left|\frac{1}{\sqrt2}\right|\right\rbrace=\frac{2}{\sqrt2}\\
-&\|A^{-1}\|_1=max\left\lbrace\left|\frac{\sqrt2}{2}\right|+\left|\frac{\sqrt2}{2}\right|, \left|-\frac{\sqrt2}{2}\right|+\left|\frac{\sqrt2}{2}\right|\right\rbrace={\sqrt2}\\
+&\|A\|_1=\mathrm{max}\left\lbrace \left|\frac{1}{\sqrt2}\right|+\left|-\frac{1}{\sqrt2}\right|, \left|\frac{1}{\sqrt2}\right|+\left|\frac{1}{\sqrt2}\right|\right\rbrace=\frac{2}{\sqrt2}\\
+&\|A^{-1}\|_1=\mathrm{max}\left\lbrace\left|\frac{\sqrt2}{2}\right|+\left|\frac{\sqrt2}{2}\right|, \left|-\frac{\sqrt2}{2}\right|+\left|\frac{\sqrt2}{2}\right|\right\rbrace={\sqrt2}\\
 & \conda(A)=\|A|_1*\|A^{-1}\|_1=\frac{2}{\sqrt2} * {\sqrt2} = 2\\
 \end{split}
 \end{align*}
 euklidische Norm:
 \begin{align*}
 \begin{split}
-&\|A\|_2=\sqrt{\left|\frac{1}{\sqrt2}\right|^2+\left|-\frac{1}{\sqrt2}\right|^2+\left|\frac{1}{\sqrt2}\right|^2+\left|\frac{1}{\sqrt2}\right|^2}=\sqrt{2}\\
-&\|A^{-1}\|_2=\sqrt{\left|\frac{\sqrt2}{2}\right|^2+\left|\frac{\sqrt2}{2}\right|^2 + \left|-\frac{\sqrt2}{2}\right|^2 + \left|\frac{\sqrt2}{2}\right|^2}=\sqrt{2}\\
+&\|A\|_2=\sqrt{ \left(\frac{1}{\sqrt2}\right)^2+\left(-\frac{1}{\sqrt2}\right)^2+\left(\frac{1}{\sqrt2}\right)^2+\left(\frac{1}{\sqrt2}\right)^2}=\sqrt{2}\\
+&\|A^{-1}\|_2=\sqrt{\left(\frac{\sqrt2}{2}\right)^2+\left(\frac{\sqrt2}{2}\right)^2 + \left(-\frac{\sqrt2}{2}\right)^2 + \left(\frac{\sqrt2}{2}\right)^2}=\sqrt{2}\\
 & \condb(A)=\|A|_2*\|A^{-1}\|_2=\sqrt{2}*\sqrt{2}=2\\
 \end{split}
 \end{align*}
 Zeilensummennorm:
 \begin{align*}
 \begin{split}
-&\|A\|_\infty =max\left\lbrace\left|\frac{1}{\sqrt2}\right|+\left|\frac{1}{\sqrt2}\right|, \left|-\frac{1}{\sqrt2}\right|+\left|\frac{1}{\sqrt2}\right|\right\rbrace=\frac{2}{\sqrt2}\\
-&\|A^{-1}\|_\infty=max\left\lbrace\left|\frac{\sqrt2}{2}\right|+\left|-\frac{\sqrt2}{2}\right|, \left|\frac{\sqrt2}{2}\right|+\left|\frac{\sqrt2}{2}\right|\right\rbrace={\sqrt2}\\
+&\|A\|_\infty =\mathrm{max}\left\lbrace\left|\frac{1}{\sqrt2}\right|+\left|\frac{1}{\sqrt2}\right|, \left|-\frac{1}{\sqrt2}\right|+\left|\frac{1}{\sqrt2}\right|\right\rbrace=\frac{2}{\sqrt2}\\
+&\|A^{-1}\|_\infty=\mathrm{max}\left\lbrace\left|\frac{\sqrt2}{2}\right|+\left|-\frac{\sqrt2}{2}\right|, \left|\frac{\sqrt2}{2}\right|+\left|\frac{\sqrt2}{2}\right|\right\rbrace={\sqrt2}\\
 & \condi(A)=\|A|_\infty*\|A^{-1}\|_\infty=\frac{2}{\sqrt2} * {\sqrt2} = 2\\
 \end{split}
 \end{align*}
@@ -88,24 +88,24 @@ Daraus folgt:\\
 Spaltensummennorm:
 \begin{align*}
 \begin{split}
-&\|B\|_1=max \left\lbrace|1|+|0|+|0|, |2|+|1|+|1|, |0|+|0|+|1|\right\rbrace = 4\\
-&\|B^{-1}\|_1=max \left\lbrace|1|+|0|+|0|, |-2|+|1|+|-1|, |0|+|0|+|1|\right\rbrace = 4\\
+&\|B\|_1=\mathrm{max} \left\lbrace|1|+|0|+|0|, |2|+|1|+|1|, |0|+|0|+|1|\right\rbrace = 4\\
+&\|B^{-1}\|_1=\mathrm{max} \left\lbrace|1|+|0|+|0|, |-2|+|1|+|-1|, |0|+|0|+|1|\right\rbrace = 4\\
 &\conda(B)=\|B|_1*\|B^{-1}\|_1= 4 * 4 = 16\\
 \end{split}
 \end{align*}
 euklidische Norm:
 \begin{align*}
 \begin{split}
-&\|B\|_2=\sqrt{|1|^2+|0|^2+|0|^2+|2|^2+|1|^2+|1|^2+|0|^2+|0|^2+|1|^2}=\sqrt{8}\\
-&\|B^{-1}\|_2=\sqrt{|1|^2+|0|^2+|0|^2+|-2|^2+|1|^2+|-1|^2+|0|^2+|0|^2+|1|^2}=\sqrt{8}\\
+&\|B\|_2=\sqrt{1^2+0^2+0^2+2^2+1^2+1^2+0^2+0^2+1^2}=\sqrt{8}\\
+&\|B^{-1}\|_2=\sqrt{1^2+0^2+0^2+(-2)^2+1^2+(-1)^2+0^2+0^2+1^2}=\sqrt{8}\\
 &\condb(B)=\|B|_2*\|B^{-1}\|_2=\sqrt{8}*\sqrt{8}=8\\
 \end{split}
 \end{align*}
 Zeilensummennorm:
 \begin{align*}
 \begin{split}
-&\|B\|_\infty = max \left\lbrace|1|+|2|+|0|, |0|+|1|+|0|,|0|+|1|+|1|\right\rbrace = 3\\
-&\|B^{-1}\|_\infty = max \left\lbrace|1|+|-2|+|0|, |0|+|1|+|0|,|0|+|-1|+|1|\right\rbrace = 3\\
+&\|B\|_\infty = \mathrm{max} \left\lbrace|1|+|2|+|0|, |0|+|1|+|0|,|0|+|1|+|1|\right\rbrace = 3\\
+&\|B^{-1}\|_\infty = \mathrm{max} \left\lbrace|1|+|-2|+|0|, |0|+|1|+|0|,|0|+|-1|+|1|\right\rbrace = 3\\
 &\condi(B)=\|B|_\infty*\|B^{-1}\|_\infty = 3 * 3 = 9\\
 \end{split}
 \end{align*}
