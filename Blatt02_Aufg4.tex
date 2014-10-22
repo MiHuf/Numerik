@@ -13,7 +13,6 @@ A=
 Nach Vorlesung gilt: \fbox{$\mathrm{\cond}(A)=\|A\|*\|A^{-1}\|$}\\
 
 Wir berechnen also $A^{-1}$ mithilfe des Gauss-Jordan-Verfahren und erhalten:
-%hier weis ich nicht, wie ich den senkrechten Strich in der Matrix zwischen A und Einheitsmatrix hinbekomme
 \begin{align*}
 (A|I)=
 \begin{split}
@@ -29,7 +28,7 @@ Wir berechnen also $A^{-1}$ mithilfe des Gauss-Jordan-Verfahren und erhalten:
 \end{split}
 \end{align*}
 Daraus folgt:\\
-Spaltensummennorm:
+\underline{Spaltensummennorm:}
 \begin{align*}
 \begin{split}
 &\|A\|_1=\mathrm{max}\left\lbrace \left|\frac{1}{\sqrt2}\right|+\left|-\frac{1}{\sqrt2}\right|, \left|\frac{1}{\sqrt2}\right|+\left|\frac{1}{\sqrt2}\right|\right\rbrace=\frac{2}{\sqrt2}\\
@@ -37,15 +36,55 @@ Spaltensummennorm:
 & \conda(A)=\|A|_1*\|A^{-1}\|_1=\frac{2}{\sqrt2} * {\sqrt2} = 2\\
 \end{split}
 \end{align*}
-euklidische Norm:
+\underline{Spektralnorm:}\\
+Wir bestimmen $A^T*A$:\\
 \begin{align*}
 \begin{split}
-&\|A\|_2=\sqrt{ \left(\frac{1}{\sqrt2}\right)^2+\left(-\frac{1}{\sqrt2}\right)^2+\left(\frac{1}{\sqrt2}\right)^2+\left(\frac{1}{\sqrt2}\right)^2}=\sqrt{2}\\
-&\|A^{-1}\|_2=\sqrt{\left(\frac{\sqrt2}{2}\right)^2+\left(\frac{\sqrt2}{2}\right)^2 + \left(-\frac{\sqrt2}{2}\right)^2 + \left(\frac{\sqrt2}{2}\right)^2}=\sqrt{2}\\
-& \condb(A)=\|A|_2*\|A^{-1}\|_2=\sqrt{2}*\sqrt{2}=2\\
+A^T =
+\begin{pmatrix}
+\frac{1}{\sqrt{2}}&-\frac{1}{\sqrt{2}}\\
+\frac{1}{\sqrt{2}}&\frac{1}{\sqrt{2}}
+\end{pmatrix}
+\Rightarrow A^T*A=
+\begin{pmatrix}
+1&0\\
+0&1
+\end{pmatrix}\\
 \end{split}
+\end{align*}\\
+Eigenwerte von $A^T*A$ bestimmen:\\
+\begin{align*}
+&\mathrm{det}\left((A^T*A)-\lambda*E\right)=(1-\lambda)^2
+\Rightarrow \lambda_{1,2}=1\\
+&\|A\|_2=\sqrt{\lambda_{max}(A^T*A)}=\sqrt{1}=1
 \end{align*}
-Zeilensummennorm:
+Weiterhin bestimmen wir $(A^{-1})^T*(A^{-1})$:\\
+\begin{align*}
+\begin{split}
+(A^{-1})^T =
+\begin{pmatrix}
+\frac{\sqrt{2}}{2}&\frac{\sqrt{2}}{2}\\
+-\frac{\sqrt{2}}{2}&\frac{\sqrt{2}}{2}
+\end{pmatrix}
+\Rightarrow (A^{-1})^T*(A^{-1})=
+\begin{pmatrix}
+1&0\\
+0&1
+\end{pmatrix}\\
+\end{split}
+\end{align*}\\
+Eigenwerte von $(A^{-1})^T*(A^{-1})$ bestimmen:\\
+\begin{align*}
+&\mathrm{det}\left(((A^{-1})^T*(A^{-1})-\lambda*E\right)=(1-\lambda)^2
+\Rightarrow \lambda_{1,2}=1\\
+&\|A^{-1}\|_2=\sqrt{\lambda_{max}((A^{-1})^T*A^{-1})}=\sqrt{1}=1\\
+&\Rightarrow\condb(A)=\|A|_2*\|A^{-1}\|_2=1*1=1\\
+\end{align*}
+%&\|A\|_2=\sqrt{ \left(\frac{1}{\sqrt2}\right)^2+\left(-\frac{1}{\sqrt2}\right)^2+\left(\frac{1}{\sqrt2}\right)^2+\left(\frac{1}{\sqrt2}\right)^2}=\sqrt{2}\\
+%&\|A^{-1}\|_2=\sqrt{\left(\frac{\sqrt2}{2}\right)^2+\left(\frac{\sqrt2}{2}\right)^2 + \left(-\frac{\sqrt2}{2}\right)^2 + \left(\frac{\sqrt2}{2}\right)^2}=\sqrt{2}\\
+%& \condb(A)=\|A|_2*\|A^{-1}\|_2=\sqrt{2}*\sqrt{2}=2\\
+
+\underline{Zeilensummennorm:}
 \begin{align*}
 \begin{split}
 &\|A\|_\infty =\mathrm{max}\left\lbrace\left|\frac{1}{\sqrt2}\right|+\left|\frac{1}{\sqrt2}\right|, \left|-\frac{1}{\sqrt2}\right|+\left|\frac{1}{\sqrt2}\right|\right\rbrace=\frac{2}{\sqrt2}\\
@@ -54,8 +93,6 @@ Zeilensummennorm:
 \end{split}
 \end{align*}
 \newline
-
-
 Gegeben:\\
 \begin{align*} 
 B=
@@ -85,7 +122,7 @@ Analog zu oben berechnen wir $B^{-1}$:\\
 \end{split}
 \end{align*}
 Daraus folgt:\\
-Spaltensummennorm:
+\underline{Spaltensummennorm:}
 \begin{align*}
 \begin{split}
 &\|B\|_1=\mathrm{max} \left\lbrace|1|+|0|+|0|, |2|+|1|+|1|, |0|+|0|+|1|\right\rbrace = 4\\
@@ -93,15 +130,63 @@ Spaltensummennorm:
 &\conda(B)=\|B|_1*\|B^{-1}\|_1= 4 * 4 = 16\\
 \end{split}
 \end{align*}
-euklidische Norm:
+\underline{Spektralnorm:}\\
+Wir bestimmen $B^T*B$:\\
 \begin{align*}
 \begin{split}
-&\|B\|_2=\sqrt{1^2+0^2+0^2+2^2+1^2+1^2+0^2+0^2+1^2}=\sqrt{8}\\
-&\|B^{-1}\|_2=\sqrt{1^2+0^2+0^2+(-2)^2+1^2+(-1)^2+0^2+0^2+1^2}=\sqrt{8}\\
-&\condb(B)=\|B|_2*\|B^{-1}\|_2=\sqrt{8}*\sqrt{8}=8\\
+B^T =
+\begin{pmatrix}
+1 & 0 & 0\\
+2 & 1 & 1\\
+0 & 0 & 1
+\end{pmatrix}
+\Rightarrow B^T*B=
+\begin{pmatrix}
+1 & 2 & 0\\
+2 & 6 & 1\\
+0 & 1 & 1
+\end{pmatrix}\\
+\end{split}
+\end{align*}\\
+Eigenwerte von $B^T*B$ bestimmen:\\
+\begin{align*}
+&\mathrm{det}\left((B^T*B)-\lambda*E\right)=-\lambda^3+8*\lambda^2-8*\lambda+1\\
+&-\lambda^3+8*\lambda^2-8*\lambda+1=0\\
+&\Rightarrow \lambda_{1}=\frac{1}{2}(7+3\sqrt{5})\\
+&\Rightarrow\lambda_{2}=1\\
+&\Rightarrow\lambda_{3}=\frac{1}{2}(7-3\sqrt{5})\\
+&\|B\|_2=\sqrt{\lambda_{max}(B^T*B)}=\sqrt{\frac{1}{2}(7+3\sqrt{5})}
+\end{align*}
+Weiterhin bestimmen wir $(B^{-1})^T*(B^{-1})$:\\
+\begin{align*}
+\begin{split}
+(B^{-1})^T =
+\begin{pmatrix}
+1 & 0 & 0\\
+-2 & 1 & -1\\
+0 & -1 & 1
+\end{pmatrix}
+\Rightarrow (B^{-1})^T*(B^{-1})=
+\begin{pmatrix}
+1 & -2 & 0\\
+-2 & 6 & -1\\
+0 & -1 & 1
+\end{pmatrix}\\
+\end{split}
+\end{align*}\\
+Eigenwerte von $(B^{-1})^T*(B^{-1})$ bestimmen:\\
+\begin{align*}
+\begin{split}
+&\mathrm{det}\left(((B^{-1})^T*(B^{-1})-\lambda*E\right)=-\lambda^3+8*\lambda^2-8*\lambda+1\\
+&-\lambda^3+8*\lambda^2-8*\lambda+1=0\\
+&\Rightarrow \lambda_{1}=\frac{1}{2}(7+3\sqrt{5})\\
+&\Rightarrow\lambda_{2}=1\\
+&\Rightarrow\lambda_{3}=\frac{1}{2}(7-3\sqrt{5})\\
+&\|B^{-1}\|_2=\sqrt{\lambda_{max}((B^{-1})^T*B^{-1})}=\sqrt{\frac{1}{2}(7+3\sqrt{5})}\\
+&\condb(B)=\|B|_2*\|B^{-1}\|_2=\sqrt{\frac{1}{2}(7+3\sqrt{5})}*\sqrt{\frac{1}{2}(7+3\sqrt{5})}=\frac{1}{2}(7+3\sqrt{5})
 \end{split}
 \end{align*}
-Zeilensummennorm:
+\underline{Zeilensummennorm:}
 \begin{align*}
 \begin{split}
 &\|B\|_\infty = \mathrm{max} \left\lbrace|1|+|2|+|0|, |0|+|1|+|0|,|0|+|1|+|1|\right\rbrace = 3\\
