@@ -1,11 +1,69 @@
 \subsection*{Aufgabe 3}
-\paragraph*{a)}\\
+\paragraph*{a)}
+Seien $A \in \KK^{n\times m}$ und $B \in \KK^{m\times n}$,
+zu zeigen: $\sigma(AB)\backslash\{0\} = \sigma(BA)\backslash\{0\}$
+\begin{align*}
+\begin{split}
+&\sigma(AB) = \{\lambda \in \KK | \exists x \neq 0: (AB)x=\lambda x\}\\
+&\sigma(AB)\backslash\{0\} = \{\lambda \in \KK | \exists x \neq 0: (AB)x=\lambda x, \lambda \neq 0\}\\
+\end{split}
+\end{align*}
+Wir m\"ussen also folgendes zeigen:
 \begin{align}
-Seien A \in \KK^n
+\lambda \in \sigma(AB)\backslash\{0\} \Leftrightarrow \lambda \in \sigma(BA)\backslash\{0\}
 \end{align}
+$"\Rightarrow"$: Sei $\lambda \neq 0$ ein Eigenwert von $AB$ und $x \neq 0$ Eigenvektor von $AB$, dann folgt:
+\begin{align}
+&(AB)x = \lambda x \\
+&BABx=B\lambda x=\lambda Bx\\
+&BA(Bx)=\lambda (Bx)
+\end{align}
+Wir bezeichnen $y=(Bx)$ und m\"ussen jetzt nur noch zeigen, dass $y\neq0$ ist, damit $\lambda$ auch Eigenwert von $BA$ ist. Daf\"ur nehmen wir $y=0$ an und f\"uhren dies zum Widerspruch:
+\begin{align*}
+&0=Bx\\
+&0=A\cdot 0 = ABx \overset{(2)}{=} \underbrace{\lambda}_{\substack{\neq 0}} x \Rightarrow x=0 \quad\mathrm{Widerspruch!} \Rightarrow y=Bx \neq 0
+\end{align*}
+Daraus folgt: $Bx$ ist Eigenvektor von $BA$, also ist $\lambda$ Eigenwert von $BA$.\\
+\newline
+$"\Leftarrow"$: Analog zu $"\Rightarrow"$ mit vertauschten $A$ und $B$.
+\begin{flushright}Q.e.d.\end{flushright}
 
 \paragraph*{b)}
-TODO: Annika
+Seien $A,B \in \KK^{n\times n}$, zu zeigen: $\sigma(AB) = \sigma(BA)$\\
+\newline
+Der Beweis l\"auft f"ur $\lambda \neq 0$ analog zu a)\\
+Wir betrachten also nur noch den Fall, wenn $\lambda = 0$:\\
+\newline
+$"\Rightarrow"$:
+F\"ur die Eigenwerte $\lambda_1, \dots,\lambda_n$ von $AB$ gilt: $\mathrm{det}(AB)=\prod_{i=1}^{n}\lambda_i$\\
+Daher folgt: $(\lambda = 0) \in \sigma(AB)\Leftrightarrow \mathrm{det}(AB)=0$\\
+\begin{align}
+&0=\mathrm{det}(AB)\overset{Determinantenproduktsatz}{=}\mathrm{det}(A)\cdot \mathrm{det}(B)
+&\Rightarrow \mathrm{det}(A)=0\; \mathrm{oder}\; \mathrm{det}(B)=0\\
+&\mathrm{det}(BA)\overset{Determinantenproduktsatz}{=}\mathrm{det}(B)\cdot \mathrm{det}(A)\overset{(5)}{=}0\\
+&\Rightarrow \mathrm{det}(BA)=0 \;\Rightarrow (\lambda = 0) \in \sigma(BA)
+\end{align}
+$"\Leftarrow"$: Analog zu $"\Rightarrow"$ mit vertauschtem $A$ und $B$\begin{flushright}Q.e.d.\end{flushright}
 
 \paragraph*{c)}
-TODO: Annika
+Sei $A \in \KK^{n\times m}$ und das euklidische Skalarprodukt auf $\KK^n$, zu zeigen: $(\mathrm{im} A)^\perp = \mathrm{ker} A^*$\\
+\begin{align}
+&(\mathrm{im} A) = \{Ax|x \in \RR^n\}\\
+&(\mathrm{im} A)^\perp = \{Ax|Ax=0,x \in \RR^n\}\\
+&\mathrm{ker} A^*=\{v| A^*v=0\}
+\end{align}
+Der Beweis folgt direkt aus den oben genannten Definitionen und den Eigenschaften des Skalaproduktes:\\
+\newline
+$"\Leftarrow"$:
+\begin{align}
+&v \in \mathrm{ker}(A^*):\\
+&\forall x: 0 = <A^*v,x>\overset{sesquilinear}{=} <v, Ax> \Rightarrow v \in (\mathrm{im} A)^\perp
+\end{align}
+$"\Rightarrow"$:
+\begin{align}
+&x \in (\mathrm{im} A)^\perp:\\
+&\forall v:0=<Ax,v> \overset{sesquilinear}{=} <x, A^*v> \Rightarrow x \in \mathrm{ker}(A^*)
+\end{align}
+\begin{flushright}Q.e.d.\end{flushright}
+
+
