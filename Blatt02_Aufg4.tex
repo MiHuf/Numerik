@@ -10,7 +10,7 @@ A=
 \end{pmatrix}
 \end{split}
 \end{align*}
-Nach Vorlesung gilt: \fbox{$\mathrm{\cond}(A)=\|A\|*\|A^{-1}\|$}\\
+Nach Vorlesung gilt: \fbox{$\mathrm{\cond}(A)=\|A\|\cdot\|A^{-1}\|$}\\
 
 Wir berechnen also $A^{-1}$ mithilfe des Gauss-Jordan-Verfahren und erhalten:
 \begin{align*}
@@ -33,11 +33,11 @@ Daraus folgt:\\
 \begin{split}
 &\|A\|_1=\mathrm{max}\left\lbrace \left|\frac{1}{\sqrt2}\right|+\left|-\frac{1}{\sqrt2}\right|, \left|\frac{1}{\sqrt2}\right|+\left|\frac{1}{\sqrt2}\right|\right\rbrace=\frac{2}{\sqrt2}\\
 &\|A^{-1}\|_1=\mathrm{max}\left\lbrace\left|\frac{\sqrt2}{2}\right|+\left|\frac{\sqrt2}{2}\right|, \left|-\frac{\sqrt2}{2}\right|+\left|\frac{\sqrt2}{2}\right|\right\rbrace={\sqrt2}\\
-& \conda(A)=\|A|_1*\|A^{-1}\|_1=\frac{2}{\sqrt2} * {\sqrt2} = 2\\
+& \conda(A)=\|A\|_1\cdot\|A^{-1}\|_1=\frac{2}{\sqrt2} * {\sqrt2} = 2\\
 \end{split}
 \end{align*}
 \underline{Spektralnorm:}\\
-Wir bestimmen $A^T*A$:\\
+Wir bestimmen $A^T\cdot A$:\\
 \begin{align*}
 \begin{split}
 A^T =
@@ -45,20 +45,20 @@ A^T =
 \frac{1}{\sqrt{2}}&-\frac{1}{\sqrt{2}}\\
 \frac{1}{\sqrt{2}}&\frac{1}{\sqrt{2}}
 \end{pmatrix}
-\Rightarrow A^T*A=
+\Rightarrow A^T\cdot A=
 \begin{pmatrix}
 1&0\\
 0&1
 \end{pmatrix}\\
 \end{split}
 \end{align*}\\
-Eigenwerte von $A^T*A$ bestimmen:\\
+Eigenwerte von $A^T\cdot A$ bestimmen:\\
 \begin{align*}
-&\mathrm{det}\left((A^T*A)-\lambda*E\right)=(1-\lambda)^2
+&\mathrm{det}\left((A^T\cdot A)-\lambda I\right)=(1-\lambda)^2
 \Rightarrow \lambda_{1,2}=1\\
-&\|A\|_2=\sqrt{\lambda_{max}(A^T*A)}=\sqrt{1}=1
+&\|A\|_2=\sqrt{\lambda_{max}(A^T\cdot A)}=\sqrt{1}=1
 \end{align*}
-Weiterhin bestimmen wir $(A^{-1})^T*(A^{-1})$:\\
+Weiterhin bestimmen wir $(A^{-1})^T\cdot(A^{-1})$:\\
 \begin{align*}
 \begin{split}
 (A^{-1})^T =
@@ -66,30 +66,27 @@ Weiterhin bestimmen wir $(A^{-1})^T*(A^{-1})$:\\
 \frac{\sqrt{2}}{2}&\frac{\sqrt{2}}{2}\\
 -\frac{\sqrt{2}}{2}&\frac{\sqrt{2}}{2}
 \end{pmatrix}
-\Rightarrow (A^{-1})^T*(A^{-1})=
+\Rightarrow (A^{-1})^T\cdot(A^{-1})=
 \begin{pmatrix}
 1&0\\
 0&1
 \end{pmatrix}\\
 \end{split}
 \end{align*}\\
-Eigenwerte von $(A^{-1})^T*(A^{-1})$ bestimmen:\\
+Eigenwerte von $(A^{-1})^T\cdot(A^{-1})$ bestimmen:\\
 \begin{align*}
-&\mathrm{det}\left(((A^{-1})^T*(A^{-1})-\lambda*E\right)=(1-\lambda)^2
+&\mathrm{det}\left(((A^{-1})^T\cdot(A^{-1})-\lambda I\right)=(1-\lambda)^2
 \Rightarrow \lambda_{1,2}=1\\
-&\|A^{-1}\|_2=\sqrt{\lambda_{max}((A^{-1})^T*A^{-1})}=\sqrt{1}=1\\
-&\Rightarrow\condb(A)=\|A|_2*\|A^{-1}\|_2=1*1=1\\
+&\|A^{-1}\|_2=\sqrt{\lambda_{max}((A^{-1})^T\cdot A^{-1})}=\sqrt{1}=1\\
+&\Rightarrow\condb(A)=\|A\|_2\cdot\|A^{-1}\|_2=1 \cdot 1=1\\
 \end{align*}
-%&\|A\|_2=\sqrt{ \left(\frac{1}{\sqrt2}\right)^2+\left(-\frac{1}{\sqrt2}\right)^2+\left(\frac{1}{\sqrt2}\right)^2+\left(\frac{1}{\sqrt2}\right)^2}=\sqrt{2}\\
-%&\|A^{-1}\|_2=\sqrt{\left(\frac{\sqrt2}{2}\right)^2+\left(\frac{\sqrt2}{2}\right)^2 + \left(-\frac{\sqrt2}{2}\right)^2 + \left(\frac{\sqrt2}{2}\right)^2}=\sqrt{2}\\
-%& \condb(A)=\|A|_2*\|A^{-1}\|_2=\sqrt{2}*\sqrt{2}=2\\
 
 \underline{Zeilensummennorm:}
 \begin{align*}
 \begin{split}
 &\|A\|_\infty =\mathrm{max}\left\lbrace\left|\frac{1}{\sqrt2}\right|+\left|\frac{1}{\sqrt2}\right|, \left|-\frac{1}{\sqrt2}\right|+\left|\frac{1}{\sqrt2}\right|\right\rbrace=\frac{2}{\sqrt2}\\
 &\|A^{-1}\|_\infty=\mathrm{max}\left\lbrace\left|\frac{\sqrt2}{2}\right|+\left|-\frac{\sqrt2}{2}\right|, \left|\frac{\sqrt2}{2}\right|+\left|\frac{\sqrt2}{2}\right|\right\rbrace={\sqrt2}\\
-& \condi(A)=\|A|_\infty*\|A^{-1}\|_\infty=\frac{2}{\sqrt2} * {\sqrt2} = 2\\
+& \condi(A)=\|A\|_\infty*\|A^{-1}\|_\infty=\frac{2}{\sqrt2} \cdot {\sqrt2} = 2\\
 \end{split}
 \end{align*}
 \newline
@@ -127,11 +124,11 @@ Daraus folgt:\\
 \begin{split}
 &\|B\|_1=\mathrm{max} \left\lbrace|1|+|0|+|0|, |2|+|1|+|1|, |0|+|0|+|1|\right\rbrace = 4\\
 &\|B^{-1}\|_1=\mathrm{max} \left\lbrace|1|+|0|+|0|, |-2|+|1|+|-1|, |0|+|0|+|1|\right\rbrace = 4\\
-&\conda(B)=\|B|_1*\|B^{-1}\|_1= 4 * 4 = 16\\
+&\conda(B)=\|B\|_1\cdot\|B^{-1}\|_1= 4 \cdot 4 = 16\\
 \end{split}
 \end{align*}
 \underline{Spektralnorm:}\\
-Wir bestimmen $B^T*B$:\\
+Wir bestimmen $B^T\cdot B$:\\
 \begin{align*}
 \begin{split}
 B^T =
@@ -140,7 +137,7 @@ B^T =
 2 & 1 & 1\\
 0 & 0 & 1
 \end{pmatrix}
-\Rightarrow B^T*B=
+\Rightarrow B^T\cdot B=
 \begin{pmatrix}
 1 & 2 & 0\\
 2 & 6 & 1\\
@@ -148,16 +145,16 @@ B^T =
 \end{pmatrix}\\
 \end{split}
 \end{align*}\\
-Eigenwerte von $B^T*B$ bestimmen:\\
+Eigenwerte von $B^T\cdot B$ bestimmen:\\
 \begin{align*}
-&\mathrm{det}\left((B^T*B)-\lambda*E\right)=-\lambda^3+8*\lambda^2-8*\lambda+1\\
-&-\lambda^3+8*\lambda^2-8*\lambda+1=0\\
+&\mathrm{det}\left((B^T\cdot B)-\lambda I\right)=-\lambda^3+8\cdot\lambda^2-8\cdot\lambda+1\\
+&-\lambda^3+8\cdot\lambda^2-8\cdot\lambda+1=0\\
 &\Rightarrow \lambda_{1}=\frac{1}{2}(7+3\sqrt{5})\\
 &\Rightarrow\lambda_{2}=1\\
 &\Rightarrow\lambda_{3}=\frac{1}{2}(7-3\sqrt{5})\\
-&\|B\|_2=\sqrt{\lambda_{max}(B^T*B)}=\sqrt{\frac{1}{2}(7+3\sqrt{5})}
+&\|B\|_2=\sqrt{\lambda_{max}(B^T\cdot B)}=\sqrt{\frac{1}{2}(7+3\sqrt{5})}
 \end{align*}
-Weiterhin bestimmen wir $(B^{-1})^T*(B^{-1})$:\\
+Weiterhin bestimmen wir $(B^{-1})^T\cdot(B^{-1})$:\\
 \begin{align*}
 \begin{split}
 (B^{-1})^T =
@@ -166,7 +163,7 @@ Weiterhin bestimmen wir $(B^{-1})^T*(B^{-1})$:\\
 -2 & 1 & -1\\
 0 & -1 & 1
 \end{pmatrix}
-\Rightarrow (B^{-1})^T*(B^{-1})=
+\Rightarrow (B^{-1})^T\cdot(B^{-1})=
 \begin{pmatrix}
 1 & -2 & 0\\
 -2 & 6 & -1\\
@@ -174,16 +171,16 @@ Weiterhin bestimmen wir $(B^{-1})^T*(B^{-1})$:\\
 \end{pmatrix}\\
 \end{split}
 \end{align*}\\
-Eigenwerte von $(B^{-1})^T*(B^{-1})$ bestimmen:\\
+Eigenwerte von $(B^{-1})^T\cdot(B^{-1})$ bestimmen:\\
 \begin{align*}
 \begin{split}
-&\mathrm{det}\left(((B^{-1})^T*(B^{-1})-\lambda*E\right)=-\lambda^3+8*\lambda^2-8*\lambda+1\\
-&-\lambda^3+8*\lambda^2-8*\lambda+1=0\\
+&\mathrm{det}\left(((B^{-1})^T\cdot(B^{-1})-\lambda I \right)=-\lambda^3+8\cdot\lambda^2-8\cdot\lambda+1\\
+&-\lambda^3+8\cdot\lambda^2-8\cdot\lambda+1=0\\
 &\Rightarrow \lambda_{1}=\frac{1}{2}(7+3\sqrt{5})\\
 &\Rightarrow\lambda_{2}=1\\
 &\Rightarrow\lambda_{3}=\frac{1}{2}(7-3\sqrt{5})\\
-&\|B^{-1}\|_2=\sqrt{\lambda_{max}((B^{-1})^T*B^{-1})}=\sqrt{\frac{1}{2}(7+3\sqrt{5})}\\
-&\condb(B)=\|B|_2*\|B^{-1}\|_2=\sqrt{\frac{1}{2}(7+3\sqrt{5})}*\sqrt{\frac{1}{2}(7+3\sqrt{5})}=\frac{1}{2}(7+3\sqrt{5})
+&\|B^{-1}\|_2=\sqrt{\lambda_{max}((B^{-1})^T\cdot B^{-1})}=\sqrt{\frac{1}{2}(7+3\sqrt{5})}\\
+&\condb(B)=\|B\|_2\cdot\|B^{-1}\|_2=\sqrt{\frac{1}{2}(7+3\sqrt{5})}\cdot\sqrt{\frac{1}{2}(7+3\sqrt{5})}=\frac{1}{2}(7+3\sqrt{5})
 \end{split}
 \end{align*}
 \underline{Zeilensummennorm:}
@@ -191,6 +188,6 @@ Eigenwerte von $(B^{-1})^T*(B^{-1})$ bestimmen:\\
 \begin{split}
 &\|B\|_\infty = \mathrm{max} \left\lbrace|1|+|2|+|0|, |0|+|1|+|0|,|0|+|1|+|1|\right\rbrace = 3\\
 &\|B^{-1}\|_\infty = \mathrm{max} \left\lbrace|1|+|-2|+|0|, |0|+|1|+|0|,|0|+|-1|+|1|\right\rbrace = 3\\
-&\condi(B)=\|B|_\infty*\|B^{-1}\|_\infty = 3 * 3 = 9\\
+&\condi(B)=\|B\|_\infty\cdot\|B^{-1}\|_\infty = 3 * 3 = 9\\
 \end{split}
 \end{align*}
