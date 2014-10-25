@@ -9,10 +9,10 @@ $\mathrm{Maximumnorm: }\|x\|_\infty=\underset{i}{\mathrm{max}} |x_{i}|$\\
 \newline
 Die der Maximumnorm $\|x\|_\infty$ zugeordnete Matrixnorm $\|A\|_\infty$ ist gegeben durch:
 \begin{align*}
-&\|A\|_\infty := \underset{x\neq 0}{\mathrm{max}} \frac{\|Ax\|_\infty}{\|x\|} = 
-\underset{\|x\|=1}{\mathrm{max}} \|Ax\|_\infty =
-\underset{\|x\|=1}{\mathrm{max}}\left\lbrace \underset{i}{\mathrm{max}}\left|\sum_{j=1}^{n}a_{ij}x_j\right|\right\rbrace\\&=
-\underset{i}{\mathrm{max}}\left\lbrace\underset{\|x\|=1}{\mathrm{max}}\left|\sum_{j=1}^{n} a_{ij}x_j\right|\right\rbrace
+&\|A\|_\infty := \underset{x\neq 0}{\mathrm{max}} \frac{\|Ax\|_\infty}{\|x\|_\infty} = 
+\underset{\|x\|_\infty=1}{\mathrm{max}} \|Ax\|_\infty =
+\underset{\|x\|_\infty=1}{\mathrm{max}}\left\lbrace \underset{i}{\mathrm{max}}\left|\sum_{j=1}^{n}a_{ij}x_j\right|\right\rbrace\\&=
+\underset{i}{\mathrm{max}}\left\lbrace\underset{\|x\|_\infty=1}{\mathrm{max}}\left|\sum_{j=1}^{n} a_{ij}x_j\right|\right\rbrace
 \overset{x_j=sign(a_{ij})}{=}\underset{i}{\mathrm{max}}\sum_{j=1}^{n}|a_{ij}|=: \mathrm{Zeilensummennorm} \|A\|_\infty
 \end{align*}
 \begin{flushright}Q.e.d.\end{flushright}
@@ -25,8 +25,8 @@ $\mathrm{Spaltensummennorm: }\|A\|_1=\underset{1 \le j \le n}{\mathrm{max}} \sum
 $\mathrm{Betragssummenmnorm: }\|x\|_1=\sum_{i=1}^{m}|x_i|$\\
 \newline
 Die der Betragssummennorm $\|x\|_1$ zugeordnete Matrixnorm $\|A\|_1$ ist gegeben durch:
-\begin{align*}
-\|A\|_1 := \underset{x\neq 0}{\mathrm{max}} \frac{\|Ax\|_1}{\|x\|} = \underset{\|x\|=1}{\mathrm{max}} \|Ax\|_1 = \underset{\|x\|=1}{\mathrm{max}}\left\lbrace\sum_{i=1}^{m}\left|\sum_{j=1}^{n}a_{ij}x_j\right|\right\rbrace = ...
-\end{align*}
-%hier fehlt noch was
-TODO!!!
+\begin{align}
+\|A\|_1 := \underset{x\neq 0}{\mathrm{max}} \frac{\|Ax\|_1}{\|x\|_1} = \underset{\|x\|_1=1}{\mathrm{max}} \|Ax\|_1 = \underset{\|x\|_1=1}{\mathrm{max}}\left\lbrace\sum_{i=1}^{m}\left|\sum_{j=1}^{n}a_{ij}x_j\right|\right\rbrace \\
+\overset{(*)}{=} \underset{1 \le j \le n}{\mathrm{max}} \sum_{i=1}^{m}|a_{ij}| =: \mathrm{Spaltensummennorm} \|A\|_1
+\end{align}
+(*)Die Summe im Betrag wird f\"ur festes i f\"ur dasjenige j maximal bei dem $a_{ij}$ maximal ist und $x_j = 1$ ist.
