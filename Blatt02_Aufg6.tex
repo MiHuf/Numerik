@@ -6,4 +6,20 @@ Zu zeigen: Für $ A \in \textbf{Gl}_n (\KK) $ gilt
 \end{align*}
 wobei $\lambda_{max}(A* A)$ und $\lambda_{min}(A* A)$ jeweils der größte und kleinste Eigenwert von $A* A$ ist.\\
 \newline
-TODO: Ich bin zu doof dafüüüüür :)
+Betrachtet man:
+\begin{align}
+\|A\|_2^{2}&=<A;A>\\
+\|A^{-1}\|_2^{2}&=<A^{-1};A^{-1}> 
+\end{align}
+Aus (17) und (18) die Definitionen des Spektralradius sind woraus folgt:
+\begin{align}
+<A;A>&=\lambda_{max}(A^* A)\\
+<A^{-1};A^{-1}>&=\lambda_{max}(A^{* -1} A^{-1}) 
+\end{align}
+Aus der Definition der Kondition folgt also:
+\begin{align*}
+\condb(A)&=\|A\| \cdot \|A^{-1}\| \\
+&=\sqrt{\lambda_{max}(A^{*} A) \cdot \lambda_{max}(A^{* -1} A^{-1}) }
+\end{align*}
+
+TODO: Michael: Jetzt müsste man sich nur noch überlegen, wieso lamdamax(A* -1A) das minimum von A* A ist.
