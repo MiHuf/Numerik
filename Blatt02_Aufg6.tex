@@ -30,28 +30,28 @@ wegen der Unitariät $U = (U^*)^{-1} \; \text{:}
 \begin{align*}
   \diag(\lambda_1 \cdots \lambda_n) =
   \begin{pmatrix}
-    \lambda_1 & &\\
-    & \ddots & \\
-    & & \lambda_n
+    \lambda_1 &  & 0\\
+      & \ddots &  \\
+    0 &   & \lambda_n
   \end{pmatrix} \quad \text{und} \quad
   \diag(\lambda_1 \cdots \lambda_n)^{-1} =
   \begin{pmatrix}
-    1 / \lambda_1 & &\\
-    & \ddots & \\
-    & & 1/ \lambda_n
+    1 / \lambda_1 & & 0\\
+     & \ddots &  \\
+    0 &  & 1/ \lambda_n
   \end{pmatrix}
 \end{align*}
 Denn man sieht leicht, dass
 \begin{align*}
   \begin{pmatrix}
-    \lambda_1 & &\\
+    \lambda_1 & & 0\\
     & \ddots & \\
-    & & \lambda_n
+    0 & & \lambda_n
   \end{pmatrix} \cdot
   \begin{pmatrix}
-    1 / \lambda_1 & &\\
+    1 / \lambda_1 & & 0\\
     & \ddots & \\
-    & & 1 / \lambda_n
+    0 & & 1 / \lambda_n
   \end{pmatrix}
   = I
 \end{align*}
@@ -63,11 +63,11 @@ $\lambda_{\max} (A^* \cdot A) ^{-1} = 1 / \lambda_n$, damit wird
 \condb(A) & = \|A^{-1}\|_2  \cdot \| A \|_2 =
 \sqrt{\lambda_{\max} (A^* \cdot A)^{-1}} \cdot \sqrt{\lambda_{\max} (A^* \cdot A)}
 = \sqrt{\frac{1}{\lambda_n}} \cdot \sqrt{\lambda_1} \\
-&= \sqrt{\frac{\lambda_1}{\lambda_n}} = \sqrt{\frac{\lambda_{_max}}{\lambda_{\min}}}
+&= \sqrt{\frac{\lambda_1}{\lambda_n}} = \sqrt{\frac{\lambda_{\max}}{\lambda_{\min}}}
 \end{align*}
 \begin{flushright}Q.e.d.\end{flushright}
 
-Noch zu zeigen Sei $U$ unitäre Matrix. $A = U^n \; \Leftrightarrow \;  \condb(A) = 1$
+Noch zu zeigen: Sei $U$ unitäre Matrix. $A = U^n \; \Leftrightarrow \;  \condb(A) = 1$
 
 "`$\Rightarrow$"': Wenn $U$ unitäre Matrix ist, gilt $\| U^* U \|_2 = $
 TODO ...
