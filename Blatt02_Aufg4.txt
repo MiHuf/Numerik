@@ -1,0 +1,66 @@
+Matrix A
+    0.7071    0.7071
+   -0.7071    0.7071
+
+Inverse Ai von A:
+    0.7071   -0.7071
+    0.7071    0.7071
+
+AT * A
+    1.0000         0
+         0    1.0000
+
+Eigenwerte von AT * A
+    1.0000
+    1.0000
+
+AiT * Ai
+    1.0000         0
+         0    1.0000
+
+Eigenwerte von AiT * Ai
+    1.0000
+    1.0000
+
+Konditionen von A:
+ Norm 1 = 2.000000 
+ Norm 2 = 1.000000 
+ Frobenius = 2.000000
+ Infinity  = 2.000000
+
+
+Matrix B
+     1     2     0
+     0     1     0
+     0     1     1
+
+Inverse Bi von B:
+     1    -2     0
+     0     1     0
+     0    -1     1
+
+BT * B
+     1     2     0
+     2     6     1
+     0     1     1
+
+Eigenwerte von BT * B
+    0.1459
+    1.0000
+    6.8541
+
+BiT * Bi
+     1    -2     0
+    -2     6    -1
+     0    -1     1
+
+Eigenwerte von BiT * Bi
+    0.1459
+    1.0000
+    6.8541
+
+Konditionen von B:
+ Norm 1 = 16.000000 
+ Norm 2 = 6.854102 
+ Frobenius = 8.000000
+ Infinity  = 9.000000
