@@ -31,9 +31,9 @@ Daraus folgt:\\
 \underline{Spaltensummennorm:}
 \begin{align*}
 \begin{split}
-&\|A\|_1=\mathrm{max}\left\lbrace \left|\frac{1}{\sqrt2}\right|+\left|-\frac{1}{\sqrt2}\right|, \left|\frac{1}{\sqrt2}\right|+\left|\frac{1}{\sqrt2}\right|\right\rbrace=\frac{2}{\sqrt2}\\
+&\|A\|_1=\mathrm{max}\left\lbrace \left|\frac{1}{\sqrt2}\right|+\left|-\frac{1}{\sqrt2}\right|, \left|\frac{1}{\sqrt2}\right|+\left|\frac{1}{\sqrt2}\right|\right\rbrace=\frac{2}{\sqrt{2}} = \sqrt{2} \\
 &\|A^{-1}\|_1=\mathrm{max}\left\lbrace\left|\frac{\sqrt2}{2}\right|+\left|\frac{\sqrt2}{2}\right|, \left|-\frac{\sqrt2}{2}\right|+\left|\frac{\sqrt2}{2}\right|\right\rbrace={\sqrt2}\\
-& \conda(A)=\|A\|_1\cdot\|A^{-1}\|_1=\frac{2}{\sqrt2} * {\sqrt2} = 2\\
+& \conda(A)=\|A\|_1\cdot\|A^{-1}\|_1={\sqrt{2}} \cdot  {\sqrt{2}}  = 2\\
 \end{split}
 \end{align*}
 \underline{Spektralnorm:}\\
@@ -84,14 +84,14 @@ Eigenwerte von $(A^{-1})^T\cdot(A^{-1})$ bestimmen:\\
 \underline{Zeilensummennorm:}
 \begin{align*}
 \begin{split}
-&\|A\|_\infty =\mathrm{max}\left\lbrace\left|\frac{1}{\sqrt2}\right|+\left|\frac{1}{\sqrt2}\right|, \left|-\frac{1}{\sqrt2}\right|+\left|\frac{1}{\sqrt2}\right|\right\rbrace=\frac{2}{\sqrt2}\\
+&\|A\|_\infty =\mathrm{max}\left\lbrace\left|\frac{1}{\sqrt2}\right|+\left|\frac{1}{\sqrt2}\right|, \left|-\frac{1}{\sqrt2}\right|+\left|\frac{1}{\sqrt2}\right|\right\rbrace= \frac{2}{\sqrt{2}} = \sqrt{2}\\
 &\|A^{-1}\|_\infty=\mathrm{max}\left\lbrace\left|\frac{\sqrt2}{2}\right|+\left|-\frac{\sqrt2}{2}\right|, \left|\frac{\sqrt2}{2}\right|+\left|\frac{\sqrt2}{2}\right|\right\rbrace={\sqrt2}\\
-& \condi(A)=\|A\|_\infty*\|A^{-1}\|_\infty=\frac{2}{\sqrt2} \cdot {\sqrt2} = 2\\
+& \condi(A)=\|A\|_\infty*\|A^{-1}\|_\infty=  {\sqrt{2}} \cdot  {\sqrt{2}}  = 2 \\
 \end{split}
 \end{align*}
 \newline
 Gegeben:\\
-\begin{align*} 
+\begin{align*}
 B=
 \begin{split}
 \begin{pmatrix}
@@ -114,7 +114,7 @@ Analog zu oben berechnen wir $B^{-1}$:\\
 \begin{array}({ccc|ccc})
 1 & 0 & 0 &1 & -2 & 0 \\
 0 & 1 & 0 &0 & 1 & 0 \\
-0 & 0 & 1 &0 & -1 & 1  
+0 & 0 & 1 &0 & -1 & 1
 \end{array}
 \end{split}
 \end{align*}
