@@ -1,2 +1,128 @@
 \subsection*{Aufgabe 9}
- % reserviert für Farina
+Gegeben:
+\begin{align*} \label{eq8}
+A=
+\begin{split}
+\begin{pmatrix}
+1 & 2 & 1\\
+2 & 5 & 2\\
+1 & 2 & 10
+\end{pmatrix}
+\end{split}
+\end{align*}
+Da die Matrix $A$ symmetrisch und positiv definit ist besitzt sie eine Cholesly-Zerlegung $A = L\cdot L^*$\\
+Wir berechnen also $L$ und $L^*$ mithilfe der Cholesky-Zerlegung\\
+Dabei gelten folgende Formeln:\\
+\begin{align}
+i < k \Rightarrow l_{ik} &= 0\\
+i = k \Rightarrow l_{kk} &= \sqrt{a_{kk}-\sum_{j=1}^{k-1}|l_{kj}|^2}\\
+i > k \Rightarrow l_{ik} &= \frac{1}{l_{kk}}\cdot (a_{ik}-\sum_{j=1}^{k-1}l_{ij}\cdot \overline{l_{kj}})
+\end{align}
+
+\underline{Berechnung von $L$:}\\
+Wir bestimmen mit Hilfe der Formeln (1) - (3)
+\begin{align*} \label{eq8}
+L=
+\begin{split}
+\begin{pmatrix}
+l_{11} & 0 & 0\\
+l_{21} & l_{22} & 0\\
+l_{31} & l_{32} & l_{33}
+\end{pmatrix}
+\end{split}
+\end{align*}
+Alle Einträge für die $i < k$ gilt wurden bereits auf die 0 gesetzt.\\
+
+$l_{11}: i=k$ es gilt also Formel (2)\\
+\begin{align*}
+	l_{11} &= \sqrt{a_{kk}-\sum_{j=1}^{k-1}|l_{kj}|^2}\\
+	&= \sqrt{a_{11}}\\
+	&= \sqrt{1}\\
+	&= 1
+\end{align*}
+
+$l_{21}: i > k$ es gilt also Formel (3)\\
+\begin{align*}
+	l_{21} &= \frac{1}{l_{11}}(a_{21}-\sum_{j=1}^{1-1}l_{2j}\cdot \overline{l_{1j}})\\
+	&= \frac{1}{l_{11}}\cdot a_{21}\\
+	&= \frac{1}{1}\cdot 2\\
+	&=2
+\end{align*}
+
+$l_{31}: i > k$ es gilt also Formel (3)\\
+\begin{align*}
+	l_{31} &= \frac{1}{l_{11}}\cdot (a_{31}-\sum_{j=1}^{1-1}l_{3j}\cdot \overline{l_{1j}})\\
+	&= \frac{1}{l_{11}}\cdot a_{13}\\
+	&= \frac{1}{1}\cdot 1\\
+	&= 1
+\end{align*}
+
+$l_{22}: i=k$ es gilt also Formel (2)\\
+\begin{align*}
+	l_{22} &= \sqrt{a_{22}-\sum_{j=1}^{2-1}|l_{2j}|^2}\\
+	&= \sqrt{a_{kk}-l_{21}^2}\\
+	&= \sqrt{5-2^2}\\
+	&= 1
+\end{align*}
+
+$l_{32}: i > k$ es gilt also Formel (3)\\
+\begin{align*}
+	l_{32} &= \frac{1}{l_{22}}\cdot (a_{32}-\sum_{j=1}^{2-1}l_{3j}\cdot \overline{l_{2j}})\\
+	&= \frac{1}{l_{22}}\cdot a_{32} - l_{21} \cdot l_{31}\\
+	&= \frac{1}{1}\cdot 2 - 2 \cdot 1\\
+	&= 0
+\end{align*}
+
+$l_{33}: i=k$ es gilt also Formel (2)\\
+\begin{align*}
+	l_{33} &= \sqrt{a_{33}-\sum_{j=1}^{3-1}|l_{3j}|^2}\\
+	&= \sqrt{a_{33}-l_{31}^2-l_{32}^2}\\
+	&= \sqrt{10-1^2-1^2}\\
+	&= 3
+\end{align*}
+
+Daraus ergibt sich für $L$:
+\begin{align*}
+L=
+\begin{split}
+\begin{pmatrix}
+ 1 & 0 & 0\\
+ 2 & 1 & 0\\
+ 1 & 0 & 3
+\end{pmatrix}
+\end{split}
+\end{align*}
+
+Aus $L$ lässt sich also auch $L^*$ ablesen mit:
+\begin{align*}
+L^*=
+\begin{split}
+\begin{pmatrix}
+ 1 & 2 & 1\\
+ 0 & 1 & 0\\
+ 0 & 0 & 3
+\end{pmatrix}
+\end{split}
+\end{align*}
+
+$A$ wurde somit mittels der Cholesky-Zerlegung faktorisiert und es gilt:
+\begin{align*}
+A = L \cdot L^* \Rightarrow
+\begin{pmatrix}
+1 & 2 & 1\\
+2 & 5 & 2\\
+1 & 2 & 10
+\end{pmatrix}
+=
+\begin{pmatrix}
+ 1 & 0 & 0\\
+ 2 & 1 & 0\\
+ 1 & 0 & 3
+\end{pmatrix}
+\cdot
+\begin{pmatrix}
+ 1 & 2 & 1\\
+ 0 & 1 & 0\\
+ 0 & 0 & 3
+\end{pmatrix}
+\end{align*}
