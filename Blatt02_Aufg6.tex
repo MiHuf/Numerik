@@ -9,8 +9,8 @@ größte und kleinste Eigenwert von $A^* \cdot A$ ist.
 Die Matrix $A^* \cdot A$ ist hermitesch, denn $(A^* \cdot A)^* = A^* \cdot A$.
 Sie hat somit $n$ reelle, nicht-negative Eigenwerte. Da $ A \in \Gl_n (\KK) $,
 kann es auch keinen Eigenwert $0$ geben, die Eigenwerte von  $A^* \cdot A$ sind
-also positive reelle Zahlen $\lambda_i > 0$. Diese ordne ich nun an, so dass
-$\lambda_1 \ge \lambda_2 \ge \cdots \lambda_n > 0$ gilt. Damit ist
+also positive reelle Zahlen $\lambda_i > 0$. Diese ordnen wir nun so an, dass
+$\lambda_1 \ge \lambda_2 \ge \cdots \ge \lambda_n > 0$ gilt. Damit ist
 $\lambda_{\max} (A^* \cdot A) = \lambda_1$ und $\lambda_{\min} (A^* \cdot A) = \lambda_n$
 
 Da  $A^* \cdot A$ hermitesch ist, ist $A^* \cdot A$ auch diagonalisierbar, es
@@ -42,7 +42,7 @@ wegen der Unitariät $U = (U^*)^{-1} \; \text{:}
   \end{pmatrix}
 \end{align*}
 Denn man sieht leicht, dass
-\begin{align*}
+\begin{align} \label{eq17}
   \begin{pmatrix}
     \lambda_1 & & 0\\
     & \ddots & \\
@@ -53,8 +53,13 @@ Denn man sieht leicht, dass
     & \ddots & \\
     0 & & 1 / \lambda_n
   \end{pmatrix}
-  = I
-\end{align*}
+ =  \begin{pmatrix}
+    1 & & 0\\
+    & \ddots & \\
+    0 & & 1
+  \end{pmatrix}
+ = I
+\end{align}
 
 Die Diagonalmatrizen enthalten die Eigenwerte. Der größte Eigenwert von
 $(A^* \cdot A)^{-1}$ ist also \\
@@ -67,14 +72,32 @@ $\lambda_{\max} (A^* \cdot A) ^{-1} = 1 / \lambda_n$, damit wird
 \end{align*}
 \begin{flushright}Q.e.d.\end{flushright}
 
-Noch zu zeigen: Sei $U$ unitäre Matrix. $A = U^n \; \Leftrightarrow \;  \condb(A) = 1$
+Noch zu zeigen: Sei $U$ unitäre Matrix. $A = U^k \; \Leftrightarrow \;  \condb(A) = 1$
 
-"`$\Rightarrow$"': Wenn $U$ unitäre Matrix ist, gilt $\| U^* U \|_2 = $
-TODO ...
+"`$\Rightarrow$"': Unitäre Matrizen sind definiert durch $U^* \cdot U = I$. Ihre
+Eigenwerte haben stets den Betrag 1, Beweis: Sei $\lambda$ Eigenwert von $U$ zum Eigenbektor $x$,
+dann gilt:
+\begin{align*}
+  & 1 \cdot x = I \cdot x = U^* \cdot U \cdot x = \lambda \cdot  U^* \cdot x =
+   \lambda \cdot \overline{\lambda} \cdot x = |\lambda|^2 \cdot x\\
+  & \quad \Rightarrow  |\lambda|^2  = 1 \; ; \quad \Rightarrow  |\lambda|  = 1
+\end{align*}
+Die Matrix $A = U^k$ ist ebenfalls unitär, denn
+\begin{align} \label{eq18}
+  A^* \cdot A = (U^*)^k \cdot U^k = (U^*)^{k-1} \cdot U^* \cdot U \cdot U^{k-1}
+  = (U^*)^{k-1} \cdot I \cdot U^{k-1} = \dots = I^k = I
+\end{align}
+Die Matrix $A^* \cdot A$ hat als hermitesche Matrix nur positive reelle Eigenwerte,
+da $A$ zudem unitär ist, haben alle Eigenwerte den Wert 1, d.h. $\lambda_{\max} = 1$.
+Die inverse Matrix $(A^* \cdot A)^{-1}$ ist - da $A$ unitär ist, gleich der Matrix
+$(A^* \cdot A)^* = A^* \cdot A$ und hat den gleichen Eigenwert $\lambda_{\min} = 1$.
+Also ist $\frac{\lambda_{\max}}{\lambda_{\min}} = 1$ und somit $\condb(A) = 1$.
+\begin{flushright}Q.e.d.\end{flushright}
 
 "`$\Leftarrow$"': Sei $ \condb(A) = 1$, dann gilt nach dem Obigen
-$\lambda_{\max} (A^* \cdot A) = \lambda_{\min} (A^* \cdot A) = 1$
-TODO ...
-
-
-TODO: hier fehlt noch etwas
+$\lambda_{\max} (A^* \cdot A) \cdot \lambda_{\max} (A^* \cdot A)^{-1} = 1$.
+Die jeweils größten Eigenwerte dieser Matrizen findet man in Gleichung (\ref{eq17}), d.h.
+$\lambda_1 \cdot \frac{1}{\lambda_n} = 1 \; \Rightarrow \; \lambda_1 = \lambda_n = 1$.
+Daraus folgt $(A^* \cdot A)\; x = 1 \cdot x \; \Rightarrow \; (A^* \cdot A) = I$ und
+somit ist $A$ unitär und wegen Gleichung (\ref{eq18}) gilt das auch für $U := \sqrt[k]{A}$.
+\begin{flushright}Q.e.d.\end{flushright}
