@@ -1,11 +1,43 @@
 \subsection*{Aufgabe 7}
 Es sei $A \in \Gl_n (\KK)$: 
 \paragraph*{a)}
-%reserviert für Annika
-TODO
-
-
-
+zu zeigen: $A$ besitzt eine $LR$-Zerlegung ohne Pivotisierung, wenn alle Hauptabschnittsdeterminanten von $A$ verschieden von 0 sind.\\
+\newline
+\textit{F\"ur den folgenden Aufgabenteil meinen wir mit der Schreibweise $X[k]$ stets eine $(k \times k)$-Teilmatrix von X aus den ersten k-Zeilen und k-Spalten von $X$.\\}
+\newline
+"$\Rightarrow$"\\
+Angenommen $A \in \Gl_n (\KK)$ besitzt eine $LR$-Zerlegung ohne Pivotisierung, mit $L$ untere $\triangle$-Matrix mit Einsen auf der Diagonalen und $R$ obere $\triangle$-Matrix, dann gilt:
+\textit{} $A=LR$.
+\begin{align}
+0 \neq \mathrm{det}(A) = \mathrm{det}(LR) = \mathrm{det}(L)\cdot \mathrm{det}(R)
+\end{align}
+Da $L$ nach Definition eine untere $\triangle$-Matrix mit Einsen auf der Diagonalen ist, folgt:
+\begin{align}
+\mathrm{det}(L)=\prod_{i=1}^{n} l_{ii}=1
+\end{align} 
+Da jede linke obere $(k \times k)$-Teilmatrix von L wieder eine untere $\triangle$-Matrix mit Einsen auf der Diagonalen ist, gilt dann ebenfalls:
+\begin{align}
+\mathrm{det}(L[k])=\prod_{i=1}^{k} l_{ii}=1
+\end{align}
+Damit folgt aus (1):
+\begin{align}
+\mathrm{det}(R) \neq 0 \overset{R\text{ obere }\triangle-Matrix}{\Rightarrow} 0 \neq \mathrm{det}(R)=\prod_{i=1}^{n} r_{ii}
+\end{align}
+Da, das Produkt \"uber alle Diagonalelemente $r_{ii}$ ungleich Null ist, muss jedes Element  $r_{ii} \; \forall i \in\{1,\cdots,n\}$ ungleich Null sein. Damit gilt f\"ur alle $(k \times k)$-Teilmatrizen von R mit  $k \in\{1,\cdots,n\}$ ebenfalls, dass ihre Determiante ungleich Null ist:
+\begin{align}
+\mathrm{det}(R[k])= \prod_{i=1}^{k} r_{ii} \neq 0 \; \forall k \in\{1,\cdots,n\}
+\end{align} 
+Weiterhin gilt $\forall k \in\{1,\cdots,n\}$:
+\begin{align}
+(LR)[k]&=L[k]\cdot R[k]\\
+\mathrm{det}(A[k])&=\mathrm{det}((LR)[k])= \mathrm{det}(L[k]\cdot R[k])= \mathrm{det}(L[k])\cdot\mathrm{det}(R[k]) \overset{(3)}{=} \mathrm{det}(R[k])\overset{(5)}{\neq}0
+\end{align}
+Damit sind alle Hauptabschnittsdeterminanten $\left(\mathrm{det}(A[k])\right)$ von $A$ verschieden von Null.\\
+\newline
+"$\Leftarrow$"\\
+Angenommen es seien alle Hauptabschnittsdeterminanten von 0 verschieden, dann...\\
+%Rückrichtung fehlt noch
+TODO!!!
 
 
 
@@ -22,9 +54,10 @@ Seien $ A = L_1R_1 $ und $ A = L_2R_2 $ zwei LR-Zerlegungen von A mit $L_1,L_2$ 
 	 \underbrace{(L_2)^{-1}L_1}_{\substack{\text{untere }\triangle\text{-Matrix}}}
 	 &=  \underbrace{R_2(R_1)^{-1}}_{\substack{\text{obere }\triangle\text{-Matrix}}} = I
 \end{align}
-Hinweis zu (2):\\ Die Inverse einer invertierbaren unteren (oberen) $\triangle$-Matrix ist eine untere (obere) $\triangle$-Matrix.\\
+Hinweis zu (9):\\ Die Inverse einer invertierbaren unteren (oberen) $\triangle$-Matrix ist eine untere (obere) $\triangle$-Matrix.\\
 \begin{align}
 &\Rightarrow \; (L_2)^{-1}L_1 = I \text{ und } R_2(R_1)^{-1}=I\\
 &\Rightarrow L_1=L_2 \text{ und } R_2=R_1
 \end{align}
-Damit folgt die \underline{Eindeutigkeit} der LR-Zerlegung von $A$
+Damit folgt die \underline{Eindeutigkeit} der LR-Zerlegung von $A$.
+\begin{flushright}Q.e.d\end{flushright}
