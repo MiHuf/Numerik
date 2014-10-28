@@ -1,7 +1,8 @@
 \subsection*{Aufgabe 7}
+Es sei $A \in \Gl_n (\KK)$: 
 \paragraph*{a)}
 %reserviert für Annika
-
+TODO
 
 
 
@@ -9,3 +10,21 @@
 
 
 \paragraph*{b)}
+zu zeigen: Wenn alle Hauptabschnittsdeterminanten von $A$ verschieden von 0 sind, dann ist die LR-Zerlegung von $A$ ohne Pivotisierung eindeutig.\\
+\newline
+Aus Aufgabenteil a) folgt, dass \glqq wenn alle Hauptabschnittsdeterminanten von $A$ verschieden von 0 sind, $A$ eine LR-Zerlegung ohne Pivotisierung \underline{besitzt}.\grqq\\
+\newline
+Wir zeigen nun, dass diese eindeutig ist:\\
+\newline
+Seien $ A = L_1R_1 $ und $ A = L_2R_2 $ zwei LR-Zerlegungen von A mit $L_1,L_2$ untere $\triangle$-Matrix mit Einsen auf der Diagonalen und $R_1,R_2$ obere $\triangle$-Matrix.
+\begin{align}
+	 A = L_1R_1 \text{ und } A = L_2R_2 \;\Rightarrow \; L_1R_1 &=  L_2R_2\\
+	 \underbrace{(L_2)^{-1}L_1}_{\substack{\text{untere }\triangle\text{-Matrix}}}
+	 &=  \underbrace{R_2(R_1)^{-1}}_{\substack{\text{obere }\triangle\text{-Matrix}}} = I
+\end{align}
+Hinweis zu (2):\\ Die Inverse einer invertierbaren unteren (oberen) $\triangle$-Matrix ist eine untere (obere) $\triangle$-Matrix.\\
+\begin{align}
+&\Rightarrow \; (L_2)^{-1}L_1 = I \text{ und } R_2(R_1)^{-1}=I\\
+&\Rightarrow L_1=L_2 \text{ und } R_2=R_1
+\end{align}
+Damit folgt die \underline{Eindeutigkeit} der LR-Zerlegung von $A$
