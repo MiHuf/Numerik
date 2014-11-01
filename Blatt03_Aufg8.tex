@@ -1,11 +1,23 @@
 \subsection*{Aufgabe 8}
+Für $x \in \KK^m \; , \; x_1 \ne 0$ sei
+$v = \frac{1}{\|x\|_2} + \sign(x_1) \cdot e_1$ und
+$Q_v$  die Householder-Speigelung
+\footnote{War zwar nicht auf dem Übungsblatt angegeben, aber wir nehmen das mal so an.}
+$Q_v = I - \frac{2}{v^T \cdot v} \cdot v \cdot v^T$.
+
 \paragraph*{a)}
-
-
-
-
-
-
-
+Zu zeigen: $\|v\|_2 = \sqrt{ 2 \cdot \left( 1 + \frac{|x|}{\|x\|_2} \right) }$. Es gilt:
+\begin{align*}
+  \|v\|_2 & = \sqrt{v^T \cdot v} =
+  \sqrt{\left( \frac{x^T}{\|x\|_2} + \sign(x_1) \cdot e_1^T \right) \cdot \left( \frac{x}{\|x\|_2} + \sign(x_1) \cdot e_1 \right) } \\
+  & = \left( \frac{x^T \cdot x }{\|x\|_2^2} + \sign(x_1) \cdot e_1^T \cdot \frac{x}{\|x\|_2} +
+   \frac{x^T}{\|x\|_2} \cdot \sign(x_1) \cdot e_1  +  \sign(x_1) \cdot e_1^T \cdot \sign(x_1) \cdot e_1 \right)^{1/2}\\
+  \intertext{Mit $x^T \cdot x = \| x \|_2^2 $  und $e_1^T \cdot x = x \cdot e_1 = x_1$ und
+    $\sign(x_1) \cdot x_1 = |x_1|$ ergibt das:}
+ \|v\|_2 & = \sqrt {1 +  \frac{|x_1|}{\|x\|_2} + \frac{|x_1|}{\|x\|_2} +
+  \underbrace{\sign(x_1) \cdot \sign(x_1) }_{ = +1} \cdot \underbrace{e_1^T \cdot e_1}_{ = 1} } =
+   \sqrt{ 2 \cdot \left( 1 + \frac{|x|}{\|x\|_2} \right) }
+\end{align*}
 
 \paragraph*{b)}
+Michael denkt nach
