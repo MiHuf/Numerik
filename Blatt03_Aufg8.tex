@@ -6,18 +6,40 @@ $Q_v$  die Householder-Speigelung
 $Q_v = I - \frac{2}{v^T \cdot v} \cdot v \cdot v^T$.
 
 \paragraph*{a)}
-Zu zeigen: $\|v\|_2 = \sqrt{ 2 \cdot \left( 1 + \frac{|x|}{\|x\|_2} \right) }$. Es gilt:
-\begin{align*}
-  \|v\|_2 & = \sqrt{v^T \cdot v} =
+Zu zeigen: $\|v\|_2 = \sqrt{ 2 \cdot \left( 1 + \frac{|x_1|}{\|x\|_2} \right) }$. Es gilt:
+\begin{align}
+\nonumber
+\|v\|_2 & = \sqrt{v^T \cdot v} =
   \sqrt{\left( \frac{x^T}{\|x\|_2} + \sign(x_1) \cdot e_1^T \right) \cdot \left( \frac{x}{\|x\|_2} + \sign(x_1) \cdot e_1 \right) } \\
+\nonumber
   & = \left( \frac{x^T \cdot x }{\|x\|_2^2} + \sign(x_1) \cdot e_1^T \cdot \frac{x}{\|x\|_2} +
    \frac{x^T}{\|x\|_2} \cdot \sign(x_1) \cdot e_1  +  \sign(x_1) \cdot e_1^T \cdot \sign(x_1) \cdot e_1 \right)^{1/2}\\
-  \intertext{Mit $x^T \cdot x = \| x \|_2^2 $  und $e_1^T \cdot x = x \cdot e_1 = x_1$ und
+  \intertext{Mit $x^T \cdot x = \| x \|_2^2 \; , \; \; e_1^T \cdot x = x^T \cdot e_1 = x_1$ und
     $\sign(x_1) \cdot x_1 = |x_1|$ ergibt das:}
+  \label{eq8a}
  \|v\|_2 & = \sqrt {1 +  \frac{|x_1|}{\|x\|_2} + \frac{|x_1|}{\|x\|_2} +
   \underbrace{\sign(x_1) \cdot \sign(x_1) }_{ = +1} \cdot \underbrace{e_1^T \cdot e_1}_{ = 1} } =
-   \sqrt{ 2 \cdot \left( 1 + \frac{|x|}{\|x\|_2} \right) }
-\end{align*}
+   \sqrt{ 2 \cdot \left( 1 + \frac{|x_1|}{\|x\|_2} \right) }
+\end{align}
+Für $x \in \KK^m\setminus\{0\} \text{ mit } x_1 = 0$ ergibt sich dann
+mit Gleichung (\ref{eq8a}) $\|v\|_2 = \sqrt{2}$.
 
 \paragraph*{b)}
-Michael denkt nach
+\begin{align*}
+  Q_v \cdot x & = \left( I - \frac{2}{v^T \cdot v} \cdot v \cdot v^T \right) \cdot x
+  \overset{\text{Gleichung (\ref{eq8a})}}{=}
+  \left( I - \frac{2}{2 \left( 1 + \frac{|x_1|}{\|x\|_2}\right)} \cdot v \cdot v^T \right) \cdot x \\
+  & = x - \frac{1}{1 + \frac{|x_1|}{\|x\|_2} } \cdot v \cdot v^T  \cdot x \\
+  v \cdot v^T & = \left( \frac{x}{\|x\|_2} + \sign(x_1) \cdot e_1 \right) \cdot
+    \left( \frac{x^T}{\|x\|_2} + \sign(x_1) \cdot e_1^T \right) \\
+  & = \underbrace{\frac{x \cdot x^T}{\|x\|_2^2}}_{= 1} + \;  \sign(x_1)\cdot e_1 \cdot  \frac{x^T}{\|x\|_2} +
+     \frac{x}{\|x\|_2}\cdot  \sign(x_1) \cdot e_1^T +
+     \underbrace{\sign(x_1)\cdot \sign(x_1)}_{ = 1}\cdot  e_1 \cdot e_1^T   \\
+  & = 1 + \frac{\sign(x_1)}{\|x\|_2} \cdot (e_1 \cdot x^T + x \cdot e_1^T) + e_1 \cdot e_1^T \\
+   v \cdot v^T \cdot x & = x + \frac{\sign(x_1)}{\|x\|_2} \cdot e_1 \underbrace{\cdot x^T \cdot x}_{= \|x\|_2^2}
+   + \frac{\sign(x_1)}{\|x\|_2} \cdot x \cdot \underbrace{e_1^T \cdot x}_{= x_1}
+     + e_1 \cdot \underbrace{e_1^T \cdot x}_{= x_1} \\
+  & = \left(1 + \frac{\sign(x_1) \cdot x_1}{\|x\|_2} \right) \cdot x + \left( \sign(x_1) \cdot \|x\|_2  + x_1 ) \cdot  e_1\right) \\
+  & = \left(1 + \frac{|x_1|}{\|x\|_2} \right) \cdot x + \left( \sign(x_1) \cdot \|x\|_2  + x_1 ) \cdot  e_1\right) \\
+\end{align*}
+Jetzt mache ich erst mal Pause bis Montag, dann werde ich das noch mal kontrollieren und ergänzen
