@@ -1,8 +1,8 @@
 \subsection*{Aufgabe 8}
-Für $x \in \KK^m \; , \; x_1 \ne 0$ sei
-$v = \frac{1}{\|x\|_2} + \sign(x_1) \cdot e_1$ und
+FÃ¼r $x \in \KK^m \; , \; x_1 \ne 0$ sei
+$v = \frac{x}{\|x\|_2} + \sign(x_1) \cdot e_1$ und
 $Q_v$  die Householder-Spiegelung
-\footnote{War zwar nicht auf dem Übungsblatt angegeben, aber wir nehmen das mal so an.} \\
+\footnote{War zwar nicht auf dem ï¿½bungsblatt angegeben, aber wir nehmen das mal so an.} \\
 $Q_v = I - \frac{2}{v^T \cdot v} \cdot v \cdot v^T$.
 
 \paragraph*{a)}
@@ -21,7 +21,7 @@ Zu zeigen: $\|v\|_2 = \sqrt{ 2 \cdot \left( 1 + \frac{|x_1|}{\|x\|_2} \right) }$
   \underbrace{\sign(x_1) \cdot \sign(x_1) }_{ = +1} \cdot \underbrace{e_1^T \cdot e_1}_{ = 1} } =
    \sqrt{ 2 \cdot \left( 1 + \frac{|x_1|}{\|x\|_2} \right) }
 \end{align}
-Für $x \in \KK^m\setminus\{0\} \text{ mit } x_1 = 0$ ergibt sich dann
+Fï¿½r $x \in \KK^m\setminus\{0\} \text{ mit } x_1 = 0$ ergibt sich dann
 mit Gleichung \eqref{eq8a} $\|v\|_2 = \sqrt{2}$.
 
 \paragraph*{b)} Zu zeigen: $Q_v \cdot x = - \sign(x_1) \cdot \|x\|_2 \cdot e_1$
@@ -63,5 +63,5 @@ mit Gleichung \eqref{eq8a} $\|v\|_2 = \sqrt{2}$.
      \label{eq8b2}
      & = - \sign(x_1) \cdot \|x\|_2 \cdot e_1 \qquad \smiley{}
 \end{align}
-Für $x = \frac{x}{\|x\|_2} + e_1$ ist offensichtlich $\sign(x_1) = +1$, Gleichung
+Fï¿½r $x = \frac{x}{\|x\|_2} + e_1$ ist offensichtlich $\sign(x_1) = +1$, Gleichung
 \eqref{eq8b2} liefert dann $Q_v \cdot x = - \|x\|_2 \cdot e_1$.
