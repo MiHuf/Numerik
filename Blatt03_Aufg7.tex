@@ -3,7 +3,7 @@ Es sei $A \in \Gl_n (\KK)$:
 \paragraph*{a)}
 zu zeigen: $A$ besitzt eine $LR$-Zerlegung ohne Pivotisierung, wenn alle Hauptabschnittsdeterminanten von $A$ verschieden von 0 sind.\\
 \newline
-\textit{F\"ur den folgenden Aufgabenteil meinen wir mit der Schreibweise $X[k]$ stets eine $(k \times k)$-Teilmatrix von X aus den ersten k-Zeilen und k-Spalten von $X$.\\}
+\textit{F\"ur den folgenden Aufgabenteil meinen wir mit der Schreibweise $X[k]$ stets eine $(k \times k)$-Teilmatrix von X aus den ersten k-Zeilen und k-Spalten von $X$ und mit $X^{(i)}$ die Matrix $X$, in der die ersten $i$-Spalten schon in Zeilenstufenform gebrach wurden.\\}
 \newline
 "$\Rightarrow$"\\
 Angenommen $A \in \Gl_n (\KK)$ besitzt eine $LR$-Zerlegung ohne Pivotisierung, mit $L$ untere $\triangle$-Matrix mit Einsen auf der Diagonalen und $R$ obere $\triangle$-Matrix, dann gilt:
@@ -35,10 +35,28 @@ Weiterhin gilt $\forall k \in\{1,\cdots,n\}$:
 Damit sind alle Hauptabschnittsdeterminanten $\left(\mathrm{det}(A[k])\right)$ von $A$ verschieden von Null.\\
 \newline
 "$\Leftarrow$"\\
-Angenommen es seien alle Hauptabschnittsdeterminanten von 0 verschieden, dann...\\
-%Rückrichtung fehlt noch
-TODO!!!
-
+Angenommen es seien alle Hauptabschnittsdeterminanten von 0 verschieden, dann m\"ussen wir zeigen, dass der Algorithmus, der uns die L- und R-Matrizen liefert durchlaufen kann, ohne dabei Zeilen zu vertauschen (ohne Pivotisierung). Dies ist genau dann der Fall wenn $a_{ik}=\frac{a_{ik}}{a_{kk}} \text{ für }k=1,\cdots,n-1 \text{ und } i =k+1,\cdots,n$ immer berechnet werden kann.\\
+Wir zeigen also, dass $a_{kk} \neq 0 \;\forall k \in {1, \cdots, n-1}$ mithilfe eines Induktions-Beweises:\\\newline
+Induktionsanfang: $k=1$
+\begin{align*}
+a_{11} = A_1 \overset{nach Vorraussetzung}{\neq} 0
+\end{align*}
+$a_{11}$ entspricht genau dem ersten Hauptminor, der nach Vorraussetzung ungleich Null ist.\\\newline
+Induktionsvorraussetzung:\\
+Die Induktionsbehauptung $a_{kk} \neq 0$ gilt für ein beliebiges k.\\\newline
+Induktionsschritt:\\
+Da es nach Induktionsvorraussetzung eine LR-Zerlegung für die $k\times k$-Teilmatrix $A$ mit k beliebig gibt, können wir $A$ auch folgenderma{\ss}en beschreiben:
+\begin{align*}
+&A[k]^{(k)}= L_k \cdot \ldots \cdot L_1 \cdot A[k]\\
+&A[k+1]^{(k)} = L_k[k+1] \cdot \ldots \cdot L_k[k+1] \cdot A[k+1]\\
+&det(A[k+1]^{(k)})=det(L_k[k+1])\cdot \ldots \cdot det(L_k[k+1]) \cdot det(A[k+1])
+\end{align*}
+Da $A[k+1]^{(k)}$ eine obere Dreiecksmatrix ist und wir bereits wissen $det(L_k[k+1])\cdot \ldots \cdot det(L_k[k+1])\neq 0$ ist, muss auch $a_{k+1,k+1} \neq 0$ gelten.\\
+Daraus folgt: $\forall k = 1, \cdots, n-1: a_{kk} \neq 0$\\
+Somit kann der Algorithmus eine gültige LR-Zerlegung ohne Pivotisierung finden.
+\begin{flushright}
+Q.e.d
+\end{flushright}
 
 
 \paragraph*{b)}
