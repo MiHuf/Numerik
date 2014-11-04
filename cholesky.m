@@ -9,7 +9,20 @@
 %   Annika Seidel, Mat Nr. 6420536
 % Übungsleiter:
 %   Thomas Berger <thomas.berger@uni-hamburg.de>
-
-
-clear all
-clc
+function [x] = cholesky(A)
+w = size(A);
+n = w(1);
+if( n ~= w(2))
+    fprintf('Die Matrix ist nicht nxn, statdessen : %d, %d', w(1),w(2))
+end
+L = zeros(n);
+for k=1:n
+    L(k,k) = sqrt(A(k,k) - sum((L(k,1:k-1)).^2));
+    for i=k+1:n
+        L(i,k) = 1/L(k,k).*(A(i,k));
+        for j= 1:k-1
+            L(i,k)=L(i,k)-L(i,j).*L(k,j)';
+        end
+    end
+end
+disp(L)
