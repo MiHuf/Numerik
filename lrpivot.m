@@ -11,6 +11,58 @@
 % Übungsleiter:
 %   Thomas Berger <thomas.berger@uni-hamburg.de>
 
+function[L,R,p] = lrpivot(A)
+    w = size(A);
+    n=w(1);
+    p = 1:n;
+    if( n ~= w(2))
+        fprintf('Die Matrix ist nicht nxn, statdessen : %d, %d', w(1),w(2))
+    end
+    for k = 1:n-1
+        r = getmax(A,k,n);
+        if A(r,k) == 0
+            fprintf('Matrix nicht in Gl');
+        end
+        if k ~= r
+            for i=1:n
+                temp = A(r,i);
+                A(r,i) = A(k,i);
+                A(k,i) = temp;
+            end
+            temp = p(r);
+            p(r) = p(k);
+            p(k) = temp;
+        end
+        for i=k+1:n
+            A(i,k) = A(i,k)./A(k,k);
+            for j=k+1:n
+                A(i,j) = A(i,j)-A(i,k).*A(k,j);
+            end
+        end
+    end
+    if A(n,n) == 0
+        fprintf('Matrix nicht in Gl');
+    end
+    L = eye(n);
+    R = zeros(n);
+    for i=1:n
+        for j= 1:n
+            if(i>j)
+                L(i,j)= A(i,j);
+            else
+                R(i,j) =A(i,j);
+            end
+        end
+    end
+end
 
-clear all
-clc
+function[r] =getmax(A,k,n)
+    a = A(k,k);
+    r = k;
+    for i=k:n
+        if abs(a) < abs(A(i,k))
+            a = A(i,k);
+            r=i;
+        end
+    end
+end
