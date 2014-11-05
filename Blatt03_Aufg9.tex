@@ -1,6 +1,6 @@
 \subsection*{Aufgabe 9}
 Gegeben:
-\begin{align*} \label{eq8}
+\begin{align*} 
 A=
 \begin{split}
 \begin{pmatrix}
@@ -14,14 +14,17 @@ Da die Matrix $A$ symmetrisch und positiv definit ist besitzt sie eine Cholesly-
 Wir berechnen also $L$ und $L^*$ mithilfe der Cholesky-Zerlegung\\
 Dabei gelten folgende Formeln:\\
 \begin{align}
+\label{col1}
 i < k \Rightarrow l_{ik} &= 0\\
+\label{col2}
 i = k \Rightarrow l_{kk} &= \sqrt{a_{kk}-\sum_{j=1}^{k-1}|l_{kj}|^2}\\
+\label{col3}
 i > k \Rightarrow l_{ik} &= \frac{1}{l_{kk}}\cdot (a_{ik}-\sum_{j=1}^{k-1}l_{ij}\cdot \overline{l_{kj}})
 \end{align}
 
 \underline{Berechnung von $L$:}\\
-Wir bestimmen mit Hilfe der Formeln (1) - (3)
-\begin{align*} \label{eq8}
+Wir bestimmen mit Hilfe der Formeln \eqref{col1}, \eqref{col2} und \eqref{col3}
+\begin{align*}
 L=
 \begin{split}
 \begin{pmatrix}
@@ -33,7 +36,7 @@ l_{31} & l_{32} & l_{33}
 \end{align*}
 Alle Einträge für die $i < k$ gilt wurden bereits auf die 0 gesetzt.\\
 
-$l_{11}: i=k$ es gilt also Formel (2)\\
+$l_{11}: i=k$ es gilt also Formel \eqref{col2}\\
 \begin{align*}
 	l_{11} &= \sqrt{a_{kk}-\sum_{j=1}^{k-1}|l_{kj}|^2}
 	= \sqrt{a_{11}}
@@ -41,7 +44,7 @@ $l_{11}: i=k$ es gilt also Formel (2)\\
 	= 1
 \end{align*}
 
-$l_{21}: i > k$ es gilt also Formel (3)\\
+$l_{21}: i > k$ es gilt also Formel \eqref{col3}\\
 \begin{align*}
 	l_{21} &= \frac{1}{l_{11}}(a_{21}-\sum_{j=1}^{1-1}l_{2j}\cdot \overline{l_{1j}})
 	= \frac{1}{l_{11}}\cdot a_{21}
@@ -49,7 +52,7 @@ $l_{21}: i > k$ es gilt also Formel (3)\\
 	=2
 \end{align*}
 
-$l_{31}: i > k$ es gilt also Formel (3)\\
+$l_{31}: i > k$ es gilt also Formel \eqref{col3}\\
 \begin{align*}
 	l_{31} &= \frac{1}{l_{11}}\cdot (a_{31}-\sum_{j=1}^{1-1}l_{3j}\cdot \overline{l_{1j}})
 	= \frac{1}{l_{11}}\cdot a_{13}
@@ -57,7 +60,7 @@ $l_{31}: i > k$ es gilt also Formel (3)\\
 	= 1
 \end{align*}
 
-$l_{22}: i=k$ es gilt also Formel (2)\\
+$l_{22}: i=k$ es gilt also Formel \eqref{col2}\\
 \begin{align*}
 	l_{22} &= \sqrt{a_{22}-\sum_{j=1}^{2-1}|l_{2j}|^2}
 	= \sqrt{a_{kk}-l_{21}^2}
@@ -65,7 +68,7 @@ $l_{22}: i=k$ es gilt also Formel (2)\\
 	= 1
 \end{align*}
 
-$l_{32}: i > k$ es gilt also Formel (3)\\
+$l_{32}: i > k$ es gilt also Formel \eqref{col3}\\
 \begin{align*}
 	l_{32} &= \frac{1}{l_{22}}\cdot (a_{32}-\sum_{j=1}^{2-1}l_{3j}\cdot \overline{l_{2j}})
 	= \frac{1}{l_{22}}\cdot a_{32} - l_{21} \cdot l_{31}
@@ -73,7 +76,7 @@ $l_{32}: i > k$ es gilt also Formel (3)\\
 	= 0
 \end{align*}
 
-$l_{33}: i=k$ es gilt also Formel (2)\\
+$l_{33}: i=k$ es gilt also Formel \eqref{col2}\\
 \begin{align*}
 	l_{33} &= \sqrt{a_{33}-\sum_{j=1}^{3-1}|l_{3j}|^2}
 	= \sqrt{a_{33}-l_{31}^2-l_{32}^2}
