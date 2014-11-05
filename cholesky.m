@@ -9,7 +9,7 @@
 %   Annika Seidel, Mat Nr. 6420536
 % Übungsleiter:
 %   Thomas Berger <thomas.berger@uni-hamburg.de>
-function [x] = cholesky(A)
+function [L] = cholesky(A)
 w = size(A);
 n = w(1);
 if( n ~= w(2))
@@ -25,4 +25,3 @@ for k=1:n
         end
     end
 end
-disp(L)
