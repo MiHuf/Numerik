@@ -25,7 +25,7 @@ for i=1:n
     end
     y(i)=s./L(i,i);
 end
-%Bestimmung von x
+%Bestimmung von x für y=L
 for i=n:-1:1
     s=y(i);
     for k=i+1:n

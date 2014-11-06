@@ -14,14 +14,15 @@
 function[L,R,p] = lrpivot(A)
     w = size(A);
     n=w(1);
-    p = 1:n;
+    p = 1:n; 
+    p=p';%Permutationsvektor als Spaltenvektor
     if( n ~= w(2))
-        fprintf('Die Matrix ist nicht nxn, statdessen : %d, %d', w(1),w(2))
+        fprintf('Die Matrix ist nicht nxn, statdessen : %d, %d\n', w(1),w(2))
     end
     for k = 1:n-1
         r = getmax(A,k,n);
         if A(r,k) == 0
-            fprintf('Matrix nicht in Gl');
+            fprintf('Matrix nicht in Gl\n');
         end
         if k ~= r
             for i=1:n
@@ -41,8 +42,9 @@ function[L,R,p] = lrpivot(A)
         end
     end
     if A(n,n) == 0
-        fprintf('Matrix nicht in Gl');
+        fprintf('Matrix nicht in Gl\n');
     end
+%Berechnung von L und R
     L = eye(n);
     R = zeros(n);
     for i=1:n
@@ -54,9 +56,14 @@ function[L,R,p] = lrpivot(A)
             end
         end
     end
+    %folgende Zeilen einkommentieren wenn der Permutationsvektor als
+    %Permutationsmatrix ausgegeben werden soll
+    %C=eye(n);
+    %p=C(p,:);
+    %disp(p);
 end
-
-function[r] =getmax(A,k,n)
+%bestimmen des betragsmäßig größten Elements in einer Spalte k der Matrix A
+function[r] = getmax(A,k,n)
     a = A(k,k);
     r = k;
     for i=k:n

@@ -13,7 +13,7 @@ function [L] = cholesky(A)
 w = size(A);
 n = w(1);
 if( n ~= w(2))
-    fprintf('Die Matrix ist nicht nxn, statdessen : %d, %d', w(1),w(2))
+    fprintf('Die Matrix ist nicht nxn, statdessen : %d, %d\n', w(1),w(2))
 end
 L = zeros(n);
 for k=1:n
