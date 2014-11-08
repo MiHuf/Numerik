@@ -17,8 +17,8 @@ if (n ~= w(1)) || (n ~= w(2))
     fprintf('%d x %d Matrix A passt nicht zum Vektor b mit der Länge %d\n', w(1), w(2), n)
 end
 Ab = [A(:,:) b] ;
-disp('Erweiterte Koeffizientenmatrix:')
-disp(Ab)
+% disp('Erweiterte Koeffizientenmatrix:')
+% disp(Ab)
 
 for k = 1 : n
     % Suche Pivot-Spalte rk und Pivot-Element ark
@@ -67,6 +67,8 @@ for i = n : -1 : 1
     end
     x(i) = (Ab(i,n+1) - sum) / Ab(i,i) ;
 end
-disp('Lösung x = ')
-disp(x')
+x = x' ;  % -> Spaltenvektor
+
+% disp('Lösung x = ')
+% disp(x)
 return
