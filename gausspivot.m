@@ -59,15 +59,11 @@ end
 % disp ('Obere Dreiecks-Matrix:')
 % disp(Ab)
 
-% Rückwärte-Einsetzen
+x = zeros(n,1) ; % Spaltenvektor
+% Rückwärts-Einsetzen mit Skalarprodukt
 for i = n : -1 : 1
-    sum = 0 ;
-    for j = i+1 : n
-        sum = sum + Ab(i,j) * x(j) ;
-    end
-    x(i) = (Ab(i,n+1) - sum) / Ab(i,i) ;
+    x(i) = ( Ab(i,n+1) - Ab(i, i+1 : n) * x(i+1 : n) )  / Ab(i,i) ;
 end
-x = x' ;  % -> Spaltenvektor
 
 % disp('Lösung x = ')
 % disp(x)
