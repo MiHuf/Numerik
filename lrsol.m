@@ -32,7 +32,7 @@ end
 
 % Bestimme x mit R x = y durch Rückwärts-Einsetzen mit Skalarprodukt
 for i = n : -1 : 1
-    x(i) = ( y(i) - R(i, i+1 : n) * y(i+1 : n) ) ./ R(i,i) ;
+    x(i) = ( y(i) - R(i, i+1 : n) * x(i+1 : n) ) ./ R(i,i) ;
 end
 
 end
