@@ -1,1 +1,28 @@
 \subsection*{Aufgabe 11}
+Sei $A \in \KK^{n \times n}$ hermitesch.\\
+\newline
+zu zeigen: Singulärwerte von $A$ bestehen aus der Menge der Beträge der Eigenwerte von $A$.\\
+\newline
+Beweis:\\
+Für die Matrix $A$ mit Eigenvektor $x \neq 0$ und Eigenwert $\lambda \in \KK$ gilt folgende Eigenwertgleichung:
+\begin{align}
+\label{EW}
+Ax=\lambda x
+\end{align}
+Für eine hermitesche Matrix A gilt weiterhin:\begin{align}\label{Hermitesch}A=A^*\end{align}
+Wir betrachten die Eigenwertgleichung der Matrix $A^*A$:
+\begin{align*}
+A^*Ax\overset{\eqref{Hermitesch}}{=}A\cdot \underbrace{Ax}_{\substack{\overset{\eqref{EW}}{=}\lambda x}}=A\lambda x=\lambda \underbrace{Ax}_{\substack{\overset{\eqref{EW}}{=}\lambda x}}=\lambda \lambda x =\lambda^2x
+\end{align*}\\
+Daraus folgt, dass $\lambda^2$ ein Eigenwert von $(A^*A)$ ist $(x \neq 0)$.\\
+Aus der Vorlesung folgt, dass die Singulärwerte von $A$ gleich den Quadratwurzeln der Eigenwerten von $(A^*A)$ sind (\textit{Kapitel 2.8.3 Singulärwertzerlegung}).\\\\
+Also gilt nun für die Singulärwerte $\sigma_i$ von $A$:\\
+\begin{align}\label{betrag}\sigma_i= \sqrt{\lambda_i^{2}}=|\lambda_i|\quad \forall i \in\{1,\cdots,r\} \text{ mit } r=\mathrm{rang}(A)\end{align}
+\newline
+Da $\lambda$ genau so gewählt war, dass es die Eigenwertgleichung \eqref{EW} von $A$ erfüllt, also ein Eigenwert von $A$ ist, ist damit bewiesen, dass die Singulärwerte von $A$ aus der Menge der Beträge der Eigenwerte von $A$ bestehen \eqref{betrag}.\\
+\newline
+Beziehung zwischen der Eigenwert- und Singulärwertzerlegung.\\
+TODO\\
+\newline
+Beispiel einer nicht-Hermiteschen Matrix:\\
+TODO\\
