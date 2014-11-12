@@ -1,8 +1,10 @@
 % Übungen zur Numerischen Mathematik, WS 2014/15
-% Blatt 04, Aufgabe 14 (ii)
+% Blatt 04, Aufgabe 14 (i)
+%   x = gv(A, b, eps)
 %   x = ev(A, b, eps)
 % Gegeben A in Gl_n(K), b in K^n, Abbruchparameter eps > 0.
-% Bestimme Lösung von A x = b mittels Einzelschrittverfahren.
+% Bestimme Lösung von A x = b mittels Gesamt-
+% und Einzelschrittverfahren.
 % Geben Sie auch in jedem Schritt den Fehler | x - x^k | aus.
 %
 % Autoren:
@@ -13,6 +15,8 @@
 % Übungsleiter:
 %   Thomas Berger <thomas.berger@uni-hamburg.de>
 
+ clc
+ clear all
  n = 10 ;
  A = 2*diag(ones(1,n))-diag(ones(1,n-1),1)-diag(ones(1,n-1),-1) ;
  b = zeros(n,1) ;
