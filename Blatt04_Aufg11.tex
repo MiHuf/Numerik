@@ -19,10 +19,17 @@ Aus der Vorlesung folgt, dass die Singulärwerte von $A$ gleich den Quadratwurze
 Also gilt nun für die Singulärwerte $\sigma_i$ von $A$:\\
 \begin{align}\label{betrag}\sigma_i= \sqrt{\lambda_i^{2}}=|\lambda_i|\quad \forall i \in\{1,\cdots,r\} \text{ mit } r=\mathrm{rang}(A)\end{align}
 \newline
-Da $\lambda$ genau so gewählt war, dass es die Eigenwertgleichung \eqref{EW} von $A$ erfüllt, also ein Eigenwert von $A$ ist, ist damit bewiesen, dass die Singulärwerte von $A$ aus der Menge der Beträge der Eigenwerte von $A$ bestehen \eqref{betrag}.\\
+Da $\lambda$ genau so gewählt war, dass es die Eigenwertgleichung \eqref{EW} von $A$ erfüllt, also ein Eigenwert von $A$ ist, ist damit bewiesen, dass die Singulärwerte von $A$ aus der Menge der Beträge der Eigenwerte von $A$ bestehen \eqref{betrag}.
+\begin{flushright}Q.e.d.\end{flushright}
+Beziehung zwischen der Eigenwert- und Singulärwertzerlegung:\\\\
+Es sei $A=U\Sigma V^*$ mit $U$ eine unitäre $n\times n$ Matrix, $V$ die Adjungierte einer unitären $n\times n$-Matrix V und $\Sigma$ eine reelle $n\times n$-Diagonalmatrix.\\
+Für die hermitesche Matrix A gilt dann:
+\begin{align*}
+AA^*=U\Sigma \underbrace{V^*V}_{=I}\Sigma^TU^*=U\underbrace{\Sigma\Sigma^T}_{=\Delta}U^*=U\Delta U^* = U\Delta U^{-1}
+\end{align*}
+Es gilt also $\Delta=\Sigma^T \Sigma=diag(\lambda_1,\ldots,\lambda_n)$\\
 \newline
-Beziehung zwischen der Eigenwert- und Singulärwertzerlegung.\\
-TODO\\
+IST DAS HIER ÜBERHAUPT SINNVOLL WAS ICH TUE???\\
 \newline
 Beispiel einer nicht-Hermiteschen Matrix:\\
 TODO\\
