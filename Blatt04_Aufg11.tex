@@ -24,17 +24,46 @@ Da $\lambda$ genau so gewählt war, dass es die Eigenwertgleichung \eqref{EW} vo
 Beziehung zwischen der Eigenwert- und Singulärwertzerlegung:\\\\
 Es sei $A=U\Sigma V^*$ eine Singulärwertzerlegung mit $U$ unitäre $n\times n$ Matrix, $V$ die Adjungierte einer unitären $n\times n$-Matrix V und $\Sigma$ eine reelle $n\times n$-Diagonalmatrix.\\
 Für die hermitesche Matrix A gilt dann:
-\begin{align*}
+\begin{align}
 A^*A=V\Sigma^T\underbrace{U^*U}_{=I}\Sigma V^* = V\underbrace{\Sigma^T\Sigma}_{=\Delta}V^*=V\Delta V^*
-\end{align*}
+\end{align}
 mit $\Delta=\Sigma^T \Sigma=diag(\lambda_1,\ldots,\lambda_n)$\\
 \newline
 Da die Singulärwerte der Matrix A gleich den Quadratwurzeln aus den positiven Eigenwerten von $A^*A$ sind, ergibt sich für eine hermitesche Matrix:
 \begin{align*}
 	\sigma_i=\sqrt{\lambda(A^*A)} \overset{A^*=A}{=} \sqrt{\lambda_i(AA)}=\sqrt{\lambda_i(A)\lambda_i(A)}=\sqrt{\lambda_i(A)^2}=\lambda_i(A) \quad \forall i\in\{1,\ldots,n\}
 \end{align*}
-Für hermitesche Matrizen ergibt sich also, die Besonderheit, dass die Eigenwerte mit den Singulärwerten übereinstimmen.\\
-soweit richtig???\\
+Für hermitesche Matrizen ergibt sich also, die Besonderheit, dass die Eigenwerte mit den Singulärwerten übereinstimmen.\\\\
+\textcolor{red}{soweit richtig? irgendwie fehlt noch die endgültige Beziehung zwischen Eigenwert- und Singulärwertzerlegung oder reicht da Gleichung (4)???}\\
 \newline
-Beispiel einer nicht-Hermiteschen Matrix:\\
-TODO\\
+Beispiel einer nicht-Hermiteschen Matrix um zu zeigen, dass dann obige Aussagen nicht mehr gelten:
+\begin{align*}
+&B=
+\begin{pmatrix}
+	1 & 1000\\
+	0 & 1
+\end{pmatrix}, 
+B^*=
+\begin{pmatrix}
+1 & 0\\
+1000 & 1
+\end{pmatrix}
+\Rightarrow B\neq B^*\end{align*}
+Eigenwerte von B berechnen:
+\begin{align*}
+&(B-\lambda I)=(1-\lambda)^2\\
+&(1-\lambda)^2=0 \Rightarrow \lambda_{1,2}(B)=1
+\end{align*}
+Eigenwerte von ($B^*B$) berechnen:
+\begin{align*}
+&(B^*B)=
+\begin{pmatrix}
+1 & 1000\\
+1000 & 10^6+1
+\end{pmatrix}\\
+&((B^*B)-\lambda I)=(1-\lambda)(1000001-\lambda)-1000^2=1000001-\lambda-1000001\lambda+\lambda^2-1000^2\\ &=\lambda^2-1000002\lambda+1\\
+&\lambda^2-1000002\lambda+1=0 \Rightarrow \lambda_{1}(B^*B)\approx 10^6, \lambda_{2}(B^*B) \approx 1,00001\cdot 10^{-6}\\
+&\sigma_1(B)=\sqrt{\lambda_1(B^*B)}=1000 \neq |1|\\
+&\sigma_2(B)=\sqrt{\lambda_2(B^*B)}=0,001000005 \neq|1|
+\end{align*}
+Die Singulärwerte von B (einer nicht-hermiteschen Matrix) sind also nicht aus der Menge der Beträge der Eigenwerte von B.
