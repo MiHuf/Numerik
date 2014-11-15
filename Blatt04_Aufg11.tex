@@ -22,14 +22,19 @@ Also gilt nun für die Singulärwerte $\sigma_i$ von $A$:\\
 Da $\lambda$ genau so gewählt war, dass es die Eigenwertgleichung \eqref{EW} von $A$ erfüllt, also ein Eigenwert von $A$ ist, ist damit bewiesen, dass die Singulärwerte von $A$ aus der Menge der Beträge der Eigenwerte von $A$ bestehen \eqref{betrag}.
 \begin{flushright}Q.e.d.\end{flushright}
 Beziehung zwischen der Eigenwert- und Singulärwertzerlegung:\\\\
-Es sei $A=U\Sigma V^*$ mit $U$ eine unitäre $n\times n$ Matrix, $V$ die Adjungierte einer unitären $n\times n$-Matrix V und $\Sigma$ eine reelle $n\times n$-Diagonalmatrix.\\
+Es sei $A=U\Sigma V^*$ eine Singulärwertzerlegung mit $U$ unitäre $n\times n$ Matrix, $V$ die Adjungierte einer unitären $n\times n$-Matrix V und $\Sigma$ eine reelle $n\times n$-Diagonalmatrix.\\
 Für die hermitesche Matrix A gilt dann:
 \begin{align*}
-AA^*=U\Sigma \underbrace{V^*V}_{=I}\Sigma^TU^*=U\underbrace{\Sigma\Sigma^T}_{=\Delta}U^*=U\Delta U^* = U\Delta U^{-1}
+A^*A=V\Sigma^T\underbrace{U^*U}_{=I}\Sigma V^* = V\underbrace{\Sigma^T\Sigma}_{=\Delta}V^*=V\Delta V^*
 \end{align*}
-Es gilt also $\Delta=\Sigma^T \Sigma=diag(\lambda_1,\ldots,\lambda_n)$\\
+mit $\Delta=\Sigma^T \Sigma=diag(\lambda_1,\ldots,\lambda_n)$\\
 \newline
-IST DAS HIER ÜBERHAUPT SINNVOLL WAS ICH TUE???\\
+Da die Singulärwerte der Matrix A gleich den Quadratwurzeln aus den positiven Eigenwerten von $A^*A$ sind, ergibt sich für eine hermitesche Matrix:
+\begin{align*}
+	\sigma_i=\sqrt{\lambda(A^*A)} \overset{A^*=A}{=} \sqrt{\lambda_i(AA)}=\sqrt{\lambda_i(A)\lambda_i(A)}=\sqrt{\lambda_i(A)^2}=\lambda_i(A) \quad \forall i\in\{1,\ldots,n\}
+\end{align*}
+Für hermitesche Matrizen ergibt sich also, die Besonderheit, dass die Eigenwerte mit den Singulärwerten übereinstimmen.\\
+soweit richtig???\\
 \newline
 Beispiel einer nicht-Hermiteschen Matrix:\\
 TODO\\
