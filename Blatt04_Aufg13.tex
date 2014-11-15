@@ -1,11 +1,31 @@
 \subsection*{Aufgabe 13}
 
 \paragraph*{a)}
+Zu zeigen: Für $\epsilon > 0$ kann das regularisierte lineare Ausgleichsproblem\\
+\newline
+Finde $x_\eps \in \KK^n$, so dass $\mathrm{\| Ax_\eps - b \|_2^2} + \eps\mathrm{\| x_\eps \|_2^2} = \min_{x_\eps \in \KK^n}\mathrm{\| Ax - b \|_2^2} + \eps\mathrm{\| x \|_2^2}$ durch\\
+\newline
+Finde $x_\eps \in \KK^n$, so dass $\mathrm{\| A_\eps x_\eps - b_\eps \|_2^2} = \min_{x_\eps \in \KK^n}\mathrm{\| A_\eps x - b_\eps \|_2^2}$ beschrieben werden.\\
+\newline
+Durch Nullsetzen des Gradienten\\
+$2A^T(Ax_\eps-b)+2\eps x_\eps = 0$\\
+Folgt die Normalengleichung:\\
+$(A^TA + \eps I)x_\eps = A^Tb$\\
 
+Da $(A^TA + \eps I)$ immer quadratisch und für $\eps > 0$ nie singulär ist, existiert ein Inverses und damit immer eine eindeutige Lösung:\\
+$x_\eps = (A^TA + \eps I)^{-1}A^Tb$
 
 
 \paragraph*{b)}
+Zu zeigen:\\
+$\lim\limits_{\eps \rightarrow 0}{x_\eps} = x_{**}$\\
+\newline
+...Iiiiich hab keine Ahnung :D
 
 
 
 \paragraph*{c)}
+Zu zeigen:\\
+$(A^TA + \eps I)x_\eps = A^Tb$ führt mit $rang(A) = n$ zu einer besser konditionierten Matrix als die Normalengleichung des ursprünglichen Problems.\\
+\newline
+Die Matrix $A^TA$ genau dann regulär, wenn die Matrix $A$ den Rang n besitzt. Damit ist das Ausgleichsproblem genau dann eindeutig lösbar, wenn $rang(A) =n$ gilt.
