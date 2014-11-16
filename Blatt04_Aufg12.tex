@@ -39,13 +39,19 @@ Eigenwert $\lambda = 0$ mit dem Eigenvektor $v \ne 0$, dann wäre
 $\left<v,v\right> = v^* A v = \lambda v^* v = 0$ im Widerspruch zur Definition
 des Skalarpoduktes (muss positiv definit sein).
 
-Da $A$ positiv definit ist, existiert eine Matrix $T = \sqrt{A}$ mit $T \cdot T = A$
-(wurde in der Vorlesung gezeigt) und da $A$ hermitesch ist, ist auch $T$ hermitesch.
-Ferner gilt $A^{-1} = A^*$, also  $A^* A = I$.
-Wir zeigen nun, dass $T = \sqrt{A}$ das gewünschte liefert:
+Da $A$ positiv definit ist, existiert eine Matrix $\sqrt{A}$ mit $\sqrt{A} \cdot \sqrt{A} = A$
+(wurde in der Vorlesung gezeigt) und da $A$ hermitesch ist, ist auch $\sqrt{A}$ hermitesch.
+Wie in Aufgabe 11 gezeigt, gibt es dann ein $U \in \U_n$, so dass gilt:
+$A^* A = U^* \diag(\lambda_1, \cdots,\lambda_n) U$.
+
+Ab hier kommt noch viel Murks:
+
+Wir zeigen nun, dass $T = \diag(1 / \sqrt{\lambda_1}, \cdots, 1 / \sqrt{\lambda_n)}$ das gewünschte liefert:
 \begin{align*}
-  \left<T x,T y\right> = \left<T^* T x, y\right> =  \left<A x, y\right> = (A x)^* A y
-  = x^* A^* A y = x^* x = \left<x,y\right>_\text{Euklid}
+  \left<T x,T y\right> &= \left<T^* T x, y\right> =  \left<A x, y\right> = (A x)^* A y
+  = x^* A^* A y\\
+  &= x^* U^* \diag(1 / \sqrt{\lambda_1}, \cdots, 1 / \sqrt{\lambda_n)} U   y \\
+  &= x^* y = \left<x, y\right>_\text{Euklid}
 \end{align*}
 
 
