@@ -7,12 +7,15 @@ Beweis: Es seien $e_i$ die kanonischen Einheitsvektoren des $\KK^n$, dann lassen
 sich $x$ und $y$ schreiben als $x = \sum_{i = 1}^n x_i \cdot e_i$ und
 $y = \sum_{j = 1}^n y_j \cdot e_j$ mit $x_i, y_j \in \KK$. Für das Skalarprodukt
 gilt dann:
-\begin{align*}
+\begin{align}
+  \nonumber
   \left<x,y\right> &= \left< \sum_{i = 1}^n x_i \cdot e_i \;,\; \sum_{j = 1}^n y_j \cdot e_j \right> \\
   \intertext{Wegen der Sublinearität des Skalarproduktes im ersten und der Linearität im zweiten Term gilt dafür:}
+  \nonumber
   \left<x,y\right>  &=  \sum_{i = 1}^n \sum_{j = 1}^n \overline{x_i} \cdot \left<e_i,e_j\right> \cdot  y_j
   =\sum_{i, j = 1}^n  \overline{x_i} \cdot \left<e_i,e_j\right> \cdot y_j\\
   \intertext{Für die gesuchte Matrix $A$ ergibt sich dann:}
+  \nonumber
   A &= (a_{i,j}) = (\left<e_i,e_j\right>) =
    \begin{pmatrix}
      \left<e_1,e_1\right> & \cdots & \left<e_1,e_n\right>\\
@@ -21,9 +24,10 @@ gilt dann:
    \end{pmatrix}
   \\
   \intertext{Das liefert dann:}
+  \label{eq-12a}
   \left<x,y\right>  &=  \overline{(x_1, \cdots, x_n)} \cdot A \cdot
     \begin{pmatrix} y_1 \\ \vdots \\ y_n \end{pmatrix} = x^* \cdot A \cdot y
-\end{align*}
+\end{align}
 
 Es bleibt noch zu zeigen: $A$ ist hermitesch. Aus der Definition des Skalarproduktes
 folgt $\left<x,y\right> = (\left<y,x\right>)^*$, also:
@@ -39,10 +43,10 @@ Eigenwert $\lambda = 0$ mit dem Eigenvektor $v \ne 0$, dann wäre
 $\left<v,v\right> = v^* A v = \lambda v^* v = 0$ im Widerspruch zur Definition
 des Skalarpoduktes (muss positiv definit sein).
 
-Es gilt:
+Für den zweiten Aufgabenteil gilt:
 \begin{align}
 \label{eq-euklid}
-  \left<T x,T y\right> &= (T\cdot x)^* \cdot A \cdot T \cdot y
+  \left<T x,T y\right> &\overset{\eqref{eq-12a}}{=} (T\cdot x)^* \cdot A \cdot T \cdot y
     = x^* \cdot T^* \cdot A \cdot T  \cdot y \eqx   x^* \cdot I \cdot y
     = x^* \cdot y =\left<x, y\right>_\text{Euklid}
 \end{align}
@@ -57,13 +61,13 @@ und $D^{-1/2} \cdot D^{-1/2} \cdot D = D^{-1/2} \cdot D \cdot D^{-1/2} = I$. Ein
 mit \eqref{eq-euklid} liefert dann die gesuchte Abbildung
 $T =  D^{-1/2} =  \diag\left(\sqrt{1 / \lambda_1}, \cdots, \sqrt{1 /\lambda_n}\right)$.
 Damit wird wegen $D^* = D$ und $T^* =  T$:
-
-\textbf{Jetzt kommt noch Murks, muss ich nochmal nachrechnen!}
 \begin{align*}
   \nonumber
-  T^* \cdot A \cdot T &= T^* \cdot (U^* \cdot D \cdot U ) \cdot T =
-  T^* \cdot U^* \cdot D \cdot U \cdot T
-    = (U \cdot T)^* \cdot D \cdot (U \cdot T) \\
-  &= \left ( (U \cdot T)^* \cdot D^* \cdot (U \cdot T)^{**}   \right)^* \\
-  &= ( U^* \cdot T^* \cdot D^* \cdot T \cdot U )^* = (U^* \cdot I \cdot U)^* = I^* = I
+  T^* \cdot A \cdot T &= T^* \cdot
+   (U \cdot \underbrace{U^*) \cdot A  \cdot (U}_{= D} \cdot U^*) \cdot T =
+  T^* \cdot (U \cdot D \cdot U^*) \cdot T\\
+\intertext{Mit $U \cdot D \cdot U^* = U^* \cdot D^* \cdot U = D$
+und $T =  D^{-1/2}$ gilt dann:}
+  T^* \cdot A \cdot T &=  T^* \cdot D \cdot T =  T \cdot D \cdot T= I
 \end{align*}
+Daraus folgt dann das $\eqx $ in Gleichung \eqref{eq-euklid}.
