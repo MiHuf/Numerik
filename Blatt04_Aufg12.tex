@@ -39,25 +39,31 @@ Eigenwert $\lambda = 0$ mit dem Eigenvektor $v \ne 0$, dann wäre
 $\left<v,v\right> = v^* A v = \lambda v^* v = 0$ im Widerspruch zur Definition
 des Skalarpoduktes (muss positiv definit sein).
 
-Da $A$ positiv definit ist, existiert eine Matrix $\sqrt{A}$ mit $\sqrt{A} \cdot \sqrt{A} = A$
-(wurde in der Vorlesung gezeigt) und da $A$ hermitesch ist, ist auch $\sqrt{A}$ hermitesch.
-Wie in Aufgabe 11 gezeigt, gibt es dann ein $U \in \U_n$, so dass gilt:
-$A^* A = U^* \diag(\lambda_1, \cdots,\lambda_n) U$.
+Es gilt:
+\begin{align}
+\label{eq-euklid}
+  \left<T x,T y\right> &= (T\cdot x)^* \cdot A \cdot T \cdot y
+    = x^* \cdot T^* \cdot A \cdot T  \cdot y \eqx   x^* \cdot I \cdot y
+    = x^* \cdot y =\left<x, y\right>_\text{Euklid}
+\end{align}
+Es wird also ein $T$ gesucht, für dass $T^* \cdot A \cdot T = I$ gilt. $A$ ist
+hermitesch, positiv definit, und somit diagonalisierbar. Es gibt also eine
+unitäre Matrix $U \in \U_n$, so dass gilt:
+$U^* \cdot A \cdot U = \diag(\lambda_1, \cdots,\lambda_n) =: D$. Da die Eigenwerte alle
+positiv sind, existiert nach dem Satz aus der Vorlesung auch die Matrix $\sqrt{D}$ und
+$D^{-1/2} = 1 / \sqrt{D} = \diag\left(\sqrt{1 / \lambda_1}, \cdots, \sqrt{1 /\lambda_n}\right)$
+mit den Eigenschaften $D^{-1/2} \cdot D^{-1/2} = \diag(1/\lambda_1, \cdots, 1/ \lambda_n)$
+und $D^{-1/2} \cdot D^{-1/2} \cdot D = D^{-1/2} \cdot D \cdot D^{-1/2} = I$. Ein Vergleich
+mit \eqref{eq-euklid} liefert dann die gesuchte Abbildung
+$T =  D^{-1/2} =  \diag\left(\sqrt{1 / \lambda_1}, \cdots, \sqrt{1 /\lambda_n}\right)$.
+Damit wird wegen $D^* = D$ und $T^* =  T$:
 
-Ab hier kommt noch viel Murks:
-
-Wir zeigen nun, dass $T = \diag(1 / \sqrt{\lambda_1}, \cdots, 1 / \sqrt{\lambda_n)}$ das gewünschte liefert:
+\textbf{Jetzt kommt noch Murks, muss ich nochmal nachrechnen!}
 \begin{align*}
-  \left<T x,T y\right> &= \left<T^* T x, y\right> =  \left<A x, y\right> = (A x)^* A y
-  = x^* A^* A y\\
-  &= x^* U^* \diag(1 / \sqrt{\lambda_1}, \cdots, 1 / \sqrt{\lambda_n)} U   y \\
-  &= x^* y = \left<x, y\right>_\text{Euklid}
+  \nonumber
+  T^* \cdot A \cdot T &= T^* \cdot (U^* \cdot D \cdot U ) \cdot T =
+  T^* \cdot U^* \cdot D \cdot U \cdot T
+    = (U \cdot T)^* \cdot D \cdot (U \cdot T) \\
+  &= \left ( (U \cdot T)^* \cdot D^* \cdot (U \cdot T)^{**}   \right)^* \\
+  &= ( U^* \cdot T^* \cdot D^* \cdot T \cdot U )^* = (U^* \cdot I \cdot U)^* = I^* = I
 \end{align*}
-
-
-
-
-
-
-
-
