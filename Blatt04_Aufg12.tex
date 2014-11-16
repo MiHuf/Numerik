@@ -1,1 +1,57 @@
 \subsection*{Aufgabe 12}
+Zu zeigen: Sei $\left<\cdot , \cdot \right>: \KK\times\KK \rightarrow \KK$ ein beliebiges
+Skalarprodukt auf $\KK$. Dann gibt es eine positiv definite Matrix $A \in \KK^{n \times n}$,
+so dass $\left<x,y\right> = x^* A y$ gilt für alle $x,y \in \KK^n$.
+
+Beweis: Es seien $e_i$ die kanonischen Einheitsvektoren des $\KK^n$, dann lassen
+sich $x$ und $y$ schreiben als $x = \sum_{i = 1}^n x_i \cdot e_i$ und
+$y = \sum_{j = 1}^n y_j \cdot e_j$ mit $x_i, y_j \in \KK$. Für das Skalarprodukt
+gilt dann:
+\begin{align*}
+  \left<x,y\right> &= \left< \sum_{i = 1}^n x_i \cdot e_i \;,\; \sum_{j = 1}^n y_j \cdot e_j \right> \\
+  \intertext{Wegen der Sublinearität des Skalarproduktes im ersten und der Linearität im zweiten Term gilt dafür:}
+  \left<x,y\right>  &=  \sum_{i = 1}^n \sum_{j = 1}^n \overline{x_i} \cdot \left<e_i,e_j\right> \cdot  y_j
+  =\sum_{i, j = 1}^n  \overline{x_i} \cdot \left<e_i,e_j\right> \cdot y_j\\
+  \intertext{Für die gesuchte Matrix $A$ ergibt sich dann:}
+  A &= (a_{i,j}) = (\left<e_i,e_j\right>) =
+   \begin{pmatrix}
+     \left<e_1,e_1\right> & \cdots & \left<e_1,e_n\right>\\
+     \vdots & \ddots & \vdots \\
+     \left<e_n,e_1\right> & \cdots & \left<e_n,e_n\right>
+   \end{pmatrix}
+  \\
+  \intertext{Das liefert dann:}
+  \left<x,y\right>  &=  \overline{(x_1, \cdots, x_n)} \cdot A \cdot
+    \begin{pmatrix} y_1 \\ \vdots \\ y_n \end{pmatrix} = x^* \cdot A \cdot y
+\end{align*}
+
+Es bleibt noch zu zeigen: $A$ ist hermitesch. Aus der Definition des Skalarproduktes
+folgt $\left<x,y\right> = (\left<y,x\right>)^*$, also:
+\begin{align*}
+\left<x,y\right> &= x^* \cdot A \cdot y\\
+   &= (\left<y,x\right>)^* = (y^* \cdot A  \cdot x)^* = x^*  \cdot A^*  \cdot (y^*)^*
+   = x^* \cdot A^* \cdot y
+\end{align*}
+Aus dem Vergleich der beiden Gleichungen folgt $A = A^*$, also ist $A$ hermitesch.
+
+Es bleibt noch zu zeigen: $A$ ist positiv definit. Angenommen $A$ hätte einen
+Eigenwert $\lambda = 0$ mit dem Eigenvektor $v \ne 0$, dann wäre
+$\left<v,v\right> = v^* A v = \lambda v^* v = 0$ im Widerspruch zur Definition
+des Skalarpoduktes (muss positiv definit sein).
+
+Da $A$ positiv definit ist, existiert eine Matrix $T = \sqrt{A}$ mit $T \cdot T = A$
+(wurde in der Vorlesung gezeigt) und da $A$ hermitesch ist, ist auch $T$ hermitesch.
+Ferner gilt $A^{-1} = A^*$, also  $A^* A = I$.
+Wir zeigen nun, dass $T = \sqrt{A}$ das gewünschte liefert:
+\begin{align*}
+  \left<T x,T y\right> = \left<T^* T x, y\right> =  \left<A x, y\right> = (A x)^* A y
+  = x^* A^* A y = x^* x = \left<x,y\right>_\text{Euklid}
+\end{align*}
+
+
+
+
+
+
+
+
