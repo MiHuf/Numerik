@@ -39,5 +39,47 @@ Für $\eps\rightarrow 0$, existiert also eine eindeutige Lösung $x_\eps=x_*=A^{
 Zu zeigen:\\
 $(A^TA + \eps I)x_\eps = A^Tb$ führt mit $\rang(A) = n$ zu einer besser konditionierten Matrix als die Normalengleichung des ursprünglichen Problems.\\
 \newline
-Die Matrix $A^TA$ genau dann regulär, wenn die Matrix $A$ den Rang n besitzt. Damit ist das Ausgleichsproblem genau dann eindeutig lösbar, wenn $\rang(A) =n$ gilt.
-%dann versuche ich nochmal mein Bestes an c) aber keine Ahnung ob das was wird
+Wir müssen also zeigen, dass folgende Ungleichung gilt:
+\begin{align*}
+\text{cond}(\tilde{A})\le \text{cond}(A) \text{ mit } \tilde{A}=\begin{pmatrix}
+A\\\sqrt{\eps}\mathbb{I}
+\end{pmatrix}
+\end{align*}
+Seien $\sigma_1,\ldots,\sigma_n$ die nach der Größe geordneten Singulärwerte von A, dann sind  $\sigma_1^{2},\ldots,\sigma_n^{2}$ die Eigenwerte von $A^TA$.\\ Weiterhin seien $\mu_1,\ldots,\mu_n$ die nach der Größe geordneten Singulärwerte von $\tilde{A}.$
+Wir betrachten dann:
+\begin{align*}
+&\text{cond}(A)=\frac{\sigma_1}{\sigma_n}\\
+&\text{cond}(\tilde{A})=\frac{\mu_1}{\mu_n}
+\end{align*}
+Daraus folgt dann mit der Eigenwertgleichung:
+\begin{align*}
+&\tilde{A}^{T}\tilde{A}x=\mu_i^{2}x \quad |\text{Definition von $\tilde{A}$ einsetzen}\\
+&\begin{pmatrix}
+A^T&\sqrt{\eps}\mathbb{I}
+\end{pmatrix}
+\begin{pmatrix}
+A\\\sqrt{\eps}\mathbb{I} 
+\end{pmatrix}x=\mu_i^{2}x\quad |\text{ausmultiplizieren}\\
+&(\underbrace{A^TA}_{=\sigma_i^{2}}+\eps\mathbb{I})x=\mu_i^2x \Rightarrow \sigma_i^{2}x+\eps x = \mu_i^{2}x\\
+&\Rightarrow \mu_i=\sqrt{\sigma_i^{2}+\eps}\\
+&\Rightarrow \text{cond}(\tilde{A})= \frac{\sqrt{\sigma_1^{2}+\eps}}{\sqrt{\sigma_n^{2}+\eps}}=\sqrt{\frac{\sigma_1^{2}+\eps}{\sigma_n^{2}+\eps}} \le \frac{\sigma_1}{\sigma_n}=\text{cond}(A)
+\end{align*}
+\begin{flushright}
+	Q.e.d
+\end{flushright}
+%Problem an folgenden Beweis ist er, beweist das Gegenteil, finde den Fehler nicht, aber eigentlich ist er schöner als der obrige
+
+%Betrachten wir nun die Konditionen der Matrizen $A^TA$ und $A^TA+\eps \mathbb{I}$ aus den Normalengleichungen:\
+%\begin{align}
+%&\kappa(A^TA)=\frac{\sigma_1^2}{\sigma_n^2}
+%\end{align}
+%Weiterhin betrachten wir die Eigenwerte von $(A^TA+\eps\mathbb{I})^*(A^TA+\eps\mathbb{I})$:
+%\begin{align*}
+% &(A^TA+\eps\mathbb{I})^*(A^TA+\eps\mathbb{I})x=((\underbrace{\eps\mathbb{I})^*(A^TA)}_{\eps\sigma^2}+\underbrace{(A^TA)^*(A^TA)}_{\sigma^4}+\underbrace{(\eps\mathbb{I})(A^TA)^*}_{\eps\sigma^2}+\underbrace{(\eps\mathbb{I})^*(\eps\mathbb{I})}_{\eps^2})x\\
+% &=\sigma^4+2\eps\sigma^2+\eps^2=(\sigma^2+\eps)^2
+%\end{align*}
+%Dann gilt für die Matrix der Normalengleichung des regularisierten Ausgleichsproblems:
+%\begin{align}
+%&\kappa(A^TA+\eps\mathbb{I})=\frac{\sqrt{(\sigma_1^2+\eps)^2}}{\sqrt{(\sigma_n^2+\eps)^2}}=\frac{(\sigma_1^2+\eps)}{(\sigma_n^2+\eps)}
+%\end{align}
+
