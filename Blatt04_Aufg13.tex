@@ -15,23 +15,24 @@ Durch Nullsetzen des Gradienten
 \Leftrightarrow &(A^TA +\eps I)x_\eps-A^Tb  = 0\\
 \Leftrightarrow &(A^TA +\eps I) x_\eps = A^Tb\\
 \end{align*}
-Folgt die Normalengleichung:\\
-$(A^TA + \eps I)x_\eps = A^Tb$\\
+Folgt die Normalengleichung:
+\begin{align}(A^TA + \eps I)x_\eps = A^Tb\label{NGL}\end{align}
 
 Das Ausgleichsproblem ist genau dann eindeutig lösbar, wenn $rang(A+\eps I)=n$ gilt.
 Durch die Regularisierung von A zu $\tilde{A}= A +\eps I$ mit $\eps>0$, also der Suche einer Lösung vom Gleichungssystem $(A^TA+\eps I)x=A^Tb$ (äquivalent zu *) an Stelle von $Ax=b$ erreicht man die gerade diese Invertierbarkeit (Stichwort \textit{Tichonow-Regularisierung}).\\
-Da $(A^TA + \eps I)$ immer quadratisch und für $\eps > 0$ nie singulär ist, existiert also eine Inverse und damit immer eine eindeutige Lösung:\\
-$x_\eps = (A^TA + \eps I)^{-1}A^Tb$
+Da $(A^TA + \eps I)$ immer quadratisch und für $\eps > 0$ nie singulär ist, existiert also eine Inverse und damit immer eine eindeutige Lösung:
+\begin{align}x_\eps = (A^TA + \eps I)^{-1}A^Tb\label{xeps}\end{align}
 
 
 \paragraph*{b)}
-Zu zeigen:\\
-$\lim\limits_{\eps \rightarrow 0}{x_\eps} = x_{**}$\\
-\newline
-...Iiiiich hab keine Ahnung :D\\
-%ich versuche das mal
-Ich hab eine Idee, aber erstmal essen :)
-
+Zu zeigen:
+\begin{align*}\lim\limits_{\eps \rightarrow 0}{x_\eps} = x_{**}\end{align*}
+Beweis:
+\begin{align}
+\lim\limits_{\eps \rightarrow 0}{x_\eps}\overset{\eqref{xeps}}{=}\lim\limits_{\eps \rightarrow 0}((A^TA + \eps I)^{-1}A^Tb)=(A^TA)^{-1}A^Tb=A^{-1}(A^{T})^{-1}A^Tb=A^{-1}b
+\end{align}
+Für $\eps\rightarrow 0$, existiert also eine eindeutige Lösung $x_\eps=x_*=A^{-1}b$ des Gleichungssystems $\|Ax-b\|_2^{2}$. Wenn diese eindeutig ist, ist sie auch minimal und somit $\lim\limits_{\eps \rightarrow 0}{x_\eps}=x_*=x_{**}=A^{-1}b$.
+%ich weiß nicht ganz ob das so passt, aber im Großen und Ganzen fibt es Sinn
 
 
 \paragraph*{c)}
@@ -39,3 +40,4 @@ Zu zeigen:\\
 $(A^TA + \eps I)x_\eps = A^Tb$ führt mit $rang(A) = n$ zu einer besser konditionierten Matrix als die Normalengleichung des ursprünglichen Problems.\\
 \newline
 Die Matrix $A^TA$ genau dann regulär, wenn die Matrix $A$ den Rang n besitzt. Damit ist das Ausgleichsproblem genau dann eindeutig lösbar, wenn $rang(A) =n$ gilt.
+%dann versuche ich nochmal mein Bestes an c) aber keine Ahnung ob das was wird
