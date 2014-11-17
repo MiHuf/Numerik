@@ -22,19 +22,24 @@ Also gilt nun für die Singulärwerte $\sigma_i$ von $A$:\\
 Da $\lambda$ genau so gewählt war, dass es die Eigenwertgleichung \eqref{EW} von $A$ erfüllt, also ein Eigenwert von $A$ ist, ist damit bewiesen, dass die Singulärwerte von $A$ aus der Menge der Beträge der Eigenwerte von $A$ bestehen \eqref{betrag}.
 \begin{flushright}Q.e.d.\end{flushright}
 Beziehung zwischen der Eigenwert- und Singulärwertzerlegung:\\\\
-Es sei $A=U\Sigma V^*$ eine Singulärwertzerlegung mit $U$ unitäre $n\times n$ Matrix, $V$ die Adjungierte einer unitären $n\times n$-Matrix V und $\Sigma$ eine reelle $n\times n$-Diagonalmatrix.\\
+Es sei $A=U\Sigma V^*$ eine Singulärwertzerlegung mit $U$ unitäre $n\times n$ Matrix, $V^*$ die Adjungierte einer unitären $n\times n$-Matrix V und $\Sigma$ eine reelle $n\times n$-Diagonalmatrix.\\\\
+Um die Beziehung darzustellen, nutzen wir folgende Eigenschaften der unitären Matrizen U und V:
+\begin{align}
+U\cdot U^* =I \text{ bzw. } U^* \cdot U=I\\
+U^*=U^{-1}
+\end{align}
 Für die hermitesche Matrix A gilt dann:
 \begin{align}
-A^*A=V\Sigma^T\underbrace{U^*U}_{=I}\Sigma V^* = V\underbrace{\Sigma^T\Sigma}_{=\Delta}V^*=V\Delta V^*
+A^*A\overset{\text{Singulärwertzerlegung}}{=} V\Sigma^T\underbrace{U^*U}_{\overset{(4)}{=}I}\Sigma
+V^* = V\underbrace{\Sigma^T\Sigma}_{=\Delta}V^*=V\Delta V^*\overset{(5)}{=}V\Delta V^{-1}
 \end{align}
 mit $\Delta=\Sigma^T \Sigma=diag(\lambda_1,\ldots,\lambda_n)$\\
 \newline
 Da die Singulärwerte der Matrix A gleich den Quadratwurzeln aus den positiven Eigenwerten von $A^*A$ sind, ergibt sich für eine hermitesche Matrix:
 \begin{align*}
-	\sigma_i=\sqrt{\lambda(A^*A)} \overset{A^*=A}{=} \sqrt{\lambda_i(AA)}=\sqrt{\lambda_i(A)\lambda_i(A)}=\sqrt{\lambda_i(A)^2}=\lambda_i(A) \quad \forall i\in\{1,\ldots,n\}
+	\sigma_i(A)=\sqrt{\lambda(A^*A)} \overset{A^*=A}{=} \sqrt{\lambda_i(AA)}=\sqrt{\lambda_i(A)\lambda_i(A)}=\sqrt{\lambda_i(A)^2}=\lambda_i(A) \quad \forall i\in\{1,\ldots,n\}
 \end{align*}
 Für hermitesche Matrizen ergibt sich also, die Besonderheit, dass die Eigenwerte mit den Singulärwerten übereinstimmen.\\\\
-\textcolor{red}{soweit richtig? irgendwie fehlt noch die endgültige Beziehung zwischen Eigenwert- und Singulärwertzerlegung oder reicht da Gleichung (4)???}\\
 \newline
 Beispiel einer nicht-Hermiteschen Matrix um zu zeigen, dass dann obige Aussagen nicht mehr gelten:
 \begin{align*}
