@@ -3,9 +3,9 @@
 \paragraph*{a)}
 Zu zeigen: Für $\epsilon > 0$ kann das regularisierte lineare Ausgleichsproblem\\
 \newline
-"Finde $x_\eps \in \KK^n$, so dass $\mathrm{\| Ax_\eps - b \|_2^2} + \eps\mathrm{\| x_\eps \|_2^2} = \min_{x_\eps \in \KK^n}\mathrm{\| Ax - b \|_2^2} + \eps\mathrm{\| x \|_2^2}$"  durch\\
+"`Finde $x_\eps \in \KK^n$, so dass $\mathrm{\| Ax_\eps - b \|_2^2} + \eps\mathrm{\| x_\eps \|_2^2} = \min_{x_\eps \in \KK^n}\mathrm{\| Ax - b \|_2^2} + \eps\mathrm{\| x \|_2^2}$"'  durch\\
 \newline
-"Finde $x_\eps \in \KK^n$, so dass $\mathrm{\| A_\eps x_\eps - b_\eps \|_2^2} = \min_{x_\eps \in \KK^n}\mathrm{\| A_\eps x - b_\eps \|_2^2}$" (*) beschrieben werden.\\
+"`Finde $x_\eps \in \KK^n$, so dass $\mathrm{\| A_\eps x_\eps - b_\eps \|_2^2} = \min_{x_\eps \in \KK^n}\mathrm{\| A_\eps x - b_\eps \|_2^2}$"' (*) beschrieben werden.\\
 \newline
 Durch Nullsetzen des Gradienten
 \begin{align*}
@@ -18,7 +18,7 @@ Durch Nullsetzen des Gradienten
 Folgt die Normalengleichung:
 \begin{align}(A^TA + \eps I)x_\eps = A^Tb\label{NGL}\end{align}
 
-Das Ausgleichsproblem ist genau dann eindeutig lösbar, wenn $rang(A+\eps I)=n$ gilt.
+Das Ausgleichsproblem ist genau dann eindeutig lösbar, wenn $\rang(A+\eps I)=n$ gilt.
 Durch die Regularisierung von A zu $\tilde{A}= A +\eps I$ mit $\eps>0$, also der Suche einer Lösung vom Gleichungssystem $(A^TA+\eps I)x=A^Tb$ (äquivalent zu *) an Stelle von $Ax=b$ erreicht man die gerade diese Invertierbarkeit (Stichwort \textit{Tichonow-Regularisierung}).\\
 Da $(A^TA + \eps I)$ immer quadratisch und für $\eps > 0$ nie singulär ist, existiert also eine Inverse und damit immer eine eindeutige Lösung:
 \begin{align}x_\eps = (A^TA + \eps I)^{-1}A^Tb\label{xeps}\end{align}
@@ -37,7 +37,7 @@ Für $\eps\rightarrow 0$, existiert also eine eindeutige Lösung $x_\eps=x_*=A^{
 
 \paragraph*{c)}
 Zu zeigen:\\
-$(A^TA + \eps I)x_\eps = A^Tb$ führt mit $rang(A) = n$ zu einer besser konditionierten Matrix als die Normalengleichung des ursprünglichen Problems.\\
+$(A^TA + \eps I)x_\eps = A^Tb$ führt mit $\rang(A) = n$ zu einer besser konditionierten Matrix als die Normalengleichung des ursprünglichen Problems.\\
 \newline
-Die Matrix $A^TA$ genau dann regulär, wenn die Matrix $A$ den Rang n besitzt. Damit ist das Ausgleichsproblem genau dann eindeutig lösbar, wenn $rang(A) =n$ gilt.
+Die Matrix $A^TA$ genau dann regulär, wenn die Matrix $A$ den Rang n besitzt. Damit ist das Ausgleichsproblem genau dann eindeutig lösbar, wenn $\rang(A) =n$ gilt.
 %dann versuche ich nochmal mein Bestes an c) aber keine Ahnung ob das was wird
