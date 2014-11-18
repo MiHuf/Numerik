@@ -25,8 +25,14 @@ b = zeros(n,1) ;
 b(1) = 1 ;
 b(n) = 1 ;
 max_steps = 1000 ;
-xx = A \ b ;  % die exakte Loesung
-eps = 1e-7 ;
+xx = A \ b ;                 % die exakte Loesung
+eps = 1e-12 ;                % Fehlerschranke
+
+steps_gv = 0;                % Anzahl Schritte
+steps_ev = 0;
+
+r_gv = zeros(1, max_steps) ; % Residuen
+r_ev = zeros(1, max_steps) ;
 
 
     function [r] = residuum(x1, x2)
@@ -54,8 +60,10 @@ eps = 1e-7 ;
             steps = steps + 1;
             x_neu = gv_step(A, b, x_alt) ;
             r = residuum (x_neu, xx) ;
+            r_gv(steps) = r ;
             x_alt = x_neu ;
         end
+        steps_gv = steps ;
         fprintf('Gesamtschrittverfahren: Fehler nach %d Schritten = %e\n', steps, r)
         x = x_neu;
     end
@@ -81,11 +89,24 @@ xg = gv(A, b, eps)
             steps = steps + 1;
             x_neu = ev_step(A, b, x_alt) ;
             r = residuum (x_neu, xx) ;
+            r_ev(steps) = r ;
             x_alt = x_neu ;
         end
+        steps_ev = steps ;
         fprintf('Einzelschrittverfahren: Fehler nach %d Schritten = %e\n', steps, r)
         x = x_neu;
     end
 xe = ev(A, b, eps)
 
+% Plotte die Ergebnisse
+max_steps =  max(steps_gv, steps_ev) ;
+schritte = linspace(1 ,max_steps, max_steps) ;
+semilogy(schritte, r_gv(1:max_steps),  'r-', 'linewidth', 2) ;
+xlabel('Anzahl Schritte', 'FontSize', 12) ;
+ylabel('Residumm, logarithmisch',  'FontSize', 12) ;
+grid on ;
+hold on ;
+semilogy(schritte, r_ev(1:max_steps),  'g-', 'linewidth', 2) ;
+legend('Gesamtschritt-Verfahren', 'Einzelschritt-Verfahren') ;
+title('Einzelschritt-Verfahren konvergiert doppelt so schnell !', 'FontSize', 12, 'FontWeight', 'bold') 
 end
