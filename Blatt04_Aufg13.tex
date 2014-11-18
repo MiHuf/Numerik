@@ -7,7 +7,7 @@ Zu zeigen: Für $\epsilon > 0$ kann das regularisierte lineare Ausgleichsproblem
 \newline
 "`Finde $x_\eps \in \KK^n$, so dass $\mathrm{\| A_\eps x_\eps - b_\eps \|_2^2} = \min_{x_\eps \in \KK^n}\mathrm{\| A_\eps x - b_\eps \|_2^2}$"' (*) beschrieben werden.\\
 \newline
-Durch Nullsetzen des Gradienten
+Durch Nullsetzen des Gradienten ergibt sich:
 \begin{align*}
 &2A^T(Ax_\eps-b)+2\eps x_\eps = 0\\
 \Leftrightarrow &2A^TAx_\eps -2A^Tb +2\eps x_\eps = 0\\
@@ -32,7 +32,7 @@ Beweis:
 \lim\limits_{\eps \rightarrow 0}{x_\eps}\overset{\eqref{xeps}}{=}\lim\limits_{\eps \rightarrow 0}((A^TA + \eps I)^{-1}A^Tb)=(A^TA)^{-1}A^Tb=A^{-1}(A^{T})^{-1}A^Tb=A^{-1}b
 \end{align}
 Für $\eps\rightarrow 0$, existiert also eine eindeutige Lösung $x_\eps=x_*=A^{-1}b$ des Gleichungssystems $\|Ax-b\|_2^{2}$. Wenn diese eindeutig ist, ist sie auch minimal und somit $\lim\limits_{\eps \rightarrow 0}{x_\eps}=x_*=x_{**}=A^{-1}b$.
-%ich weiß nicht ganz ob das so passt, aber im Großen und Ganzen fibt es Sinn
+%ich weiß nicht ganz ob das so passt, aber im Großen und Ganzen gibt es Sinn
 
 
 \paragraph*{c)}
@@ -64,6 +64,7 @@ A\\\sqrt{\eps}\mathbb{I}
 &\Rightarrow \mu_i=\sqrt{\sigma_i^{2}+\eps}\\
 &\Rightarrow \text{cond}(\tilde{A})= \frac{\sqrt{\sigma_1^{2}+\eps}}{\sqrt{\sigma_n^{2}+\eps}}=\sqrt{\frac{\sigma_1^{2}+\eps}{\sigma_n^{2}+\eps}} \le \frac{\sigma_1}{\sigma_n}=\text{cond}(A)
 \end{align*}
+Die Matrix $\tilde{A}$, die sich aus der Normalengleichung des regularisierten Ausgleichsproblems ergibt, ist also besser konditioniert als die Matrix der Normalengleichung des ursprünglichen Problems.
 \begin{flushright}
 	Q.e.d
 \end{flushright}
