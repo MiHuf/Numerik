@@ -33,14 +33,14 @@ Für die hermitesche Matrix A gilt dann:
 A^*A\overset{\text{Singulärwertzerlegung}}{=} V\Sigma^T\underbrace{U^*U}_{\overset{(4)}{=}\mathbb{I}}\Sigma
 V^* = V\underbrace{\Sigma^T\Sigma}_{=\Lambda}V^*=V\Lambda V^*\overset{(5)}{=}V\Lambda V^{-1}
 \end{align}
-mit $\Lambda=\Sigma^T \Sigma=diag(\mu_1,\ldots,\mu_n), \mu_i \text{ Eigenwert von } (A^*A)$\\
+mit $\Lambda=\Sigma^T \Sigma=\diag(\mu_1,\ldots,\mu_n), \mu_i \text{ Eigenwert von } (A^*A)$\\
 \newline
 %Da die Singulärwerte der Matrix A gleich den Quadratwurzeln aus den positiven Eigenwerten von $A^*A$ sind, ergibt sich für eine hermitesche Matrix:
 %\begin{align*}
 %	\sigma_i(A)=\sqrt{\lambda(A^*A)} \overset{A^*=A}{=} \sqrt{\lambda_i(AA)}=\sqrt{\lambda_i(A)\lambda_i(A)}=\sqrt{\lambda_i(A)^2}=\lambda_i(A) \quad \forall i\in\{1,\ldots,n\}
 %\end{align*}
 %Für hermitesche Matrizen ergibt sich also, die Besonderheit, dass die Eigenwerte mit den Singulärwerten übereinstimmen.\\\\
-Falls A zusätzlich positiv definit ist, ergibt sich aus der Eigenwertzerlegung $A=X\tilde{\Lambda} X^{-1}$ eine Singulärwertzerlegung mit $U=X$, $V^*=X^{-1}$ und $\Sigma=diag(\lambda_1,\ldots,\lambda_n)=\tilde{\Lambda}$.\\
+Falls A zusätzlich positiv definit ist, ergibt sich aus der Eigenwertzerlegung $A=X\tilde{\Lambda} X^{-1}$ eine Singulärwertzerlegung mit $U=X$, $V^*=X^{-1}$ und $\Sigma=\diag(\lambda_1,\ldots,\lambda_n)=\tilde{\Lambda}$.\\
 \newline
 Beispiel einer nicht-Hermiteschen Matrix um zu zeigen, dass dann obige Aussagen nicht mehr gelten:
 \begin{align*}
@@ -48,7 +48,7 @@ Beispiel einer nicht-Hermiteschen Matrix um zu zeigen, dass dann obige Aussagen 
 \begin{pmatrix}
 	1 & 1000\\
 	0 & 1
-\end{pmatrix}, 
+\end{pmatrix},
 B^*=
 \begin{pmatrix}
 1 & 0\\
