@@ -1,6 +1,23 @@
 \subsection*{Aufgabe 17}
+Gegeben symmetrische positiv definite Matrix $A \in \RR^{n \times n}$, ein Vektor
+$b \in \RR^n$ und die Funktion
+\begin{align}
+  \nonumber
+  & f : \RR^n \rightarrow \RR \quad \text{mit}\\
+  \label{eq-def-f}
+  & f(x) = \frac{1}{2} x^T A c - x^T b
+\end{align}
 
 \paragraph*{a)}
+Zu zeigen: f hat genau ein lokales Minimum; dies ist auch ein globales Minimum
+und erfüllt $A x = b$.
+
+Beweis: \eqref{eq-def-f} lässt sich auch schreiben als:
+\begin{align*}
+  f(x) =  \frac{1}{2} \sum_{i, j}x_i^T A x_j - \sum_i x_i^T b_i
+  \quad \text{damit wird die $i$-te Komponente des Gradienten:}
+\end{align*}
+
 
 
 \paragraph*{b)}
