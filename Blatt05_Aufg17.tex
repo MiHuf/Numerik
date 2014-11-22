@@ -32,15 +32,40 @@ verschwindet, also $\nabla f|_{x = x_*} = 0$, und mit \eqref{eq-grad2}:
 $ A x_* - b = 0 \; \Rightarrow \;  x_* = A^{-1} b$. Der Ausdruck existiert,
 da $A$ als positiv definite Matrix invertierbar ist.
 
-Für die hinreichende Bedingung, dass das $x_*$ ein Minimum ist,
+Für die hinreichende Bedingung, dass $x_*$ ein Minimum ist,
 muss noch gezeigt werden, dass die Hesse-Matrix $H$ an dieser Stelle positiv ist:
 \begin{align}
   H_f (x) = (h_{ij}(x)) =  \left( \frac{\partial ^2}{\partial x_i \partial x_j}f(x) \right)
-  =  \left( \frac{\partial}{\partial x_i}  \right) \nabla_j f(x)
+  =  \left( \frac{\partial}{\partial x_i} \nabla_j f(x) \right)
 \end{align}
 Mit  \eqref{eq-grad1} ergibt sich $h_{ij} = a_{ij}$, also $H = A$ unabhängig von $x$.
 Da $A$ positiv definit ist, ist auch $H$ positiv definit, also ist $f$ konvex, d.h.
 $f(x) \ge f(x_*) \; \forall x \in \RR^n$ und somit ist $x_*$ globales Minimum.
 
 \paragraph*{b)}
+Zu untersuchen ist die Menge $M = \{\sigma \in \RR \mid f(y + \sigma d) \le f(y)\ \;;\; y, d \in \RR^n \;;\; d \ne 0 \}$. Es gilt:
+\begin{align*}
+  f(y + \sigma d) & = \frac{1}{2} (y + \sigma d)^T A (y + \sigma d) - (y + \sigma d)^T b\\
+  & =   \frac{1}{2}y^TA y  + \frac{1}{2}\sigma d^T A y + \frac{1}{2}\sigma y^T A d
+      + \frac{1}{2} \sigma^2 d^T A d - y^T b - \sigma d^T b\\
+  & = f(y) + \frac{1}{2} \sigma^2 d^T A d + \sigma \frac{1}{2} (d^T A y
+      + y^T A d) - \sigma d^T b
+\end{align*}
+Da $A$ hermitesch und symmetrisch ist, gilt: $y^T A d = (y^T A d )^T = d^T A y$,
+die beiden Summanden in der Klammer sind also gleich. Damit wird
+\begin{align*}
+ g(\sigma) & := f(y + \sigma d) - f(y) = \frac{1}{2} \sigma^2 d^T A d  + \sigma d^T A y -  \sigma d^T b\\
+ M & = \{\sigma \in \RR \mid  g(\sigma) \le 0\}
+\end{align*}
+$f(y + \sigma d)$ wird genau dann minimal wenn $g(\sigma)$ minimal wird.
+Um das Minimum $\sigma_*$ zu bestimmen, setzen wir die Ableitung von $g$
+an der Stelle $\sigma_*$ gleich Null:
+\begin{align*}
+  \left. \frac{d}{d \sigma} g(\sigma) \right|_{\sigma_*}
+  &= \sigma_* d^T A d + d^T A y - d^T y\;\eqx \; 0 \\
+  & \Rightarrow \quad \sigma_* = \frac{d^T A y  - d^T b} {d^T A d}
+\end{align*}
+% Da $A$ positiv definit ist, gilt wie oben, dass $\sigma_*$ ein absolutes Minimum ist.
+
+
 
