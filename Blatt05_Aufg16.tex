@@ -1,2 +1,16 @@
 \subsection*{Aufgabe 16}
 
+Es seien $A,M \in \mathbf{Gl}_n(\RR), N \in \RR^{n\times n}$ so dass $A=M-N$, sowie $b \in \RR^n$. Weiterhin sei $T=M^{-1}N$ mit $\rho(T)\ge 1$ und $c=M^{-1}b$.\\\\
+zu zeigen: Es existiert ein Startwert $x^{(0)} \in \RR^n$, so dass die rekursiv definierte Folge $(x^{(k)})$ mit $x^{(k+1)}=Tx^{(k)}+c$ nicht gegen $x=A^{-1}b$ konvergiert.\\
+\newline
+Beweis:\\
+Sei $\rho(T)\ge 1$, dann gibt es einen Eigenvektor $x \neq 0$ von $T$ zum Eigenwert $\lambda$ mit $|\lambda|\ge 1$.\\
+Wählen wir dieses x als Startwert, also $x^{(0)}=x$, dann gilt:\\\\
+1.Fall: $b=0$
+\begin{align*}
+&x^{(k+1)}=Tx^{(k)}+ \underset{=0}{c}=\lambda^{k+1}x^{(0)}\\
+&\Rightarrow x^{(k)}=\lambda^kx^{(0)}
+\end{align*}
+Die Folge konvergiert insbesondere nicht gegen die Lösung 0.\\
+2. Fall: $b<0$\\
+3. Fall: $b>0$
