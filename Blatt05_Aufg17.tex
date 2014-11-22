@@ -15,12 +15,14 @@ und erfüllt $A x_* = b$.
 Beweis: \eqref{eq-def-f} lässt sich mit $A = (a_{ij})$ auch schreiben als:
 \begin{align}
   \nonumber
-  & f(x) =  \frac{1}{2} \sum_{i, j}x_i a_{ij} x_j - \sum_i x_i b_i
+  f(x) &=  \frac{1}{2} \sum_{i, j}x_i a_{ij} x_j - \sum_i x_i b_i
   \intertext{damit wird die $k$-te Komponente des Gradienten mit Anwendung der Produktregel:}
+  \nonumber
+  \nabla_k f(x) &= \frac{\partial}{\partial x_k}f(x) =
+  \frac{1}{2}\sum_{i,j}\delta_{ik} a_{ij}x_j+\frac{1}{2}\sum_{i,j}x_i a_{ij}\delta_{jk} - b_k \\
   \label{eq-grad1}
-  & \nabla_k f(x) = \frac{\partial}{\partial x_k}f(x) =
-  \frac{1}{2}\sum_{i,j}\delta_{ik} a_{ij}x_j+\frac{1}{2}\sum_{i,j}x_i a_{ij}\delta_{jk} - b_k =
-  \sum_{j} a_{kj} x_j - b_k
+  & =\frac{1}{2}\sum_{j}a_{kj}x_j + \frac{1}{2}\sum_{i} x_i a_{ik} - b_k \;
+   \overset{a_{ik} = a_{ki}}{=} \;\sum_{j} a_{kj} x_j - b_k
   \intertext{und für den Gradienten gilt:}
   \label{eq-grad2}
   & \nabla f = A x - b
