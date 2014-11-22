@@ -1,27 +1,4 @@
 \subsection*{Aufgabe 15}
 Es sei $A \in \KK^{n\times n}$ Hermitesch und positiv definit.\\
 Zu zeigen: Für alle Startwerte $x^{(0)}$ konvergiert das Einzelschrittverfahren.\\
-Beweis: Wir zeigen, dass die Iterationsmatrix $T = -(D-L)^{-1}R$ des Einzelschrittverfahrenz bezüglich der Energienorm
-\begin{align*}
-	\| y \|_A := \sqrt{y^*Ay},\qquad \text{für alle $y \in \KK^n$}
-\end{align*}
-kontrahiert und damit wegen $\rho(T)<1$ gilt. Wir zeigen, dass $\| Ty \|_A < \| y \|_A$ für alle $y \in \KK^n \ensuremath{\backslash} \{0\}$. Denn das Supremum
-\begin{align*}
-\| T \|_A := \sup_{y \in \KK^n \ensuremath{\backslash} \{0\}} \frac{\| Ty \|_A}{\| y \|_A}
-\end{align*}
-wird bei einem $y_0 \neq 0$ angenommen und die Kontraktivität von $T$ folgt dann aus $\| T \|_A = \frac{\| Ty \|_A}{\| y \|_A}$ < 1. Wir rechnen zunächst nach Definition
-\begin{align*}
-\| y \|_A^2 - \| Ty \|_A^2 = y^*Ay - (Ty)^*ATy = y^*(A-T^*AT)y
-\end{align*}
-Mit $T = -(D-L)^{-1}R = I-(D_L)^{-1}A, D^* = D und L* = R$ erhält man
-\begin{align*}
-A-T^*AT &= A - (I-A(D_R)^{-1})A(I-(D-L)^{-1}A)\\
-&= A(D-R)^{-1}A+A(D-L)^{-1}A-A(D-R)^{-1}A(D-L)^{-1}A\\
-&=A(D-R)^{-1}(I+L(D-L)^{-1})A,
-\end{align*}
-also
-\begin{align*}
-\| y \|_A^2 - \| Ty \|_A^2 &= y^*A(D-R)^{-1}D(D-L)^{-1}Ay
-&=((D-L)^{-1}Ay)^*D(D-L)^{-1}Ay > 0,
-\end{align*}
-da die Einträge der Diagonalmatrix $D$ positiv sind und $(D-L)^{-1}Ay \neq 0$ gilt.
+Beweis: 
