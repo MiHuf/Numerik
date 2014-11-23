@@ -62,10 +62,12 @@ Um das Minimum $\sigma_*$ zu bestimmen, setzen wir die Ableitung von $g$
 an der Stelle $\sigma_*$ gleich Null:
 \begin{align*}
   \left. \frac{d}{d \sigma} g(\sigma) \right|_{\sigma_*}
-  &= \sigma_* d^T A d + d^T A y - d^T y\;\eqx \; 0 \\
-  & \Rightarrow \quad \sigma_* = \frac{d^T y-d^T A y} {d^T A d}
+  &= \sigma_* d^T A d + d^T A y - d^T b\;\eqx \; 0 \\
+  & \Rightarrow \quad \sigma_* = \frac{d^T b - d^T A y} {d^T A d}
+  =  \frac{d^T (b - A y)} {d^T A d}
 \end{align*}
-% Da $A$ positiv definit ist, gilt wie oben, dass $\sigma_*$ ein absolutes Minimum ist.
+Der Zähler verschwindet für ein $y_*$ das die Gleichung $A y_* = b$ löst.
+
 
 
 
