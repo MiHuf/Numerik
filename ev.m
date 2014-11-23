@@ -15,7 +15,7 @@
 %
 
 function[x] = ev(A, b, eps)
-% Loest A x = b mittels Gesamtschrittverfahren
+% Loest A x = b mittels Einzelschrittverfahren
 max_steps = 10000 ;
 n = length(b) ;
 x_alt = zeros(n,1) ; % Spaltenvektor
