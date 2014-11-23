@@ -1,4 +1,41 @@
 \subsection*{Aufgabe 15}
 Es sei $A \in \KK^{n\times n}$ Hermitesch und positiv definit.\\
 Zu zeigen: Für alle Startwerte $x^{(0)}$ konvergiert das Einzelschrittverfahren.\\
-Beweis: Hier bitte Beweis aus dem Werner abtippen.
+\newline
+Beweis:\\
+Sei $A=D+L+R=M-N$ mit $M=D+L$ und $N=-R$.
+Nach Vorlesung folgt, dass das Einzelschrittverfahren dann für alle Startwerte $x^{(0)}$ konvergiert, wenn $\rho(I-M^{-1}A)<1$ gilt. Wir zeigen daher im Folgenden das für alle Eigenwerte $\lambda \in \KK$ von $(I-M^{-1}A)$ die Gleichung $|\lambda|<1$ erfüllt ist.\\
+\newline
+Sei also $\lambda$ ein Eigenwert von $I-M^{-1}A$ und x ein zugehöriger Eigenvektor. Dann gilt:
+\begin{align}\label{EW}
+(I-M^{-1}A)x=\lambda x \Rightarrow Ax=(1-\lambda)Mx
+\end{align}
+Da jede hermitsche, positiv definite Matrix A invertierbar ist, folgt $\lambda \neq 1$.\\
+Weiterhin folgt aus \eqref{EW}: $\frac{1}{1-\lambda}=\frac{x^*Mx}{x^*Ax}$.
+\begin{align}
+\mathcal{R}\left(\frac{2}{1-\lambda}\right)=\frac{x^*(M+M^*)x}{x^*Ax}=\frac{x^*((D+L)+(D+L)^*)x}{x^*Ax}=1+\underbrace{\frac{x^*Dx}{x^*Ax}}_{>0}>1
+\end{align}
+Der letzte Schritt folgt, weil A positiv definit ist und somit auch D positiv definit ist, der Bruch kann daher nicht negativ werden.\\
+\newline
+Für $\lambda \in \RR$ folgt dann:
+\begin{align*}
+\frac{2}{1-\lambda}>1\Leftrightarrow  2>1-\lambda
+\Leftrightarrow 1>-\lambda \Leftrightarrow 1>\lambda^2
+\end{align*}
+Somit folgt $\lambda<1$ und damit auch $\rho(I-M^{-1}A)<1$.\\
+\newline
+Für $\lambda=\alpha +i\beta \in \CC$ folgt:
+\begin{align*}
+&1<\mathcal{R}\left(\frac{2}{1-\lambda}\right)=\mathcal{R}\left(\frac{2}{1-\alpha+ i \beta}\right)=\mathcal{R}\left(\frac{2(1-\alpha+i \beta)}{(1-\alpha+ i \beta)(1-\alpha- i \beta)}\right)\\&=\mathcal{R}\left(\frac{2(1-\alpha+i \beta)}{(1-\alpha)^2+\beta^2}\right)=\frac{2(1-\alpha)}{(1-\alpha)^2+\beta^2}
+\end{align*}
+Daraus folgt:
+\begin{align*}
+&1<\frac{2(1-\alpha)}{(1-\alpha)^2+\beta^2} \Leftrightarrow (1-\alpha)^2+\beta^2<2(1-\alpha)\\
+&1-2\alpha+\alpha^2+\beta^2<2-2\alpha\\
+&\alpha^2+\beta^2<1
+\end{align*}
+Also gilt auch hier $|\lambda|^2=\alpha^2+\beta^2<1 \Rightarrow |\lambda|<1 \Rightarrow \rho(I-M^{-1}A)<1$.\\
+Somit konvergiert das Einzelschrittverfahren für alle Startwerte $x^{(0)}$.
+\begin{flushright}
+Q.e.d.
+\end{flushright}
