@@ -22,6 +22,7 @@ x_alt = zeros(n,1) ; % Spaltenvektor
 x_neu = zeros(n,1) ; % Spaltenvektor
 xx = A \ b ;         % die exakte Loesung
 fi = fopen('gv.dat','w') ;
+
 steps = 0;
 r = 100.0;  % Residuum
 while (r > eps) && (steps < max_steps)
