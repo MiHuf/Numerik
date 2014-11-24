@@ -20,6 +20,8 @@ max_steps = 10000 ;
 n = length(b) ;
 x_alt = zeros(n,1) ; % Spaltenvektor
 x_neu = zeros(n,1) ; % Spaltenvektor
+xx = A \ b ;         % die exakte Loesung
+fi = fopen('gv.dat','w') ;
 steps = 0;
 r = 100.0;  % Residuum
 while (r > eps) && (steps < max_steps)
@@ -28,7 +30,10 @@ while (r > eps) && (steps < max_steps)
         x_neu(i) = (b(i) - A(i, 1:i-1) * x_alt(1:i-1) - A(i, i+1:n) * x_alt(i+1:n))/ A(i,i) ;
     end
     r = norm(x_alt - x_neu) ;
+    r_apriori = norm(x_neu - xx) ;
+    fprintf(fi, '%d \t %e\n', steps, r_apriori) ;
     x_alt = x_neu ;
 end
+fclose(fi) ;
 x = x_neu;
 end
