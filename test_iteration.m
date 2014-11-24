@@ -1,5 +1,5 @@
 % Uebungen zur Numerischen Mathematik, WS 2014/15
-% Blatt 04, Aufgabe 14 (i)
+% Blatt 04, Aufgabe 14
 %   x = gv(A, b, eps)
 %   x = ev(A, b, eps)
 % Gegeben A in Gl_n(K), b in K^n, Abbruchparameter eps > 0.
@@ -24,7 +24,7 @@ A = 2*diag(ones(1,n))-diag(ones(1,n-1),1)-diag(ones(1,n-1),-1) ;
 b = zeros(n,1) ;
 b(1) = 1 ;
 b(n) = 1 ;
-max_steps = 1000 ;
+max_steps = 10000 ;
 xx = A \ b ;                 % die exakte Loesung
 eps = 1e-12 ;                % Fehlerschranke
 
