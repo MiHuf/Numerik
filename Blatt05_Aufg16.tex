@@ -10,16 +10,16 @@ Sei $\rho(T)\ge 1$, dann gibt es einen Eigenvektor $v \neq 0$ von $T$ zum Eigenw
 Um zu zeigen, dass ein Startwert $x^{(0)}$ existiert, sodass die Folge nicht gegen die Lösung von $x=A^{-1}b$ konvergiert, reicht es also zu zeigen, dass ein $y^{(0)}$ existiert, sodass die Folge nicht gegen die Lösung $y=0$ konvergiert.\\
 \newline
 Da $\lambda$ möglicherweise komplex ist, ist auch $v$ möglicherweise komplex. Wegen
-$|\lambda| > 1$ ist entweder $\Re(\lambda) > 1$ oder $\Im(\lambda) > 1$ (oder beides).
+$|\lambda| \ge 1$ ist entweder $\Re(\lambda) \ge 1$ oder $\Im(\lambda) > 1$ (oder beides).
 Wir wählen daher den reellen Startvektor
 \begin{align*}
   y^{(0)} = \begin{cases}
-             \Re(v) \quad \text{falls } &\Re(\lambda) > 1\\
-             \Im(v) \quad \text{falls } &\Im(\lambda) > 1\\
+             \Re(v) \quad \text{falls } &\Re(\lambda) \ge 1\\
+             \Im(v) \quad \text{falls } &\Im(\lambda) \ge 1\\
            \end{cases} \\
   \lambda_\RR := \begin{cases}
-             \Re(\lambda) \quad \text{falls } &\Re(\lambda) > 1\\
-             \Im(\lambda) \quad \text{falls } &\Im(\lambda) > 1\\
+             \Re(\lambda) \quad \text{falls } &\Re(\lambda) \ge 1\\
+             \Im(\lambda) \quad \text{falls } &\Im(\lambda) \ge 1\\
            \end{cases}
 \end{align*}
 Dann gilt:
@@ -27,9 +27,9 @@ Dann gilt:
 &y^{(k+1)}=Ty^{(k)}+ {c}=Ty^{(k)}\\
 &\Rightarrow y^{(k)}=\lambda_\RR^kv
 \end{align*}
-Die Folge konvergiert insbesondere nicht gegen die Lösung $y = 0$.\\
-%Und da $A y = 0 \; \Leftrightarrow \; A x = b$. gilt, insbesondere auch nicht gegen die Lösung von $x=A^{-1}b$.
-Somit existiert ein $x^{(0)}$ mit $x^{(0)}=v+A^{-1}b$, sodass die Folge $x^{(k)}$ nicht gegen die Lösung $x=A^{-1}b$ konvergiert.
+Die Folge konvergiert insbesondere nicht gegen die Lösung $y = 0$.
+Somit existiert ein $x^{(0)}$ mit $x^{(0)}=v+A^{-1}b$, sodass die
+Folge $x^{(k)}$ nicht gegen die Lösung $x=A^{-1}b$ konvergiert.
 \begin{flushright}
 Q.e.d.
 \end{flushright}
