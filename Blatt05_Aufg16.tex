@@ -9,10 +9,23 @@ Sei $\rho(T)\ge 1$, dann gibt es einen Eigenvektor $v \neq 0$ von $T$ zum Eigenw
 \newline
 Um zu zeigen, dass ein Startwert $x^{(0)}$ existiert, sodass die Folge nicht gegen die Lösung von $x=A^{-1}b$ konvergiert, reicht es also zu zeigen, dass ein $y^{(0)}$ existiert, sodass die Folge nicht gegen die Lösung $y=0$ konvergiert.\\
 \newline
-Wählen wir $y^{(0)}=v$ dann gilt:
+Da $\lambda$ möglicherweise komplex ist, ist auch $v$ möglicherweise komplex. Wegen
+$|\lambda| > 1$ ist entweder $\Re(\lambda) > 1$ oder $\Im(\lambda) > 1$ (oder beides).
+Wir wählen daher den reellen Startvektor
+\begin{align*}
+  y^{(0)} = \begin{cases}
+             \Re(v) \quad \text{falls } &\Re(\lambda) > 1\\
+             \Im(v) \quad \text{falls } &\Im(\lambda) > 1\\
+           \end{cases} \\
+  \lambda_\RR := \begin{cases}
+             \Re(\lambda) \quad \text{falls } &\Re(\lambda) > 1\\
+             \Im(\lambda) \quad \text{falls } &\Im(\lambda) > 1\\
+           \end{cases}
+\end{align*}
+Dann gilt:
 \begin{align*}
 &y^{(k+1)}=Ty^{(k)}+ {c}=Ty^{(k)}\\
-&\Rightarrow y^{(k)}=\lambda^kv
+&\Rightarrow y^{(k)}=\lambda_\RR^kv
 \end{align*}
 Die Folge konvergiert insbesondere nicht gegen die Lösung $y = 0$.\\
 %Und da $A y = 0 \; \Leftrightarrow \; A x = b$. gilt, insbesondere auch nicht gegen die Lösung von $x=A^{-1}b$.
