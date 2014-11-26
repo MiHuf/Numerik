@@ -23,7 +23,15 @@ A = 2*diag(ones(1,n))-diag(ones(1,n-1),1)-diag(ones(1,n-1),-1) ;
 b = zeros(n,1) ;
 b(1) = 1 ;
 b(n) = 1 ;
-eps = 1e-12 ;                % Fehlerschranke
+eps = 1e-12 ;                % Fehlesteps_gv = 0;                % Anzahl Schritte
+steps_gv = 0 ;
+steps_ev = 0 ;
+max_steps = 10000 ;
+
+r_gv = zeros(1, max_steps) ; % Residuen
+r_ev = zeros(1, max_steps) ;
+gv_steps = zeros(1, max_steps) ;
+ev_steps = zeros(1, max_steps) ;
 
 
 disp('Gesamtschritt-Verfahren: x =')
@@ -33,4 +41,10 @@ disp(xg)
 disp('Einzelschritt-Verfahren: x =')
 xe = ev(A, b, eps) ;
 disp(xe)
+
+fi = fopen('gv.dat','r');
+% M = textscan(fi, '%d %e');
+fclose(fi) ;
+
+% gv_steps
 
