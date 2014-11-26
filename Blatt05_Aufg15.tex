@@ -13,7 +13,7 @@ Sei also $\lambda$ ein Eigenwert von $I-M^{-1}A$ und x ein zugehöriger Eigenvek
 Da jede hermitsche, positiv definite Matrix A invertierbar ist, folgt $\lambda \neq 1$.\\
 Weiterhin folgt aus \eqref{EW}: $\frac{1}{1-\lambda}=\frac{x^*Mx}{x^*Ax}$.
 \begin{align}
-2\mathcal{R}\left(\frac{1}{1-\lambda}\right)=\frac{x^*(M+M^*)x}{x^*Ax}=\frac{x^*((D+L)+(D+L)^*)x}{x^*Ax}\overset{A=L+L^*+D^*}{=}1+\underbrace{\frac{x^*Dx}{x^*Ax}}_{>0}>1
+2\Re\left(\frac{1}{1-\lambda}\right)=\frac{x^*(M+M^*)x}{x^*Ax}=\frac{x^*((D+L)+(D+L)^*)x}{x^*Ax}\overset{A=L+L^*+D^*}{=}1+\underbrace{\frac{x^*Dx}{x^*Ax}}_{>0}>1
 \end{align}
 Der letzte Schritt folgt, weil A positiv definit ist und somit auch D positiv definit ist, der Bruch kann daher nicht negativ werden.\\
 \newline
@@ -26,7 +26,7 @@ Somit folgt $\lambda<1$ und damit auch $\rho(I-M^{-1}A)<1$.\\
 \newline
 Für $\lambda=\alpha +i\beta \in \CC$ folgt:
 \begin{align*}
-&1<\mathcal{R}\left(\frac{2}{1-\lambda}\right)=\mathcal{R}\left(\frac{2}{1-\alpha+ i \beta}\right)=\mathcal{R}\left(\frac{2(1-\alpha+i \beta)}{(1-\alpha+ i \beta)(1-\alpha- i \beta)}\right)\\&=\mathcal{R}\left(\frac{2(1-\alpha+i \beta)}{(1-\alpha)^2+\beta^2}\right)=\frac{2(1-\alpha)}{(1-\alpha)^2+\beta^2}
+&1<\Re\left(\frac{2}{1-\lambda}\right)=\Re\left(\frac{2}{1-\alpha+ i \beta}\right)=\Re\left(\frac{2(1-\alpha+i \beta)}{(1-\alpha+ i \beta)(1-\alpha- i \beta)}\right)\\&=\Re\left(\frac{2(1-\alpha+i \beta)}{(1-\alpha)^2+\beta^2}\right)=\frac{2(1-\alpha)}{(1-\alpha)^2+\beta^2}
 \end{align*}
 Daraus folgt:
 \begin{align*}
