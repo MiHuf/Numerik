@@ -1,17 +1,29 @@
 \subsection*{Aufgabe 19}
 
-Gegeben $y, q \in \QQ \cap (0, \inf)$. Gesucht ein iteratives Verfahren $x_{k + 1} = \Phi (x_k)$,
+Gegeben $y, q \in \QQ \cap (0, \infty)$. Gesucht ein iteratives Verfahren $x_{k + 1} = \Phi (x_k)$,
 das lokal und quadratisch gegen $y^q$ konvergiert und $x_k \in \QQ \; \forall k \ge 1$
 gewährleistet falls $x_0 \in \QQ$.
 
 Beobachtung: Möglicherweise ist $y^q \notin \QQ$, aber man kann jede Zahl
-$q \in \QQ$ schreiben als $q = m /n$ mit $m \in \ZZ$ und $n \in \NN$,
+$q \in \QQ$ schreiben als $q =: m /n$ mit $m \in \ZZ$ und $n \in \NN$,
 also $y^q = y^{m/n}$. Dann gilt $(x_k) \rightarrow y^{m/n}$ genau dann wenn
 $\left(x_k^n\right)\rightarrow y^m$ und es ist $y^m \in \QQ$ als rationale Zahl
 mit ganzzahligem Exponenten.
 
 Wir definieren nun die Funktion $f(x) = x^n - y^m$, diese hat eine Nullstelle $x_*$
-wenn $x_*^n - y^m = 0$, also  $x_*^n = y^m$, d.h. diese Nullstelle ist
-bei $x_* = y^{m/n}= y^q$. Dann ist: $f'(x) = n x^{n - 1}$ und die erste Ableitung
-am Fixpunkt ist $f'(x_*) =  \cdots \ne 0$. Somit sind die Voraussetzungen für das
-Newton-Itertionsverfahren erfüllt: Die Itetarionsvorschrift lautet also:
+für $x_*^n - y^m = 0$, also  $x_*^n = y^m$, d.h. diese Nullstelle ist
+$x_* = y^{m/n}= y^q$. Offensichtlich ist $f(x)$ beliebig oft
+stetig differenzierbar. Es ist: $f'(x) = n x^{n - 1}$ und die Ableitung
+am Fixpunkt ist $f'(x_*) =  n (y^q)^{n-1} \ne 0 \; \text{ da } \; y \ne 0$.
+Somit sind die Voraussetzungen für das Newton-Iterationsverfahren erfüllt:
+Die Iterationsvorschrift lautet also:
+\begin{align}
+  \label{eq-19-iter}
+  x_{k+1} =  \Phi (x_k)
+  = x_k - \frac{f(x_k)}{f'(x_k)} = x_k - \frac{x_k^n - y^m}{n x_k^{n-1}}
+  = \frac{1}{n} \left((n -1)x_k + \frac{y^m}{x_k^{n-1}} \right)
+\end{align}
+Aus der Vorlesung ist bekannt, dass das Newton-Verfahren lokal quadratisch
+konvergiert, außerdem erkennt man durch scharfes Hinsehen, dass die rechte Seite
+von \eqref{eq-19-iter} unter den gegebenen Bedingungen rational ist, somit
+genügt diese Iterationsvorschrift den Anforderungen.
