@@ -1,6 +1,47 @@
 \subsection*{Aufgabe 20}
-
-
+Sei $\Omega=(0,1)^2 \subseteq \RR^2$ und $f \in C(\Omega)$ und die Randwertaufgabe 
+\begin{align*}
+-\Delta u(x,y)&=f(x,y) \text{ für alle }(x,y) \in \Omega\\
+u(x,y)&=0 \text{ für alle } (x,y) \in \partial\Omega
+\end{align*}
+Zur Diskretisierung sei $n\in \NN, h=\frac{1}{n+1}$ und $x_i=i \cdot h, y_i=j\cdot h$ für $i,j=0, \cdots, n+1$. 
 \paragraph*{a)}
-
+Wir approximieren die Funktion $\Delta u(x_i,y_i)$ durch Taylor-Entwicklung von $u_{i-1,j}, u_{i+1,j}, u_{i,j-1}, u_{i,j+1}$ bis zur zweiten Ordnung.\\
+\newline
+Wir setzen also $N=2$. Dadurch ergeben sich für ein festes $j$ folgende Taylor-Reihen für $u_{i-1,j}, u_{i+1,j}$:
+\begin{align}
+&T_2 u((i-1)h, ih)=\sum_{n=0}^2 \left. \frac{d^n u}{di^n} \right|_{(ih)} \cdot \frac{1}{n!}((i-1)h-ih)^n\\ &=\left.\frac{du}{di}\right |_{ih} ((i-1)h-ih)+\left.\frac{1}{2}\frac{d^2u}{di^2}\right|_{ih}((i-1)h-ih)^2+u_{ij}\label{i-1}\end{align}
+\begin{align}
+&T_2 u((i+1)h, ih)=\sum_{n=0}^2 \left. \frac{d^n u}{di^n} \right|_{(ih)} \cdot \frac{1}{n!}((i+1)h-ih)^n\\ &=\left.\frac{du}{di}\right |_{ih} ((i+1)h-ih)+\left.\frac{1}{2}\frac{d^2u}{di^2}\right|_{ih}((i+1)h-ih)^2+u_{ij}\label{i+1}
+\end{align}
+Addieren der Terme \eqref{i-1} und \eqref{i+1} ergibt:
+\begin{align*}
+\Rightarrow u_{i-1,j}+u_{i+1,j}=2u_{ij} + h^2 \frac{d^2u}{di^2}
+\end{align*}
+Und weiterhin für ein festes $i$ folgende Taylor-Reihen für $u_{i,j-1}, u_{i,j+1}$:
+\begin{align}
+&T_2 u((j-1)h, jh)=\sum_{n=0}^2 \left. \frac{d^n u}{dj^n} \right|_{(jh)} \cdot \frac{1}{n!}((j-1)h-jh)^n\\ &=\left.\frac{du}{dj}\right |_{jh} ((j-1)h-jh)+\left.\frac{1}{2}\frac{d^2u}{dj^2}\right|_{jh}((j-1)h-jh)^2+u_{ij}\label{j-1}\end{align}
+\begin{align}
+&T_2 u((j+1)h, jh)=\sum_{n=0}^2 \left. \frac{d^n u}{dj^n} \right|_{(jh)} \cdot \frac{1}{n!}((j+1)h-jh)^n\\ &=\left.\frac{du}{dj}\right |_{jh} ((j+1)h-jh)+\left.\frac{1}{2}\frac{d^2u}{dj^2}\right|_{jh}((j+1)h-jh)^2+u_{ij}\label{j+1}
+\end{align}
+Addieren der Terme \eqref{j-1} und \eqref{j+1} ergibt:
+\begin{align*}
+\Rightarrow u_{i, j-1}+u_{i, j+1}=2u_{ij} + h^2 \frac{d^2u}{dj^2}
+\end{align*}
+Daraus folgt die Approximation von $\Delta u(x_i,y_i)$:
+\begin{align*}
+&u(x_i, y_i)=\frac{d^2}{dx^2}u(x_i,y_j)+\frac{d^2}{dy^2}u(x_i,y_j)=\frac{u_{i-1,j}+u_{i+1,j}-2u_{ij}}{h^2}+\frac{u_{i, j-1}+u_{i, j+1}-2u_{ij}}{h^2}\\
+&=\frac{u_{i-1,j}+u_{i+1,j}+u_{i, j-1}+u_{i, j+1}-4u_{ij}}{h^2}
+\end{align*} 
 \paragraph*{b)}
+lineares Gleichungssystem herleiten\\
+\newline
+Vorgehensweise:\\
+1.) Wir setzen das Ergebnis aus a) in die Gleichung $-\Delta u(x,y)=f(x,y)$ ein\\
+2.) Randbedingungen aufstellen\\
+\newline
+Das gesuchte lineare Gleichungssystem ist daher gegeben durch:
+\begin{align*}
+&-\frac{u_{i-1,j}+u_{i+1,j}+u_{i, j-1}+u_{i, j+1}-4u_{ij}}{h^2}=f_{i,j}\\
+&u_{0,j}=u_{i,0}=u_{1,j}=u_{i,1}=0 \quad\text{(Randbedingungen)}
+\end{align*}
