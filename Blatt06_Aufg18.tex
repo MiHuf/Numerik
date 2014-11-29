@@ -1,6 +1,48 @@
 \subsection*{Aufgabe 18}
-
+Betrachtet wird das eindimensionale Newtonverfahren für Funktionen, bei denen die Bedingung $f'(x_*) \neq 0$ verletzt ist:\\
+Sei also $p \ge 2$ und eine $p+1$-fach stetig differenzierbare Funktion $f:[a,b] \rightarrow \RR$ mit eine $p$-fachen Nullstelle in $x_* \in (a,b)$, d.h.
+\begin{align*}
+f(x_*) = f'(x_*) = ... = f^{(p-1)}(x_*) = 0, \qquad f^{(p)}(x_*) \neq 0
+\end{align*}
 
 \paragraph*{a)}
+Zu zeigen: Das Newton Verfahren $x^{(k+1)}=x^{(k)} - \frac{f(x^{(k)})}{f'(x^{(k)})}$ ist linear konvergent (solange man nicht sofort in der Lösung startet).\\
+Beweis: Es gilt unter anderem $f(x_*) = 0$ und $g(x_*) = x_*$. Im Folgenden wird $g'(x_*)$ in Abhängigkeit der Vielfachheit von p dargestellt, so folgt:
+\begin{align*}
+g'(x_*) = \lim\limits_{d \rightarrow 0} \frac{g(x_* +d) - g(x_*)}{d}
+\end{align*}
+wobei $g(x_*+d) = x_*+d-\frac{f(x_*+d)}{f'(x_*+d)})$.
+\begin{align*}
+f(x_*+d) = f(x_*) + d \cdot f'(x_*) +\frac{h^2}{2!}\cdot f''(x_*) + ... + \frac{h^p}{p!}\cdot f^{(p)}(x_*) + O(d^{p+1})
+\end{align*}
+Durch die Annahme das $x_*$ die $p$-fache Nullestelle, also $f(x_*) = f'(x_*) = ... = f^{(p-1)}(x_*) = 0$, folgt:
+\begin{align*}
+f(x_*+d) = \frac{h^p}{p!}\cdot f^{(p)}(x_*) + O(d^{p+1})
+\end{align*}
+Analog gilt
+\begin{align*}
+f'(x_*+d) = f'(x_*) + d \cdot f''(x_*) +\frac{h^2}{2!}\cdot f'''(x_*) + ... + \frac{h^{p-1}}{(p-1)!}\cdot f^{(p)}(x_*) + O(d^{p})
+\end{align*}
+Woraus durch die gleiche Annahme der Nullstelle $x_*$ folgt:
+\begin{align*}
+f'(x_*+d) = \frac{h^{p-1}}{(p-1)!}\cdot f^{(p)}(x_*) + O(d^{p})
+\end{align*}
+Es folgt also nun:
+\begin{align*}
+g(x_*+d) &= x_*+d-\frac{f(x_*+d)}{f'(x_*+d)}\\
+&= x_*+d-\frac{\frac{d^p}{p!}\cdot f^{(p)}(x_*) + O(d^{p+1})}{\frac{d^{p-1}}{(p-1)!}\cdot f^{(p)}(x_*) + O(d^{p})}\\
+&= x_*+d-\frac{f^{(p)}(x_*) + \frac{p!}{d^p} O(d^{p+1})}{f^{(p)}(x_*) + \frac{(p-1)!}{d^{p-1}}O(d^{p})} \cdot \frac{d}{p}\\
+\Rightarrow g'(x_*) &= \lim\limits_{d \rightarrow 0} \frac{1}{d}\left(d-\frac{f^{(p)}(x_*) + \frac{p!}{d^p} O(d^{p+1})}{f^{(p)}(x_*) + \frac{(p-1)!}{d^{p-1}}O(d^{p})} \cdot \frac{d}{p} \right)\\
+&= \lim\limits_{d \rightarrow 0}\left(1- \frac{1}{p} \cdot \frac{f^{(p)}(x_*) + \frac{d!}{h^p} O(d^{p+1})}{f^{(p)}(x_*) + \frac{(p-1)!}{d^{p-1}}O(d^{p})} \cdot \frac{d}{p} \right)
+\end{align*}
+Da $p\ge2$, gilt $0<g'(x_*) < 1$. Die Iteration konvergiert also linear.
 
 \paragraph*{b)}
+Zu zeigen: Das Verfahren $x^{(k+1)}=x^{(k)} - p \cdot \frac{f(x^{(k)})}{f'(x^{(k)})}$ ist quadratisch konvergent (solange man nicht sofort in der Lösung startet).\\
+Beweis: Mit analogen Vorgehen für $g(x_*)$ und $'g(x_*)$ wie in Teil a) folgt:
+\begin{align*}
+g'(x_*) &= \lim\limits_{d \rightarrow 0} \frac{g(x_*+d)-g(x_*)}{d}\\
+g(x_*+d) &= x_* + d - p \cdot \frac{f(x^{(k)})}{f'(x^{(k)})} = x_*+d-p\cdot \frac{d}{p}\frac{f'(x_*) + \frac{p!}{d^p}O(d^{p+1})}{f'(x_*) + \frac{(p-1)!}{d^{p-1}}O(d^{p})}\\
+g'(x_*) &= \lim\limits_{d \rightarrow 0} d-d \cdot \frac{d}{p}\left(\frac{f'(x_*) + \frac{p!}{d^p}O(d^{p+1})}{f'(x_*) + \frac{(p-1)!}{d^{p-1}}O(d^{p})} \right) = 1-1 = 0
+\end{align*}
+Da $g'(x_*) = 0$ liegt eine Konvergenzordnung größer Eins vor. Welches also mindestens eine quadratische Konvergenz ist.
