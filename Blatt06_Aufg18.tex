@@ -7,13 +7,15 @@ f(x_*) = f'(x_*) = ... = f^{(p-1)}(x_*) = 0, \qquad f^{(p)}(x_*) \neq 0
 
 \paragraph*{a)}
 Zu zeigen: Das Newton Verfahren $x^{(k+1)}=x^{(k)} - \frac{f(x^{(k)})}{f'(x^{(k)})}$ ist linear konvergent (solange man nicht sofort in der Lösung startet).\\
-Beweis: Es gilt unter anderem $f(x_*) = 0$ und $g(x_*) = x_*$. Im Folgenden wird $g'(x_*)$ in Abhängigkeit der Vielfachheit von p dargestellt, so folgt:
+
+Beweis: Im Folgenden sei $g(x)$ die Iterationsvorschrift $g(x^k):= x^{(k)} - \frac{f(x^{(k)})}{f'(x^{(k)})} = x^{k+1}$. Es gilt unter anderem $f(x_*) = 0$ und $g(x_*) = x_*$. Wir untersuchen
+$g'(x_*)$ in Abhängigkeit der Vielfachheit von p:
 \begin{align*}
 g'(x_*) = \lim\limits_{d \rightarrow 0} \frac{g(x_* +d) - g(x_*)}{d}
 \end{align*}
 wobei $g(x_*+d) = x_*+d-\frac{f(x_*+d)}{f'(x_*+d)})$.
 \begin{align*}
-f(x_*+d) = f(x_*) + d \cdot f'(x_*) +\frac{h^2}{2!}\cdot f''(x_*) + ... + \frac{h^p}{p!}\cdot f^{(p)}(x_*) + O(d^{p+1})
+f(x_*+d) = f(x_*) + d \cdot f'(x_*) +\frac{d^2}{2!}\cdot f''(x_*) + ... + \frac{d^p}{p!}\cdot f^{(p)}(x_*) + O(d^{p+1})
 \end{align*}
 Durch die Annahme das $x_*$ die $p$-fache Nullestelle, also $f(x_*) = f'(x_*) = ... = f^{(p-1)}(x_*) = 0$, folgt:
 \begin{align*}
@@ -21,11 +23,11 @@ f(x_*+d) = \frac{h^p}{p!}\cdot f^{(p)}(x_*) + O(d^{p+1})
 \end{align*}
 Analog gilt
 \begin{align*}
-f'(x_*+d) = f'(x_*) + d \cdot f''(x_*) +\frac{h^2}{2!}\cdot f'''(x_*) + ... + \frac{h^{p-1}}{(p-1)!}\cdot f^{(p)}(x_*) + O(d^{p})
+f'(x_*+d) = f'(x_*) + d \cdot f''(x_*) +\frac{d^2}{2!}\cdot f'''(x_*) + ... + \frac{d^{p-1}}{(p-1)!}\cdot f^{(p)}(x_*) + O(d^{p})
 \end{align*}
 Woraus durch die gleiche Annahme der Nullstelle $x_*$ folgt:
 \begin{align*}
-f'(x_*+d) = \frac{h^{p-1}}{(p-1)!}\cdot f^{(p)}(x_*) + O(d^{p})
+f'(x_*+d) = \frac{d^{p-1}}{(p-1)!}\cdot f^{(p)}(x_*) + O(d^{p})
 \end{align*}
 Es folgt also nun:
 \begin{align*}
