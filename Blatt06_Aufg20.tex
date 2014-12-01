@@ -4,7 +4,8 @@ Sei $\Omega=(0,1)^2 \subseteq \RR^2$ und $f \in C(\Omega)$ und die Randwertaufga
 -\Delta u(x,y)&=f(x,y) \text{ für alle }(x,y) \in \Omega\\
 u(x,y)&=0 \text{ für alle } (x,y) \in \partial\Omega
 \end{align*}
-Zur Diskretisierung sei $n\in \NN, h=\frac{1}{n+1}$ und $x_i=i \cdot h, y_i=j\cdot h$ für $i,j=0, \cdots, n+1$.
+Zur Diskretisierung sei $n\in \NN, h=\frac{1}{n+1}$ und $x_i=i \cdot h, y_j=j\cdot h$ für $i,j=0, \cdots, n+1$.
+Ferner verwenden wir die Abkürzungen $u_{i,j} = u(x_i, y_j) \text{ und } f_{i,j}= f(x_i, y_j)$
 \paragraph*{a)}
 Wir approximieren die Funktion $\Delta u(x_i,y_i)$ durch Taylor-Entwicklung von $u_{i-1,j}, u_{i+1,j}, u_{i,j-1}, u_{i,j+1}$ bis zur zweiten Ordnung.\\
 \newline
@@ -45,7 +46,3 @@ Das gesuchte lineare Gleichungssystem ist daher gegeben durch:
 &-\frac{u_{i-1,j}+u_{i+1,j}+u_{i, j-1}+u_{i, j+1}-4u_{ij}}{h^2}=f_{i,j}\\
 &u_{0,j}=u_{i,0}=u_{n+1,j}=u_{i,n+1}=0 \quad\text{(Randbedingungen)}
 \end{align*}
-
-%Annika, wie sieht das Gleichungssystem in der Schreibweise $A x = b$ bzw.
-%$F u = (f_{i,j}) \cdot u = ???$ aus?
-%Wieso willst du das noch mit einer Matrix schreiben? Das ist doch schon ein Gleichungssystem.
