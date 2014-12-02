@@ -1,5 +1,5 @@
 % Uebungen zur Numerischen Mathematik, WS 2014/15
-% Blatt 06, Aufgabe 21
+% Blatt 06, Aufgabe 21b
 %
 % Autoren:
 %   Janina Geiser, Mat Nr. 6420269
@@ -11,3 +11,12 @@
 %
 clc
 clear all
+
+x0 = [1 ; 1];                     % Anfangswert
+eps = 1e-9 ;                      % Fehler
+x = Newton (@F, @DF, x0, eps) ;
+y = norm(F(x)) ;
+disp('Ergebnis: Nullstelle bei x =');
+disp(x) ;
+disp('mit norm(F(x)) =') ;
+disp(y) ;
