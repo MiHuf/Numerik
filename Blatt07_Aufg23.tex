@@ -1,1 +1,110 @@
 \subsection*{Aufgabe 23}
+Es seien $x_0,...,x_n \in \RR$ gegegeben. Berechnen Sie die Determinante der Vandermonde-Matrix
+\begin{align*}
+ \label{eq8}
+ V(x_0,...,x_n)=
+ \begin{split}
+ \begin{pmatrix}
+ 1 & x_0 & x_0^2 & \cdots & x_0^{n} \\
+ 1 & x_1 & x_1^2 & \cdots & x_1^{n} \\
+ \vdots & \vdots & \vdots &  & \vdots \\
+ 1 & x_n & x_n^2 & \cdots & x_n^{n}
+ \end{pmatrix}
+ \end{split}
+ = A
+\end{align*}
+und begründen Sie, warum sich damit zeigen lässt, dass die Polynominterpolation mit $(n+1)$ paarweise verschiedenen Stützstellen für Polynome aus $\Pi_n$ immer eindeutig lösbar ist.\\
+
+Zu Berechnen: $\det(V(x_0,...,x_n))=\det(A)$\\
+Behauptung: $\det(A) = \prod \limits_{1 \leq i < j \leq n}(x_j-x_i)$\\
+Beweis durch vollständige Induktion:\\
+\begin{itemize}
+	\item[IA:] $n=2$\\
+	\begin{align*}
+	A =
+	\begin{split}
+	\begin{pmatrix}
+	1 & x_0 & x_0^2 \\
+	1 & x_1 & x_1^2 \\
+	1 & x_2 & x_2^2 
+	\end{pmatrix}
+	\end{split}\\
+	\Rightarrow \det(A) &= x_1x_2^2-x_2x_1^2-(x_0x_2^2-x_2x_0^2)+x_0x_1^2-x_1x_0^2\\
+	&= (x_2-x_0)(x_2-x_1)(x_1-x_0)
+	\end{align*}
+	\item[IAn:] $\det(A)=\prod \limits_{1 \leq i < j \leq n}(x_j-x_i)$ gilt für $n+1$
+	\item[IS:] $n+1$\\
+	\begin{align*}
+	A_{n+1}=
+	\begin{split}
+	\begin{pmatrix}
+	1 & x_0 & x_0^2 & \cdots & x_0^{n} \\
+	1 & x_1 & x_1^2 & \cdots & x_1^{n} \\
+	\vdots & \vdots & \vdots &  & \vdots \\
+	1 & x_n & x_n^2 & \cdots & x_n^{n}\\
+	1 & x_{n+1} & x_{n+1}^2 & \cdots & x_{n+1}^{n}
+	\end{pmatrix}
+	\end{split}
+	\end{align*}
+	Das $x_0$-fache der vorletzten wird von der letzten Spalte abgezogen.\\
+	Das $x_0$-fache der drittletzte wird von der vorletzten Spalte abgezogen.\\
+	$\vdots$\\
+	Bis das $x_0$-fache der ersten von der zweiten Spalte abgezogen wird.\\
+	Daraus folgt:\\
+	\begin{align*}
+	A_{n+1}=
+	\begin{split}
+	\begin{pmatrix}
+	1 & (x_0-x_0) & x_0(x_0-x_0) & \cdots & x_0^{n-1}(x_0-x_0) \\
+	1 & (x_1-x_0) & x_1(x_1-x_0) & \cdots & x_1^{n-1}(x_1-x_0) \\
+	\vdots & \vdots & \vdots &  & \vdots \\
+	1 & (x_n-x_0) & x_n(x_n-x_0) & \cdots & x_n^{n-1}(x_n-x_0)\\
+	1 & (x_{n+1}-x_0) & x_{n+1}(x_{n+1}-x_0) & \cdots & x_{n+1}^{n-1}(x_{n+1}-x_0)
+	\end{pmatrix}
+	\end{split}
+	\end{align*}
+	Entwickeln der 1. Zeile nach Laplace\\
+	Daraus folgt:\\
+	\begin{align*}
+	(x_1-x_0)\cdot \cdots \cdot (x_{n+1}-x_0) \cdot \det
+	\begin{split}
+	\begin{pmatrix}
+	1 & x_1 & \cdots & x_1^{n-1} \\
+	1 & x_2 & \cdots & x_2^{n-1} \\
+	\vdots & \vdots &  & \vdots \\
+	1 & x_n & \cdots & x_n^{n-1}\\
+	1 & x_{n+1} & \cdots & x_{n+1}^{n-1}
+	\end{pmatrix}
+	\end{split}
+	=A_{n+1}
+	\end{align*}\\
+	\begin{align*}
+	\Rightarrow A_{n+1} &= \prod \limits_{2 \leq j \leq n+1}(x_j-x_0)\cdot \det(A'_{n+1})\\
+	&\stackrel{IA}{=} (\prod \limits_{2 \leq j \leq n+1}(x_j-x_0))\cdot (\prod \limits_{2 \leq i < j \leq n+1}(x_j-x_i))\\
+	&= \prod \limits_{1 \leq i < j \leq n+1}(x_j-x_i)
+	\end{align*}
+\end{itemize}
+	\begin{flushright}
+		Q.e.d.
+	\end{flushright}
+	Aus der Determinate $\det(A)=\prod \limits_{1 \leq i < j \leq n}(x_j-x_i)$ lässt sich zeigen, dass die Polynominterpolation mit $n+1$ paarweise verschiedenen Stützstellen für Polynome aus $\Pi_n$ immer eindeutig lösbar ist.\\
+	Gegeben seien $n+1$ Punkte in der Ebene $(x_0,y_0),(x_1,y_1),\cdots,(x_n,y_n)$.\\
+	Wir suchen ein Polynom $p$, mit möglichst niedrigen Grad, das die Eigenschaft $p(x_0)=y_0,p(x_1)=y_1, \cdots,p(x_n)=y_n$ erfüllt.\\
+	Da ein Polynom $n$-ten Grades $n+1$ unbekannte Koeffizienten aufweist und $n+1$ Punkte vorgegeben sind, kann man bei der Interpolation ein lineares Gleichungssystem bilden.\\
+	Mit $p(x) = a_0+a_1x_0+a_2x_0^2+ \cdots + a_nx_0^n$ erhalten wir $n+1$ Gleichungen:
+	\begin{align*}
+	p(x_0) &= a_0+a_1x_0+a_2x_0^2+ \cdots + a_nx_0^n &= y_0\\
+	p(x_1) &= a_0+a_1x_1+a_2x_1^2+ \cdots + a_nx_1^n &= y_1\\
+	p(x_2) &= a_0+a_1x_2+a_2x_2^2+ \cdots + a_nx_2^n &= y_2\\
+	\vdots\\
+	p(x_n) &= a_0+a_1x_n+a_2x_n^2+ \cdots + a_nx_n^n &= y_n\\
+	\end{align*}
+	Die $a_i$ mit $i=0,\cdots,n$ sind die Unbekannten.\\
+	Das LGS hat genau eine Lösung, wenn die Determinate des Systems nicht verschwindet.\\
+	Da die Determinate von $A$: $\det(A)=\prod \limits_{1 \leq i < j \leq n}(x_j-x_i)$ ist, setzen wir, dass die Determinate nur ungleich Null ist, wenn die Stützstellen paarweise verschieden sind.
+	\begin{flushright}
+		Q.e.d.
+	\end{flushright}
+
+
+
