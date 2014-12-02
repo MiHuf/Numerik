@@ -3,7 +3,7 @@ gegebene Wertepaare $(0,2), (1,1), (3,2), (4,4)$\\
 Berechnung des Interpolationspolynoms $p\in \Pi_3$:
 
 \paragraph*{a)}
-Schema von Neville-Aitken:\\
+Schema von Neville-Aitken:
 \begin{align*}
 &x_0=0: \quad f_0=P_{0,0}(x)=2\\
 &x_1=1: \quad f_1=P_{1,0}(x)=1\\
@@ -13,7 +13,7 @@ Schema von Neville-Aitken:\\
 \begin{align*}
 &P_{0,1}(x)=\frac{(x-x_0)P_{1,0}(x)-(x-x_1)P_{0,0}(x)}{x_1-x_0}=\frac{(x-0)\cdot 1 -(x-1)\cdot2}{1-0}= x-2x+2=-x+2\\
 &P_{1,1}(x)=\frac{(x-x_1)P_{2,0}(x)-(x-x_2)P_{1,0}(x)}{x_2-x_1}=\frac{(x-1)\cdot 2 -(x-3)\cdot 1}{3-1}= \frac{2x-2-x+3}{2}=\frac{x+1}{2}\\
-&P_{2,1}(x)=\frac{(x-x_2)P_{3,0}(x)-(x-x_3)P_{2,0}(x)}{x_3-x_2}=\frac{(x-3)\cdot 4 -(x-4)\cdot 2}{4-3}= 4x-12-2x+8=2x-4\\
+&P_{2,1}(x)=\frac{(x-x_2)P_{3,0}(x)-(x-x_3)P_{2,0}(x)}{x_3-x_2}=\frac{(x-3)\cdot 4 -(x-4)\cdot 2}{4-3}= 4x-12-2x+8=2x-4
 \end{align*}
 \begin{align*}
 P_{0,2}(x)&=\frac{(x-x_0)P_{1,1}(x)-(x-x_2)P_{0,1}(x)}{x_2-x_0}=\frac{(x-0)\cdot (\frac{x+1}{2}) -(x-3) \cdot(-x+2)}{3-0}\\ &=\frac{\frac{x^2+x}{2}-(-x^2+3x+2x-6)}{3}=\frac{1}{2}x^2-\frac{3}{2}x+2\\
@@ -21,30 +21,34 @@ P_{1,2}(x)&=\frac{(x-x_1)P_{2,1}(x)-(x-x_3)P_{1,1}(x)}{x_3-x_1}=\frac{(x-1)\cdot
 \end{align*}
 Da $P_{0,2}=P_{1,2}$ gilt, folgt:
 \begin{align*}
-\Rightarrow P_{0,3}=\underline{\underline{\frac{1}{2}x^2-\frac{3}{2}x+2}}
+\Rightarrow P_{0,3}(x)=\underline{\underline{\frac{1}{2}x^2-\frac{3}{2}x+2}}
 \end{align*}
 Berechnung von $P_{0,3}$ an der Stelle 2:
 \begin{align*}
 P_{0,3}(2)=\frac{1}{2}\cdot 2^2-\frac{3}{2}\cdot 2+2=2-3+2=1
 \end{align*}
-\paragraph*{b)}dividierte Differenzen:\\
+\paragraph*{b)}dividierte Differenzen:
 \begin{align*}
-&x_0=0: \quad f_0=f[x_0]=2(=\gamma_0)\\
+k=0:\\
+&x_0=0: \quad f_0=f[x_0]=2\;(=\gamma_0)\\
 &x_1=1: \quad f_1=f[x_1]=1\\
 &x_2=3: \quad f_2=f[x_2]=2\\
 &x_3=4: \quad f_3=f[x_3]=4
 \end{align*}
 \begin{align*}
-&f[x_0,x_1]=\frac{f[x_1]-f[x_0]}{x_1-x_0}=\frac{1-2}{1-0}=-1(=\gamma_1)\\
+k=1:\\
+&f[x_0,x_1]=\frac{f[x_1]-f[x_0]}{x_1-x_0}=\frac{1-2}{1-0}=-1\;(=\gamma_1)\\
 &f[x_1,x_2]=\frac{f[x_2]-f[x_1]}{x_2-x_1}=\frac{2-1}{3-1}=\frac{1}{2}\\
 &f[x_2,x_3]=\frac{f[x_3]-f[x_2]}{x_3-x_2}=\frac{4-2}{4-3}=2
 \end{align*}
 \begin{align*}
-&f[x_0,x_1,x_2]=\frac{f[x_1,x_2]-f[x_0,x_1]}{x_2-x_0}=\frac{\frac{1}{2}-(-1)}{3-0}=\frac{1}{2}(=\gamma_2)\\
+k=2:\\
+&f[x_0,x_1,x_2]=\frac{f[x_1,x_2]-f[x_0,x_1]}{x_2-x_0}=\frac{\frac{1}{2}-(-1)}{3-0}=\frac{1}{2}\;(=\gamma_2)\\
 &f[x_1,x_2,x_3]=\frac{f[x_2,x_3]-f[x_1,x_2]}{x_3-x_1}=\frac{2-\frac{1}{2}}{4-1}=\frac{1}{2}
 \end{align*}
 \begin{align*}
-&f[x_0,x_1,x_2,x_3]=\frac{f[x_1,x_2,x_3]-f[x_0,x_1,x_2]}{x_3-x_0}=\frac{\frac{1}{2}-\frac{1}{2}}{4-0}=0(=\gamma_3)
+k=3:\\
+&f[x_0,x_1,x_2,x_3]=\frac{f[x_1,x_2,x_3]-f[x_0,x_1,x_2]}{x_3-x_0}=\frac{\frac{1}{2}-\frac{1}{2}}{4-0}=0\;(=\gamma_3)
 \end{align*}
 Daraus ergibt sich folgendes Newton-Interpolationspolynom:
 \begin{align*}
@@ -52,7 +56,7 @@ Daraus ergibt sich folgendes Newton-Interpolationspolynom:
 &=2+(-1)(x-0)+\frac{1}{2}(x-0)(x-1)\\
 &=2-x+\frac{1}{2}x^2-\frac{1}{2}x\\
 &=\underline{\underline{\frac{1}{2}x^2-\frac{3}{2}x+2}}
-\end{align*}
+\end{align*}\\
 Berechnung von $P_{0,3}$ an der Stelle 2:
 \begin{align*}
 P_{0,3}(2)=\frac{1}{2}\cdot 2^2-\frac{3}{2}\cdot 2+2=2-3+2=1
