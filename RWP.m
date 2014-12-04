@@ -21,8 +21,11 @@ for i = 1:n
         f(i,j) = (pi^2 * (x^2 - x) - 2)* sin(pi * y) ;
     end
 end
+% surf(f)  % zum Testen auskommentieren
 b = reshape (transpose(f), (n)^2, 1) ;
+A = zeros(n^2, n^2) ;
+A = 4*diag(ones(1,n^2)) - diag(ones(1,n^2-1),1) - diag(ones(1,n^2-1),-1) ...
+    - diag(ones(1,n^2-n),n) - diag(ones(1,n^2-n),-n) ; % Buggy!
+% Richtiger, Achtung! Nicht voellig identisch!
 A = full(gallery('poisson', n)) ;
 end
-
-

@@ -25,4 +25,4 @@ for e = 1:4
     xgv = reshape (ygv, n, n) ;
     xgv
 end
-
+surf(xev)
