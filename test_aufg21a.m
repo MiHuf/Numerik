@@ -11,3 +11,18 @@
 %
 clc
 clear all
+
+n =  5 ;
+eps = [1.0e-1 1.0e-2 1.0e-4 1.0e-6] ;
+[A b] = RWP(n) ;
+
+for e = 1:4
+    eps(e)
+    yev = ev(A, b, eps(4));
+    xev = reshape (yev, n, n) ;
+    xev
+    ygv = ev(A, b, eps(4));
+    xgv = reshape (ygv, n, n) ;
+    xgv
+end
+
