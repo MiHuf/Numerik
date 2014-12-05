@@ -11,21 +11,23 @@
 %
 
 function [A, b] = RWP(n)
-f = zeros(n,n) ;
+b = zeros(n^2,1) ;              % Spaltenvektor
 h = 1 /(n + 1) ;
 for i = 1:n
-    x = (i) * h ;
+    x = i * h ;
     for j = 1:n
-        y = (j) * h ;
-        % f(i,j) = 10 * i + j  ;  % zum Testen
-        f(i,j) = (pi^2 * (x^2 - x) - 2)* sin(pi * y) ;
+        y = j * h ;
+        k = n * (i - 1) + j ;
+        b(k) = (pi^2 * (x^2 - x) - 2)* sin(pi * y) ;
+        % b(k) = 10 * i + j  ;  % zum Testen
     end
 end
-% surf(f)  % zum Testen auskommentieren
-b = reshape (transpose(f), (n)^2, 1) ;
+f = transpose(reshape(b, n, n)) ;
+% surf(f)                       % zum Testen auskommentieren
 A = zeros(n^2, n^2) ;
-A = 4*diag(ones(1,n^2)) - diag(ones(1,n^2-1),1) - diag(ones(1,n^2-1),-1) ...
-    - diag(ones(1,n^2-n),n) - diag(ones(1,n^2-n),-n) ; % Buggy!
-% Richtiger, Achtung! Nicht voellig identisch!
+% Das folgende ist Buggy, Matrix wird falsch!
+% A = 4*diag(ones(1,n^2)) - diag(ones(1,n^2-1),1) - diag(ones(1,n^2-1),-1) ...
+    - diag(ones(1,n^2-n),n) - diag(ones(1,n^2-n),-n) ;
+% Aber so funktioniert es:
 A = full(gallery('poisson', n)) ;
 end

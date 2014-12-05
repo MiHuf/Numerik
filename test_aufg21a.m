@@ -17,12 +17,12 @@ eps = [1.0e-1 1.0e-2 1.0e-4 1.0e-6] ;
 [A b] = RWP(n) ;
 
 for e = 1:4
-    eps(e)
-    yev = ev(A, b, eps(4));
-    xev = reshape (yev, n, n) ;
+    fprintf('Genauigkeit: epsilon = %e\n',eps(e)) ;
+    yev = ev(A, b, eps(e));
+    xev = transpose(reshape(yev, n, n)) ;
     xev
-    ygv = ev(A, b, eps(4));
-    xgv = reshape (ygv, n, n) ;
+    ygv = ev(A, b, eps(e));
+    xgv = transpose(reshape(ygv, n, n)) ;
     xgv
 end
 surf(xev)
