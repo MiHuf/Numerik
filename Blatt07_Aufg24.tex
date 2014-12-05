@@ -11,8 +11,8 @@ Zu zeigen, dass die durch
 \end{align}
 definierte Funktion das Hermite-Interpolationsproblem $p(x_j) = f_j$ und $p'(x_j) = f'_j$ löst.
 
-Beweis: In der Vorlesung wurde gezeigt, dass die Lagrange-Polynome eine Orthogonal-Basis
-der $\Pi_n$ bilden, also $L_k(x_j) = \delta_{kj}$. Damit wird:
+Beweis: In der Vorlesung wurde gezeigt, dass für die Lagrange-Polynome
+$L_k(x_j) = \delta_{kj}$ gilt. Damit wird:
 \begin{align*}
   A_k(x_j) &=  \left(1 - 2 L'_k(x_k)(x_j - x_k)\right)L_k^2(x_j)
      = \left(1 - 2 L'_k(x_k)(x_j - x_k)\right)  \delta_{kj} \\
@@ -21,11 +21,22 @@ der $\Pi_n$ bilden, also $L_k(x_j) = \delta_{kj}$. Damit wird:
     & =\sum_{k = 0}^n \left( \left(1 - 2 L'_k(x_k)(x_j - x_k)\right)  \delta_{kj} f_j +
     (x_j - x_k) \delta_{kj} f'_k \right) \\
    & = (1 - 2 L'_j(x_j)(x_j - x_j) )f_j + (x_j - x_j) )f'_j = f_j
-\intertext{Die Ableitungen nach der Produktregel ergeben:}
-   A'_k(x) &= \\
-   B'_k(x) &=
+\intertext{Die Ableitungen nach der Produktregel ergeben mit viel Rechnerei:}
+   A'_k(x) &= -2 L'_k(x_k)L_k^2(x) + \left(1 - 2 L'_k(x_k)(x - x_k)\right)2 L_k(x)L'_k(x) \\
+   &= -2 L'_k(x_k)L_k^2(x) + 2 L_k(x)L'_k(x) - 4 L'_k(x_k)(x - x_k) L_k(x)L'_k(x) \\
+   A'_k(x_j) &= -2 L'_k(x_k)\delta_{kj} + 2 \delta_{kj}L'_k(x_j) -
+   4 L'_k(x_k)(x_j - x_k) \delta_{kj} L'_k(x_j)\\
+   \sum_{k = 0}^n A'_k(x_j) & = -2 L'_k(x_k) +  2 L'_k(x_k) + 4 (x_k - x_k) L'^2_k(x_k) = 0 \\
+   B'_k(x) &= L_k^2(x) + (x-x_k)L_k(x) L'_k(x) \\
+   B'_k(x_j) &= L_k^2(x_j) + (x_j-x_k)L_k(x_j) L'_k(x_j)
+     = \delta_{kj} + (x_j-x_k) \delta_{kj} L'_k(x_j)\\
+   \sum_{k = 0}^n B'_k(x_j) & = 1 + (x_k-x_k)L'_k(x_k) = 1
+\intertext{Also:}
+p'(x_j) & = \sum_{k = 0}^n A'_k(x_j) f_j + \sum_{k = 0}^n B'_k(x_j) f'_j
+  = 0 f_j + 1 f'_j = f'_j
 \end{align*}
-TODO: Michael
+Somit löst (1) die Hermite Interpolation, wir haben einen
+konstruktiven Existenzbeweis.
 
 \paragraph*{b)}
 TODO: Michael
@@ -34,7 +45,7 @@ TODO: Michael
 
 
 \paragraph*{d)}
-Für $n=1$ folgt für das Polynom des Hermiten-Interpolationsproblems:
+Für $n=1$ folgt für das Polynom des Hermite-Interpolationsproblems:
 \begin{align*}
 	p(x) = f[x_0] + f[x_0,x_0](x-x_0) + f[x_0,x_0,x_1](x-x_0)^2 + f[x_0,x_0,x_1,x_1](x-x_0)^2(x-x_1)
 \end{align*}
