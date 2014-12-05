@@ -10,7 +10,23 @@
 
 
 \paragraph*{d)}
-
-
-\paragraph*{e)}
-
+Für $n=1$ folgt für das Polynom des Hermiten-Interpolationsproblems:
+\begin{align*}
+	p(x) = f[x_0] + f[x_0,x_0](x-x_0) + f[x_0,x_0,x_1](x-x_0)^2 + f[x_0,x_0,x_1,x_1](x-x_0)^2(x-x_1)
+\end{align*}
+Explizit in Abhängigkeit von $f_0,f_1,f'_0,f'_1$ und $h_0=x_1-x_0$ folgt somit:
+\begin{align*}
+	p(x) = f_0 + f'_0(x-x_0) + \frac{(f_1-f_0)-f'_0}{h_0}(x-x_0)^2 +  ((f'_1-2(f_1-f_0)+f'_0)(x-x_0)^2(x-x_1)
+\end{align*}
+\paragraph*{e)} 
+Für die Darstellung
+\begin{align*}
+p(x) = a + b(x-x_0) + c(x-x_0)^2 +  d(x-x_0)^3
+\end{align*}
+Folgt für die Koeffizienten
+\begin{align*}
+a &= f_0\\
+b &= f'_0\\
+c &= \frac{(f_1-f_0)-f'_0}{h_0}\\
+d &= ???\\
+\end{align*}
