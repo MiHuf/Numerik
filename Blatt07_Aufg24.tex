@@ -1,10 +1,34 @@
 \subsection*{Aufgabe 24}
 
 \paragraph*{a)}
+Zu zeigen, dass die durch
+\begin{align}
+  p(x) & = \sum_{k = 0}^n \underbrace{\left(1 - 2 L'_k(x_k)(x - x_k)\right)L_k^2(x)}_{A_k(x)} f_k +
+  \sum_{k = 0}^n \underbrace{(x-x_k)L_k^2(x)}_{B_k(x)} f'_k \\
+  & =: \sum_{k = 0}^n (A_k(x) f_k + B_k(x) f'_k )
+  \intertext {mit den Lagrange-Polynomen}
+  L_k(x) & = \prod_{\substack{j = 0\\j \ne k}}^n \frac{x - x_j}{x_k - x_j}
+\end{align}
+definierte Funktion das Hermite-Interpolationsproblem $p(x_j) = f_j$ und $p'(x_j) = f'_j$ löst.
 
+Beweis: In der Vorlesung wurde gezeigt, dass die Lagrange-Polynome eine Orthogonal-Basis
+der $\Pi_n$ bilden, also $L_k(x_j) = \delta_{kj}$. Damit wird:
+\begin{align*}
+  A_k(x_j) &=  \left(1 - 2 L'_k(x_k)(x_j - x_k)\right)L_k^2(x_j)
+     = \left(1 - 2 L'_k(x_k)(x_j - x_k)\right)  \delta_{kj} \\
+  B_k(x_j) &= (x_j - x_k) L_k^2(x_j) = (x_j - x_k) \delta_{kj}\\
+  p(x_j) & = \sum_{k = 0}^n (A_k(x_j) f_k + B_k(x_j) f'_k )\\
+    & =\sum_{k = 0}^n \left( \left(1 - 2 L'_k(x_k)(x_j - x_k)\right)  \delta_{kj} f_j +
+    (x_j - x_k) \delta_{kj} f'_k \right) \\
+   & = (1 - 2 L'_j(x_j)(x_j - x_j) )f_j + (x_j - x_j) )f'_j = f_j
+\intertext{Die Ableitungen nach der Produktregel ergeben:}
+   A'_k(x) &= \\
+   B'_k(x) &=
+\end{align*}
+TODO: Michael
 
 \paragraph*{b)}
-
+TODO: Michael
 
 \paragraph*{c)}
 
@@ -18,7 +42,7 @@ Explizit in Abhängigkeit von $f_0,f_1,f'_0,f'_1$ und $h_0=x_1-x_0$ folgt somit:
 \begin{align*}
 	p(x) = f_0 + f'_0(x-x_0) + \frac{(f_1-f_0)-f'_0}{h_0}(x-x_0)^2 +  ((f'_1-2(f_1-f_0)+f'_0)(x-x_0)^2(x-x_1)
 \end{align*}
-\paragraph*{e)} 
+\paragraph*{e)}
 Für die Darstellung
 \begin{align*}
 p(x) = a + b(x-x_0) + c(x-x_0)^2 +  d(x-x_0)^3
