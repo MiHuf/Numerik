@@ -1,6 +1,6 @@
 \subsection*{Aufgabe 24}
 
-\paragraph*{a)}
+\paragraph*{a) Existenz}
 Zu zeigen, dass die durch
 \begin{align}
   p(x) & = \sum_{k = 0}^n \underbrace{\left(1 - 2 L'_k(x_k)(x - x_k)\right)L_k^2(x)}_{A_k(x)} f_k +
@@ -20,17 +20,17 @@ $L_k(x_j) = \delta_{kj}$ gilt. Damit wird:
   p(x_j) & = \sum_{k = 0}^n (A_k(x_j) f_k + B_k(x_j) f'_k )\\
     & =\sum_{k = 0}^n \left( \left(1 - 2 L'_k(x_k)(x_j - x_k)\right)  \delta_{kj} f_j +
     (x_j - x_k) \delta_{kj} f'_k \right) \\
-   & = (1 - 2 L'_j(x_j)(x_j - x_j) )f_j + (x_j - x_j) )f'_j = f_j
+   & = (1 - 2 L'_j(x_j)(x_j - x_j) )f_j + (x_j - x_j)f'_j = f_j
 \intertext{Die Ableitungen nach der Produktregel ergeben mit viel Rechnerei:}
    A'_k(x) &= -2 L'_k(x_k)L_k^2(x) + \left(1 - 2 L'_k(x_k)(x - x_k)\right)2 L_k(x)L'_k(x) \\
    &= -2 L'_k(x_k)L_k^2(x) + 2 L_k(x)L'_k(x) - 4 L'_k(x_k)(x - x_k) L_k(x)L'_k(x) \\
    A'_k(x_j) &= -2 L'_k(x_k)\delta_{kj} + 2 \delta_{kj}L'_k(x_j) -
    4 L'_k(x_k)(x_j - x_k) \delta_{kj} L'_k(x_j)\\
-   \sum_{k = 0}^n A'_k(x_j) & = -2 L'_k(x_k) +  2 L'_k(x_k) + 4 (x_k - x_k) L'^2_k(x_k) = 0 \\
+   \sum_{k = 0}^n A'_k(x_j) & = -2 L'_j(x_j) +  2 L'_j(x_j) + 4 (x_j - x_j) L'^2_j(x_j) = 0 \\
    B'_k(x) &= L_k^2(x) + (x-x_k)L_k(x) L'_k(x) \\
    B'_k(x_j) &= L_k^2(x_j) + (x_j-x_k)L_k(x_j) L'_k(x_j)
      = \delta_{kj} + (x_j-x_k) \delta_{kj} L'_k(x_j)\\
-   \sum_{k = 0}^n B'_k(x_j) & = 1 + (x_k-x_k)L'_k(x_k) = 1
+   \sum_{k = 0}^n B'_k(x_j) & = 1 + (x_j-x_j)L'_j(x_j) = 1
 \intertext{Also:}
 p'(x_j) & = \sum_{k = 0}^n A'_k(x_j) f_j + \sum_{k = 0}^n B'_k(x_j) f'_j
   = 0 f_j + 1 f'_j = f'_j
@@ -38,11 +38,21 @@ p'(x_j) & = \sum_{k = 0}^n A'_k(x_j) f_j + \sum_{k = 0}^n B'_k(x_j) f'_j
 Somit löst (1) die Hermite Interpolation, wir haben einen
 konstruktiven Existenzbeweis.
 
-\paragraph*{b)}
-TODO: Michael
+\paragraph*{b) Eindeutigkeit}
+Seien $p_1, p_2 \in \Pi_{(n+1)^2}$ Lösungen des Hermite-Problems. Dann hat die Funktion
+$p_1(x) - p_2(x)$  mindestens $n + 1$ Nullstellen  da
+$p_1(x_j) - p_2(x_j) = f_j - f_j = 0 \quad j = 0, \cdots , n$
+und ebenso hat die Funktion $p'_1(x) - p'_2(x)$  mindestens $n + 1$ Nullstellen bei
+$p'_1(x_j) - p'_2(x_j) = f'_j - f'_j = 0$, das heißt die Nullstellen bei $x_i$ sind
+doppelte Nullstellen. Insgesamt hat  $p_1(x) - p_2(x)$ also $(n + 1)^2$ Nullstellen,
+also muss $p_1(x) - p_2(x) \equiv 0$ sein.
 
 \paragraph*{c)}
-
+Man lernt in der 10. Klasse die Definition der Ableitung:
+\begin{align*}
+  f'(x) = \lim_{h \rightarrow 0} \frac{f(x + h) - f(x)}{h} \quad \overset{y = x + h}{=}\quad
+  \lim_{y \rightarrow x} \frac{f(y) - f(x)}{y - x} =  \lim_{y \rightarrow x} f[x,y]
+\end{align*}
 
 \paragraph*{d)}
 Für $n=1$ folgt für das Polynom des Hermite-Interpolationsproblems:
