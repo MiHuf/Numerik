@@ -57,11 +57,13 @@ Man lernt in der 10. Klasse die Definition der Ableitung:
 \paragraph*{d)}
 Für $n=1$ folgt für das Polynom des Hermite-Interpolationsproblems:
 \begin{align*}
-	p(x) = f[x_0] + f[x_0,x_0](x-x_0) + f[x_0,x_0,x_1](x-x_0)^2 + f[x_0,x_0,x_1,x_1](x-x_0)^2(x-x_1)
+p(x) &= f[x_0] + f[x_0,x_0](x-x_0) + f[x_0,x_0,x_1](x-x_0)^2 + \\
+	& \quad + f[x_0,x_0,x_1,x_1](x-x_0)^2(x-x_1)
 \end{align*}
 Explizit in Abhängigkeit von $f_0,f_1,f'_0,f'_1$ und $h_0=x_1-x_0$ folgt somit:
 \begin{align*}
-	p(x) = f_0 + f'_0(x-x_0) + \frac{(f_1-f_0)-f'_0}{h_0}(x-x_0)^2 +  ((f'_1-2(f_1-f_0)+f'_0)(x-x_0)^2(x-x_1)
+p(x) &= f_0 + f'_0(x-x_0) + \frac{(f_1-f_0)-f'_0}{h_0}(x-x_0)^2 + \\
+	  & \quad + (f'_1-2(f_1-f_0)+f'_0)(x-x_0)^2(x-x_1)
 \end{align*}
 \paragraph*{e)}
 Für die Darstellung
@@ -73,5 +75,8 @@ Folgt für die Koeffizienten
 a &= f_0\\
 b &= f'_0\\
 c &= \frac{(f_1-f_0)-f'_0}{h_0}\\
-d &= ???\\
+d &= \frac{(f'_1-2(f_1-f_0)+f'_0)(x-x_0)^2(x-x_1)}{(x-x_0)^3} =
+  \frac{(f'_1-2(f_1-f_0)+f'_0)(x-x_1)}{(x-x_0)}
+\intertext{und mit $(x - x_1) = (x-x_0) + (x_0-x_1) = (x-x_0) - h_0$ ergibt sich}
+d &=  (f'_1-2(f_1-f_0)+f'_0) - \frac{(f'_1-2(f_1-f_0)+f'_0) h_0}{(x-x_0)}
 \end{align*}
