@@ -21,7 +21,7 @@ for e = 1:4
     yev = ev(A, b, eps(e));
     xev = transpose(reshape(yev, n, n)) ;
     xev
-    ygv = ev(A, b, eps(e));
+    ygv = gv(A, b, eps(e));
     xgv = transpose(reshape(ygv, n, n)) ;
     xgv
 end
