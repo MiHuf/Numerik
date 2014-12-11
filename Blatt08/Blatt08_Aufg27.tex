@@ -1,2 +1,34 @@
 \subsection*{Aufgabe 27}
-
+Zu zeigen: Unter allen trigonometrischen Polynomen $q_s \in \mathcal{T}_s$ der Form
+\[
+	q_s= \sum_{k=0}^{s}d_ke^{ikx}
+\]
+gerade $p_s$ die Fehlerquadratsumme
+\begin{align*}
+	S(q):=\sum_{k=0}^{n-1}|f_k - q_s(x_k)|^2
+\end{align*}
+minimiert.\\ \newline
+Beweis: Mit den n-Vektoren
+\begin{align*}
+	p_s := [p_s(x_0)\quad \cdots \quad p_s(x_{n-1})], \qquad q:=[q(x_0) \quad \cdots \quad q(x_{n-1})]
+\end{align*}
+gilt
+\begin{align*}
+	S(q)=[f-q,f-q].
+\end{align*}
+Es gilt wegen $p(x_k)=f_k$ für $k=0, \dots ,n-1$, $[f,w^{(k)}]=nc_k$ für $k=0, \dots ,n-1$ und daher
+\begin{align*}
+	[f-p_s,w^{(k)}] = [f-\sum_{h=0}^{s}c_kw^{(h)}, w^{(j)}]=nc_j-nc_k=0,\qquad j=0, \dots ,s,
+\end{align*}
+sowie
+\begin{align*}
+	[f-p_s,p_s-q] = \sum_{j=0}^{s}[f-p_s,(c_j-d_j)w^{(j)}]=0.
+\end{align*}
+Damit gilt aber
+\begin{align*}
+	S(q) &= [f-q,f-q]\\
+	&= [(f-p_s)+(p_s-q),(f-p_s)+(p_s-q)]\\
+	&= [f-p_s,f-p_s]+[p_s-q,p_s-q]\\
+	&\geq [f-p_s,f-p_s] = S(p_s)
+\end{align*}
+mit Gleichheit nur für $[p_s-q,p_s,q]=0$, d.h. $q(x_j)=p_s(x_j)$ für $0 \leq j \leq n-1$. Durch die Eindeutigkeit der trigonometrischen Polynome folgt damit $p_s=q$.
