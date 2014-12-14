@@ -29,5 +29,5 @@ A = zeros(n^2, n^2) ;
 % A = 4*diag(ones(1,n^2)) - diag(ones(1,n^2-1),1) - diag(ones(1,n^2-1),-1) ...
     - diag(ones(1,n^2-n),n) - diag(ones(1,n^2-n),-n) ;
 % Aber so funktioniert es:
-A = full(gallery('poisson', n)) ;
+A = full(gallery('poisson', n)) / h^2 ;
 end
