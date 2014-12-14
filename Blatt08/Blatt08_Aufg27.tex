@@ -3,39 +3,37 @@ Zu zeigen: Unter allen trigonometrischen Polynomen $q_s \in \mathcal{T}_s$ der F
 \[
 	q_s= \sum_{k=0}^{s}d_ke^{ikx}
 \]
-gerade $p_s$ die Fehlerquadratsumme
-\begin{align*}
+mimimiert gerade $p_s$ die Fehlerquadratsumme
+\begin{align} \label{eq:sq}
 	S(q):=\sum_{k=0}^{n-1}|f_k - q_s(x_k)|^2
-\end{align*}
-minimiert.\\ \newline
+\end{align} \newline
 Beweis: Führt man auf dem n-dimentionalen komplexen Vektorraum $\CC^n$ aller komplexer Vektoren\\
- $u=[u_0 \quad u_1 \quad \cdots \quad u_{n-1}]$ der Länge $n$ das übliche Skalarprodukt
+ $u=[u_0 \quad u_1 \quad \cdots \quad u_{n-1}]$ der Länge $n$ das Standardskalarprodukt
 \[
 	[u,v] := \sum_{j=0}^{n-1}u_j\bar{v}_j
 \]
-ein, so gilt, dass die speziellen Vektoren
+ein, so gilt, dass die Vektoren
 \[
 	\omega {(j)}:=[\omega_0^{(j)} \quad \omega_1^{(j)} \quad \cdots \quad \omega_{n-1}^{(j)}], \qquad j=0,1,\dots,n-1
 \]
-eine Orthogonalbasis des $\CC^n$ bilden,
+
+mit $\omega_k = e^{ix_k}=e^{i\frac{2\pi k}{N}}$
+eine Orthogonalbasis des $\CC^n$ bilden, da:
 \[
 	[\omega^{(j)},\omega^{(h)}] = \left\{\begin{array}{ll} n, & j = h \\
 	0, & j\neq h\end{array}\right.
 \]
-
-Hier fehlt noch was!!!\\ \newline
-
-Mit den n-Vektoren
+Wir definieren:
 \begin{align*}
 	p_s := [p_s(x_0)\quad \cdots \quad p_s(x_{n-1})], \qquad q:=[q(x_0) \quad \cdots \quad q(x_{n-1})]
 \end{align*}
-gilt
+Mit Hilfe der vom Standardskalarprodukt induzierten Norm lässt sich \eqref{eq:sq} umschreiben zu:
 \begin{align*}
-	S(q)=[f-q,f-q].
+S(q)=\sum_{k=0}^{n-1}|f_k - q_s(x_k)|^2 = [f-q,f-q]
 \end{align*}
-Es gilt wegen $p(x_k)=f_k$ für $k=0, \dots ,n-1$, $[f,w^{(k)}]=nc_k$ für $k=0, \dots ,n-1$ und daher
+Es gilt wegen $p(x_k)=f_k$ für $k=0, \dots ,n-1$, $[f,w^{(k)}]=nc_k$ für $k=0, \dots ,n-1$. \\Daher folgt für $k=0, \dots ,s,$:
 \begin{align*}
-	[f-p_s,w^{(k)}] = [f-\sum_{h=0}^{s}c_kw^{(h)}, w^{(j)}]=nc_j-nc_k=0,\qquad j=0, \dots ,s,
+	[f-p_s,w^{(k)}] = [f-\sum_{h=0}^{s}c_kw^{(h)}, w^{(k)}]=[f, w^{(k)}]-[\sum_{h=0}^{s}c_kw^{(h)}, w^{(k)}]=nc_k-nc_k=0
 \end{align*}
 sowie
 \begin{align*}
@@ -48,4 +46,9 @@ Damit gilt aber
 	&= [f-p_s,f-p_s]+[p_s-q,p_s-q]\\
 	&\geq [f-p_s,f-p_s] = S(p_s)
 \end{align*}
-mit Gleichheit nur für $[p_s-q,p_s,q]=0$, d.h. $q(x_j)=p_s(x_j)$ für $0 \leq j \leq n-1$. Durch die Eindeutigkeit der trigonometrischen Polynome folgt damit $p_s=q$.
+mit Gleichheit nur für $[p_s-q,p_s,q]=0$, d.h. $q(x_j)=p_s(x_j)$ für $0 \leq j \leq n-1$. Durch die Eindeutigkeit der trigonometrischen Polynome folgt damit $p_s=q$.\\
+\newline
+Unter allen trigonometrischen Polynomen $q_s \in \mathcal{T}_s$ mimimiert also gerade $p_s$ die Fehlerquadratsumme.
+\begin{flushright}
+Q.e.d
+\end{flushright}

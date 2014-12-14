@@ -7,7 +7,7 @@ Für den Interpolationsfehler gilt:
 &f(x)-p(x)=\frac{f^{(n+1)}(\xi)}{(n+1)!}\prod_{k=0}^{n}x-x_k\\
 &\Rightarrow \|f(x)-p(x)\|_\infty \le \frac{\|f^{(n+1)}\|_\infty}{(n+1)!} \|\omega_n\|_\infty \text{ mit } \omega_n=\prod_{k=0}^{n}x-x_k
 \end{align*}
-Wir ordnen die n+1 Stützstellen nach der Größe, sodass gilt:
+Wir ordnen die $n+1$ Stützstellen nach der Größe, sodass gilt:
 \begin{align*}
 a<\ldots<x_j<x_{j+1}<x_{j+2}<\ldots<b
 \end{align*}
@@ -33,7 +33,7 @@ n=4: &$\frac{\exp(2)}{(n+1)}\cdot \left(\frac{1}{n}\right)^n=5,77\cdot 10^{-3}$\
 n=5: &$\frac{\exp(2)}{(n+1)}\cdot \left(\frac{1}{n}\right)^n=3,94 \cdot 10^{-4}$\\
 n=6: &$\frac{\exp(2)}{(n+1)}\cdot \left(\frac{1}{n}\right)^n=2,26 \cdot 10^{-5}$\\\hline
 \end{tabular}\\
-Da für ein Polynom n-ten Grades geau n+1 Stützstellen erforderlich sind, würden für die Tabelle mit Genauigkeit $10^{-3}$ 6 Stützstellen und für die Tabelle mit $10^{-4}$ 7 Stützstellen benötigt werden.\\
+Da für ein Polynom n-ten Grades geau $n+1$ Stützstellen erforderlich sind, würden für die Tabelle mit Genauigkeit $10^{-3}$: $n+1=6$ Stützstellen und für die Tabelle mit $10^{-4}$: $n+1=7$ Stützstellen benötigt werden.\\
 \newline
 Statt $\underset{x \in [1,2]}{\max}|\omega_n(x)|$ abzuschätzen, kann es für festes $n\in\NN$ auch genau bestimmt werden:\\
 Wir bestimmen $\|\omega\|_\infty$ für $n=4$ und $n=5$ und zeigen so, dass die geforderten Genauigkeiten $10^{-3}$ und $10^{-4}$ auch mit einer Stützstelle weniger als bei der Abschätzung erreicht werden können:
@@ -46,4 +46,4 @@ Daraus folgt:
 &n=4: \frac{\exp(2)}{(n+1)!}\cdot\omega_4=\frac{\exp(2)}{5!}\cdot 0,00354632 = 2,18 \cdot 10^{-4} < 10^{-3}\\
 &n=5: \frac{\exp(2)}{(n+1)!}\cdot\omega_5=\frac{\exp(2)}{6!}\cdot 0,00108166 = 6,66 \cdot 10^{-5} < 10^{-4}
 \end{align*}
-Beim Errechnen der exakten Lösung, würden für die Tabelle mit Genauigkeit $10^{-3}: n+1=5$ Stützstellen und für die Tabelle mit $10^{-4}: n+1=6$ Stützstellen benötigt werden. 
+Beim Errechnen der exakten Lösung, würden für die Tabelle mit Genauigkeit $10^{-3}$: $n+1=5$ Stützstellen und für die Tabelle mit $10^{-4}$: $n+1=6$ Stützstellen benötigt werden. 
