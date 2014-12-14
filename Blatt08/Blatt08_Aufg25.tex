@@ -1,2 +1,49 @@
 \subsection*{Aufgabe 25}
 
+Interpolation der Funktion $f(x)=\exp(x)$  in den Grenzen $a=1$ bis $b=2$:\\
+\newline
+Für den Interpolationsfehler gilt:
+\begin{align*}
+&f(x)-p(x)=\frac{f^{(n+1)}(\xi)}{(n+1)!}\prod_{k=0}^{n}x-x_k\\
+&\Rightarrow \|f(x)-p(x)\|_\infty \le \frac{\|f^{(n+1)}\|_\infty}{(n+1)!} \|\omega_n\|_\infty \text{ mit } \omega_n=\prod_{k=0}^{n}x-x_k
+\end{align*}
+Wir ordnen die n+1 Stützstellen nach der Größe, sodass gilt:
+\begin{align*}
+a<\ldots<x_j<x_{j+1}<x_{j+2}<\ldots<b
+\end{align*}
+wobei für den Abstand zwischen zwei benachbarten Stützstellen $x_{j+1}-x_j=h$ gilt.\\
+Dann existiert ein $x_*$, welches $\omega_n$ in den Grenzen $a$ bis $b$ maximiert,  sodass $x_{j_*}\le x_* < x_{j_*+1}$. Der Abstand zwischen  $x_{j_*+1}-x_*$ ist dabei maximal $h$.
+\begin{align}\label{omega}
+\max_{x \in [1,2]} |\omega_n(x)|=|\omega_n(x_*)|=\left|\prod_{j=0}^{n}x_*-x_j\right| < (1 \cdot h) \cdot (2 \cdot h) \cdot \ldots \cdot (n \cdot h)<n!\cdot h^n
+\end{align}
+Für $\underset{x \in [1,2]}{\max} f^{(n+1)}$ gilt:
+\begin{align}\label{n+1Ableitung}
+\|f^{(n+1)}\|_\infty=\max_{x \in [1,2]} f^{(n+1)} = \max_{x \in [1,2]} \exp(x)= \exp(2)
+\end{align}
+Daraus ergibt sich folgende Gleichung:
+\begin{align*}
+&\frac{\|f^{(n+1)}\|_\infty}{(n+1)!} \|\omega_n\|_\infty \overset{\eqref{n+1Ableitung}}{=} \frac{\exp(2)}{(n+1)!} \|\omega_n\|_\infty \overset{\eqref{omega}}{<} \frac{\exp(2)}{(n+1)!}n!\cdot h^n=\frac{exp(2)}{(n+1)}\cdot h^n\\
+&\Rightarrow \|f(x)-p(x)\|_\infty < \frac{\exp(2)}{(n+1)}\cdot h^n=\frac{\exp(2)}{(n+1)}\cdot \left(\frac{1}{n}\right)^n
+\end{align*}
+Für die Fehlergenauigkeit von $10^{-3}$ folgt $ n= 5$ und für $10^{-4}$ folgt $n=6$:\\
+\begin{tabular}{|c|l|}\hline
+n=2: &$\frac{\exp(2)}{(n+1)}\cdot \left(\frac{1}{n}\right)^n=0,6158$\\
+n=3: &$\frac{\exp(2)}{(n+1)}\cdot \left(\frac{1}{n}\right)^n=0,0684$\\
+n=4: &$\frac{\exp(2)}{(n+1)}\cdot \left(\frac{1}{n}\right)^n=5,77\cdot 10^{-3}$\\
+n=5: &$\frac{\exp(2)}{(n+1)}\cdot \left(\frac{1}{n}\right)^n=3,94 \cdot 10^{-4}$\\
+n=6: &$\frac{\exp(2)}{(n+1)}\cdot \left(\frac{1}{n}\right)^n=2,26 \cdot 10^{-5}$\\\hline
+\end{tabular}\\
+Da für ein Polynom n-ten Grades geau n+1 Stützstellen erforderlich sind, würden für die Tabelle mit Genauigkeit $10^{-3}$ 6 Stützstellen und für die Tabelle mit $10^{-4}$ 7 Stützstellen benötigt werden.\\
+\newline
+Statt $\underset{x \in [1,2]}{\max}|\omega_n(x)|$ abzuschätzen, kann es für festes $n\in\NN$ auch genau bestimmt werden:\\
+Wir bestimmen $\|\omega\|_\infty$ für $n=4$ und $n=5$ und zeigen so, dass die geforderten Genauigkeiten $10^{-3}$ und $10^{-4}$ auch mit einer Stützstelle weniger als bei der Abschätzung erreicht werden können:
+\begin{align*}
+&\max_{x \in [1,2]}|\omega_4|=\max_{x \in [1,2]}\left|\prod_{k=0}^{4}x-x_k \right|\approx 0,00354632 \text{ bei } x=1,91\\
+&\max_{x \in [1,2]}|\omega_5|=\max_{x \in [1,2]}\left|\prod_{k=0}^{5}x-x_k \right|\approx 0,00108166 \text{ bei } x=1,93
+\end{align*}
+Daraus folgt:
+\begin{align*}
+&n=4: \frac{\exp(2)}{(n+1)!}\cdot\omega_4=\frac{\exp(2)}{5!}\cdot 0,00354632 = 2,18 \cdot 10^{-4} < 10^{-3}\\
+&n=5: \frac{\exp(2)}{(n+1)!}\cdot\omega_5=\frac{\exp(2)}{6!}\cdot 0,00108166 = 6,66 \cdot 10^{-5} < 10^{-4}
+\end{align*}
+Beim Errechnen der exakten Lösung, würden für die Tabelle mit Genauigkeit $10^{-3}: n+1=5$ Stützstellen und für die Tabelle mit $10^{-4}: n+1=6$ Stützstellen benötigt werden. 
