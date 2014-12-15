@@ -48,15 +48,15 @@ b_k = 2 \cdot \Im(c_{m - k})\\
 Um das zu zeigen, untersuchen wir das folgende Polynom unter Berücksichtigung
 von \eqref{eq4} und \eqref{eq6}:
 \begin{align}
-\nonumber
+% \nonumber
   p(x) \cdot e^{-i m x} & = \sum_{k = 0}^{2m} c_k e^{i (k - m) x} =
   \sum_{k = 0}^{m - 1} c_k e^{i (k - m) x} + c_m e^{i m x} e^{- i m x} +
   \sum_{k = m + 1}^{2 m} c_k e^{i (k - m) x}\\
-\intertext{nach einer Umbenennung $j = k + 1$ für die erste
-Summe und $j = k - m$ für die zweite:}
-p(x) \cdot e^{-i m x} & =  c_m +
-  \sum_{j = 1}^m \left(c_{j - 1} e^{i (j - 1 - m) x} + c_{j + m } e^{i (j + m - m) x}\right)
-\intertext{und unter Berücksichtigung von $e^{ix} = \cos(x) + i \sin(x)$}
+\intertext{nach einer Umbenennung $j' = k - m$ und $j = m - k$ für die beiden letzen Summen:}
+p(x) \cdot e^{-i m x} & = c_m +
+\sum_{j' = 1}^{m} c_{m - k} e^{i j' x} + \sum_{j = 1}^{m} c_{m - k} e^{- i j x} % \\
+= c_m +\sum_{j = 1}^{m} c_{m - k} \left( e^{i j x} + e^{- i j x}  \right)
+\intertext{und unter Berücksichtigung von \eqref{eq6} und  $e^{ix} = \cos(x) + i \sin(x)$}
 p(x) \cdot e^{-i m x} & = \frac{a_0}{2} + \sum_{j = 1}^m \left[a_j \cos(j x) + b_j \sin(j x)\right] = q(x)
 \end{align}
 
