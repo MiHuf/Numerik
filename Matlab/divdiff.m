@@ -35,7 +35,7 @@ else
     xneu(length(xalt)+1:length(xalt)+length(x)) = x;
 
     %Berechne die neuen Dividierten Differenzen.
-    for i=1:length(xneu)-2
+    for i=1:length(xneu)-1
         for j=length(xalt)+1:(length(xneu))
             D(j,i+1) = (D(j,i)-D(j-1,i)) / (xneu(j)-xneu(j-i));
         end
