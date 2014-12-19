@@ -28,8 +28,6 @@
 win_num*
 Blatt*.pdf
 *.asv
-Blatt05_Aufg16_ev.tex
-Blatt08/zuAufgabe26.tex
-Blatt08/zuAufgabe26,tex.tex
-Blatt08/zuAufgabe26.pdf
-Blatt08/Blatt08.tex
+# Fuer lokale Dateien
+*–.m
+*_.tex
