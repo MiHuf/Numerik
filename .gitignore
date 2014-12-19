@@ -29,5 +29,5 @@ win_num*
 Blatt*.pdf
 *.asv
 # Fuer lokale Dateien
-*–.m
+*_.m
 *_.tex
