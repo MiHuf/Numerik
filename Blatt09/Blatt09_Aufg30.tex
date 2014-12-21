@@ -1,5 +1,65 @@
 \subsection*{Aufgabe 30}
+Gegeben das LGS $A x = b$ mit
+\begin{align}
+\label{eq-A}
+  A = \begin{pmatrix}4&1&0\\1&4&1\\0&1&4\end{pmatrix} \; ;\quad
+  x = \begin{pmatrix}x_1\\x_2\\x_3\end{pmatrix} \; ;\quad
+  b = \begin{pmatrix}-1\\0\\1\end{pmatrix}
+\end{align}
+\paragraph*{a) Lösung mit Cholesky-Zerlegung:}
+Dies ist möglich, weil (i) $A = A^T$ symmetrisch ist und (ii) alle
+Hauptdeterminanten von $A$ positiv sind:
+$\det (A_1) = 4; \det (A_2) = 15, \det(A_3) = 56$. $A$ ist also positiv definit.
+Somit existiert eine untere Dreiecksmatrix $L$ mit $A = L \cdot L^T$:
+\begin{align}
+\label{eq-L}
+  L L^T = \begin{pmatrix}l_{11}&0&0\\l_{21}&l_{22}&0\\l_{31}&l_{32}&l_{33}\end{pmatrix}
+  \begin{pmatrix}l_{11}&l_{21}&l_{31}\\0 &l_{22}&l_{32}\\0&0&l_{33}&\end{pmatrix} =
+  \begin{pmatrix}l_{11}^2&l_{11}l_{21}&l_{11}l_{31}\\
+  *&l_{21}^2+l_{22}^2&l_{21}l_{31}+l_{22}l_{32}\\
+  *&*&l_{31}^2+l_{32}^2+l_{33}^2\end{pmatrix}
+\end{align}
+Ein Vergleich von \eqref{eq-A} mit \eqref{eq-L} liefert dann zeilenweise:
+\begin{align*}
+  & l_{11}^2 = 4 \;;\quad\Rightarrow\; l_{11} = 2\\
+  & l_{11}l_{21} = 1 \;;\quad\Rightarrow\; l_{21} = \frac{1}{2}\\
+  & l_{11}l_{31} = 0  \;;\quad\Rightarrow\;l_{31} = 0\\
+  & l_{21}^2+l_{22}^2 = 4 \;;\quad\Rightarrow\; l_{22} = \sqrt{4 -\frac{1}{4}} = \frac{1}{2}\sqrt{15}\\
+  & l_{21}l_{31}+l_{22}l_{32} = 1 \;;\quad\Rightarrow\; l_{22}l_{32} = 1
+  \;;\quad\Rightarrow\; l_{32} = \frac{1}{l_{22}} = \frac{2}{\sqrt{15}}\\
+  &l_{31}^2+l_{32}^2+l_{33}^2 = 4 \;;\quad\Rightarrow\;l_{33}^2 = 4 -\frac{4}{15} = \frac{56}{15}
+  \;;\quad\Rightarrow\;l_{33} = 2 \sqrt{\frac{14}{15}}
+\end{align*}
+Somit ergeben sich für $L$ und $L^T$:
+\begin{align}
+L = \begin{pmatrix}2 & 0 & 0 \\
+       \frac{1}{2} & \frac{1}{2}\sqrt{15} & 0 \\
+       0 & \frac{2}{\sqrt{15}} &  2 \sqrt{\frac{14}{15}} \end{pmatrix} \; ;\quad
+L^T = \begin{pmatrix}2 & \frac{1}{2} & 0 \\
+      0 & \frac{1}{2}\sqrt{15} & \frac{2}{\sqrt{15}} \\
+      0 & 0& 2 \sqrt{\frac{14}{15}}\end{pmatrix}
+\end{align}
+Die Lösung des LGS $A x = L L^T x = b$ erfolgt mit der Definition $y:= L^T x$ in
+zwei Schritten. Zunächst wird $y$ aus
+\begin{align*}
+& L y = b = \begin{pmatrix}2 & 0 & 0 \\
+       \frac{1}{2} & \frac{1}{2}\sqrt{15} & 0 \\
+       0 & \frac{2}{\sqrt{15}} &  2 \sqrt{\frac{14}{15}} \end{pmatrix}
+      \begin{pmatrix}y_1\\y_2\\y_3\end{pmatrix} =
+      \begin{pmatrix}-1\\0\\1\end{pmatrix}
+\intertext {durch Vorwärts-Einsetzen bestimmt. Ergebnis:}
+& y_1 = -\frac{1}{2} \;;\quad y_2 =  \frac{1}{2\sqrt{15}} \;;\quad y_3 = \sqrt{\frac{7}{30}}
+\intertext {Anschließend wird $x$ aus der Gleichung $L^T x = y$ dürch Rückwärts-Einsetzen ermittelt:}
+& L^T x = y =  \begin{pmatrix}2 & \frac{1}{2} & 0 \\
+      0 & \frac{1}{2}\sqrt{15} & \frac{2}{\sqrt{15}} \\
+      0 & 0& 2 \sqrt{\frac{14}{15}}\end{pmatrix}
+      \begin{pmatrix}x_1\\x_2\\x_3\end{pmatrix} =
+      \begin{pmatrix}-\frac{1}{2} \\  \frac{1}{2\sqrt{15}} \\ \sqrt{\frac{7}{30}} \end{pmatrix}
+\intertext{Ergebnis:}
+& x_3 = \frac{1}{2} \cdot \sqrt{\frac{15}{14}} \cdot \sqrt{\frac{7}{30}}  = \frac{1}{4}
+\;;\quad x_2 = 0 \;;\quad x_1 = -\frac{1}{4} \;;\quad
+x = \begin{pmatrix}-\frac{1}{4} \\0 \\ \frac{1}{4}\end{pmatrix}
+\end{align*}
 
-\paragraph*{a)}
 
-\paragraph*{b)}
+\paragraph*{b) LR-Zerlegung von A:}
