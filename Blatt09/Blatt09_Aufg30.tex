@@ -62,4 +62,46 @@ x = \begin{pmatrix}-\frac{1}{4} \\0 \\ \frac{1}{4}\end{pmatrix}
 \end{align*}
 
 
-\paragraph*{b) LR-Zerlegung von A:}
+\paragraph*{b) LR-Zerlegung von A:} Ziel ist es, die Matrix $A$ in zwei
+Teilmatritzen $L, R$ mit $L \cdot R = A$ zu zelegen. Die Teilmatritzen haben die Form:
+\begin{align*}
+  L = \begin{pmatrix} 1 & 0 & 0 \\ * & 1 & 0 \\ * & * & 1\end{pmatrix} \; ;\quad
+  R = \begin{pmatrix} * & * & * \\ 0 & * & * \\ 0 & 0 & *\end{pmatrix}
+\end{align*}
+Schritt 1: Bestimme eine Matrix $L_1$, so das $L_1 \cdot A$ die folgende Form hat:
+\begin{align*}
+  & L_1 \cdot A = \begin{pmatrix} 1 & 0 & 0 \\ * & 1 & 0 \\ * & 0 & 1\end{pmatrix}
+  \begin{pmatrix} 4 & 1 & 0 \\ 1 & 4 & 1 \\ 0 & 1 & 4 \end{pmatrix} =
+  \begin{pmatrix} 4 & 1 & 0 \\ 0 & * & * \\ 0 & * & * \end{pmatrix}
+\intertext{Dies wird mit $L_1$ wie folgt erfüllt:}
+  & L_1 \cdot A = \begin{pmatrix} 1 & 0 & 0 \\ -\frac{1}{4} & 1 & 0 \\ 0 & 0 & 1\end{pmatrix}
+  \begin{pmatrix} 4 & 1 & 0 \\ 1 & 4 & 1 \\ 0 & 1 & 4 \end{pmatrix} =
+  \begin{pmatrix} 4 & 1 & 0 \\ 0 & \frac{15}{4} & 1 \\ 0 & 1 & 4 \end{pmatrix}
+\end{align*}
+Schritt 2: Bestimme eine Matrix $L_2$, so das $L_2 \cdot L_1 A$ die folgende Form hat:
+\begin{align*}
+& L_2 \cdot L_1  A = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & * & 1\end{pmatrix}
+\underbrace{
+  \begin{pmatrix} 4 & 1 & 0 \\ 0 & \frac{15}{4} & 1 \\ 0 & 1 & 4 \end{pmatrix}
+ }_{ =  L_1 \cdot A} =
+  \begin{pmatrix} 4 & 1 & 0 \\ 0 & \frac{15}{4} & 1 \\ 0 & 0 & * \end{pmatrix}
+\intertext{dies wird mit $L_2$ wie folgt erfüllt:}
+& L_2 \cdot L_1  A = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & -\frac{4}{15}  & 1\end{pmatrix}
+  \begin{pmatrix} 4 & 1 & 0 \\ 0 & \frac{15}{4} & 1 \\ 0 & 1 & 4 \end{pmatrix} =
+  \begin{pmatrix} 4 & 1 & 0 \\ 0 & \frac{15}{4} & 1 \\ 0 & 0 & \frac{56}{15} \end{pmatrix} = R
+\end{align*}
+Somit haben wir $R$ ermittelt. Zur Berechnung von $L$ multiplizieren wir die letzte Gleichung
+von Links mit $L_1^{-1} \cdot L_2^{-1}$ und erhalten $A = L_1^{-1} \cdot L_2^{-1} \cdot R$.
+Die Matrizen $L_1, L_2$ lassen sich dadurch invertieren, indem man die Vorzeichen
+der Nicht-Diagonalelemente umkehrt. Damit wird:
+\begin{align*}
+  & L = L_1^{-1} \cdot L_2^{-1} =
+  \begin{pmatrix} 1 & 0 & 0 \\ \frac{1}{4} & 1 & 0 \\ 0 & 0 & 1\end{pmatrix}
+  \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & \frac{4}{15}  & 1\end{pmatrix}
+  =   \begin{pmatrix} 1 & 0 & 0 \\ \frac{1}{4} & 1 & 0 \\ 0 & \frac{4}{15} & 1\end{pmatrix}\\
+& \text{Probe:}\quad L \cdot R =
+\begin{pmatrix} 1 & 0 & 0 \\ \frac{1}{4} & 1 & 0 \\ 0 & \frac{4}{15} & 1\end{pmatrix}
+\begin{pmatrix} 4 & 1 & 0 \\ 0 & \frac{15}{4} & 1 \\ 0 & 0 & \frac{56}{15} \end{pmatrix} =
+\begin{pmatrix} 4 & 1 & 0 \\ 1 & 4 & 1 \\ 0 & 1 & 4 \end{pmatrix} = A
+\end{align*}
+
