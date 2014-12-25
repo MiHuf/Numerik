@@ -1,7 +1,73 @@
 \subsection*{Aufgabe 31}
 
-\paragraph*{a)}
+\paragraph*{a Newton Verfahren)} Gegeben sind
+\begin{align*}
+  F(x, y) = \begin{pmatrix}f(x,y) \\ g(x,y)\end{pmatrix} =
+  \begin{pmatrix}x^2 +3 y^2 - 6 y + 2 \\ x^2 - 4 y^2 + x + y + 1\end{pmatrix}
+  \;  \text{und }\;  X^{(0)} = \begin{pmatrix}x^{(0)} \\ y^{(0)} \end{pmatrix} =
+  \begin{pmatrix} \frac{1}{2} \\ 1 \end{pmatrix}
+\end{align*}
+gesucht ist die Nullstelle von $F$ mit dem Newton-Verfahren.
 
-\paragraph*{b)}
+Die Newton-Interationsvorschrift für eine eindimensionale Funktion $f(x)$ lautet
+$x^{(n+1)} = x^{(n)} - \frac{f(x^{(n)})}{f'(x^{(n)})}$. Im mehrdimensionalen Fall
+wird die Ableitung im Nenner durch die Inverse Jacobi-Matrix ersetzt. Das ergibt in
+diesem Fall:
+\begin{align}
+\nonumber
+  & J(x,y) = \frac{dF(x,y)}{d(x,y)} =
+\begin{pmatrix}\frac{\partial f}{\partial x}& \frac{\partial f}{\partial y}\\
+  \frac{\partial g}{\partial x}& \frac{\partial g}{\partial y} \end{pmatrix} =
+\begin{pmatrix}2 x & 6 y - 6 \\ 2 x + 1 & -8 y + 1 \end{pmatrix} \\
+  & X^{(n+1)} = X^{(n)} - J^{-1}(X^{(n)}) \cdot F(X^{(n)}) \quad
+  \text{= mehrdimensionales Newton-Verfahren}
+\intertext{oder mit $D^{(n+1)} := X^{(n+1)} - X^{(n)}$}
+\nonumber
+& D^{(n+1)} = - J^{-1}(X^{(n)}) \cdot F(X^{(n)}) \; ; \;\Rightarrow\;
+    J(X^{(n)}) \cdot D^{(n+1)} = -F(X^{(n)})
+\intertext{und mit $X^{(0)}$ aus der Aufgabenstellung:}
+& F(X^{(0)}) = \begin{pmatrix}-\frac{3}{4} \\ -\frac{5}{4}\end{pmatrix}\; ; \quad
+ J(X^{(0)}) = \begin{pmatrix}1 & 0 \\ 2 & -7\end{pmatrix}
+\end{align}
+
+\paragraph*{b) LGS lösen}
+Somit ergibt sich $D^{(1)}$ als Lösung des LGS:
+\begin{align*}
+  \begin{pmatrix}1 & 0 \\ 2 & -7\end{pmatrix} \cdot
+  \begin{pmatrix}d_x^{(1)} \\ d_y^{(1)}\end{pmatrix} =
+  - \begin{pmatrix}-\frac{3}{4} \\ -\frac{5}{4}\end{pmatrix} =
+  \begin{pmatrix}\frac{3}{4} \\ \frac{5}{4}\end{pmatrix} \; ; \quad
+  \text{mit } D^{(n)} = \begin{pmatrix}d_x^{(n)} \\ d_y^{(n)}\end{pmatrix}
+\end{align*}
+Die Lösung ergibt sich direkt durch Vorwärtseinsetzen: $d_x^{(1)} = \frac{3}{4}$
+und $d_y^{(1)} = \frac{1}{28}$. Mit $X^{(1)} = D^{(1)} + X^{(0)}$ ergibt sich dann
+für den ersten Newton-Iterationsschritt:
+$x^{(1)} = \frac{5}{4}$ und $^{(1)} = \frac{29}{28}$.
 
 \paragraph*{c)}
+Alter Code:
+\begin{verbatim}
+...
+tol = 1e-5; Nmax = 50; x = x0;
+%
+for it = 1:Nmax
+  dx = -DF(x(1),x(2))\F(x(1),x(2));
+  x = x+dx;
+end
+\end{code}
+\end{verbatim}
+Neuer Code:
+\begin{verbatim}
+...
+tol = 1e-5; Nmax = 50; x = x0;
+%
+it = 0 ;
+dx = [1.0 ; 1.0] ;
+while (it < NMax) && (norm(dx) > tol))
+  it = it + 1 ;
+  % dx = -DF(x(1),x(2))\F(x(1),x(2));
+  dx = - inv(DF(x(1),x(2))) * F(x(1),x(2));
+  x = x+dx;
+end
+\end{code}
+\end{verbatim}
