@@ -54,7 +54,6 @@ for it = 1:Nmax
   dx = -DF(x(1),x(2))\F(x(1),x(2));
   x = x+dx;
 end
-\end{code}
 \end{verbatim}
 Neuer Code:
 \begin{verbatim}
@@ -69,5 +68,4 @@ while (it < NMax) && (norm(dx) > tol))
   dx = - inv(DF(x(1),x(2))) * F(x(1),x(2));
   x = x+dx;
 end
-\end{code}
 \end{verbatim}
