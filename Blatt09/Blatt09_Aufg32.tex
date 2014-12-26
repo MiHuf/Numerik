@@ -1,8 +1,52 @@
 \subsection*{Aufgabe 32}
+Gegeben $z_i,  y_i := f(z_i) \; ; i = 1, \cdots , m-1$. Gesucht ein Polynom
+$p(z) = \sum_{i = 0}^{m-1} x_i z^i$ so dass $\sum_{i = 0}^{m-1} (p(z_i) - y_i)^2$
+minimal wird.
 
-\paragraph*{a)}
+\paragraph*{a) Rechenvorschrift}
+Die Normalengleichung für das Ausgleichsproblem lautet:
+\begin{align}
+\label{eq-norm}
+\underbrace{
+  \begin{pmatrix}z_0^0 & z_0^1 & \cdots \\ \vdots & \vdots  & \cdots\\ z_{m-1}^0 & z_{m-1}^1 &\cdots\end{pmatrix}}_{= A} \cdot
+\underbrace{
+  \begin{pmatrix}x_0 \\ x_1 \\ \vdots  \end{pmatrix}
+  }_{= x} =
+\underbrace{
+  \begin{pmatrix}y_0 \\ \vdots \\y_{m-1}\end{pmatrix}
+  }_{= y}
+\end{align}
+bzw. für ein Ausgleichspolynom 1. Grades:
+\begin{align*}
+  \begin{pmatrix}1 & z_0 \\ \vdots & \vdots \\ 1 & z_{m-1} \end{pmatrix} \cdot
+  \begin{pmatrix}x_0 \\ x_1\end{pmatrix} =
+  \begin{pmatrix}y_0 \\ \vdots \\y_{m-1}\end{pmatrix}
+\end{align*}
+Aus der Nromalengleichung \eqref{eq-norm} $A x = y$ folgt $A^T A x = A^T y$. Da
+$A^T A$ eine invertierbare Matrix ist, ist letzteres ein lösbares lineares
+Gleichungssystem für $x$. Kochrezept:
+\begin{enumerate}
+  \item Berechne $b := A^T y$
+  \item Berechne $B := A^T A$
+  \item Löse das LGS $B x = b$ und erhalte $x_0, x_1$
+  \item Preise dich glücklich und lobe den Herrn.
+\end{enumerate}
 
-\paragraph*{b)}
+\paragraph*{b) mit Zahlen}
+\begin{align*}
+  & A =  \begin{pmatrix}1 & 0 \\ 1 & 1 \\ 1 & 2 \\ 1 & 3 \\ 1 & 4 \end{pmatrix} \; ; \quad
+  A^T =  \begin{pmatrix} 1 & 1 & 1 & 1 & 1 \\ 0 & 1 & 2 & 3 & 4 \end{pmatrix} \; ; \quad
+  y =  \begin{pmatrix} 0 \\ 0 \\ 3 \\ 4 \\ 3 \end{pmatrix} \\
+  & A^T A = \begin{pmatrix} 5 &  10 \\10 & 3 0\end{pmatrix}
+    = 5 \begin{pmatrix} 1 &  2 \\ 2 & 6 \end{pmatrix}  \; ; \quad
+  A^T y = \begin{pmatrix} 10 \\ 30 \end{pmatrix} = 5 \begin{pmatrix} 2 \\ 6 \end{pmatrix}
+\intertext{Damit ergibt sich das LGS:}
+& 5 \cdot \begin{pmatrix} 1 &  2 \\ 2 & 6 \end{pmatrix}
+\begin{pmatrix} x_0 \\ x_1 \end{pmatrix} =
+5 \cdot \begin{pmatrix} 2 \\ 6 \end{pmatrix} \quad \text{mit der Lösung} \quad
+x_1 = 1 \; ; \quad x_0 = 0
+\end{align*}
+Die Ausgleichsgerade ist also $p(z) = z$.
 
 \paragraph*{c)}
-
+TODO
