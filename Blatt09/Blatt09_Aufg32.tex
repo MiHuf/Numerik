@@ -49,4 +49,26 @@ x_1 = 1 \; ; \quad x_0 = 0
 Die Ausgleichsgerade ist also $p(z) = z$.
 
 \paragraph*{c)}
-TODO
+Wir verschieben das Koordinatensystem, so dass der Punkt (2,3) im Ursprung liegt:\\
+$z' = z - 2\; ; \; f'(z') = f(z - 2) - 3$. Damit ergeben sich die Werte:
+
+\begin{tabular}{c|ccccc}
+  $z_i$ & 0 & 1 & 2 & 3 & 4\\
+  $y_i = f(z_i)$ & 0 & 0 & 3 & 4 & 3 \\
+  \hline
+  $z'_i = z_i - 2$ & -2 & -1 & 0 & 1 & 2\\
+  $y'_i = f'(z') = f(z_i) - 3$ & -3 & -3 & 0 & 1 & 0
+\end{tabular}
+Für die Normalengleichung ergibt sich damit:
+\begin{align*}
+  & A'^T A' =  \begin{pmatrix} 0 & 0 & 0 & 0 & 0 \\ -2 & -1 & 0 & 1 & 2 \end{pmatrix}
+   \begin{pmatrix} 0 & -2 \\ 0 & -1 \\ 0 & 0 \\ 0 & 1 \\ 0 & 2 \end{pmatrix} =
+   \begin{pmatrix} 0 & 0  \\ 0 & 10 \end{pmatrix} \\
+  & A'^T y'= \begin{pmatrix} 0 & 0 & 0 & 0 & 0 \\ -2 & -1 & 0 & 1 & 2 \end{pmatrix}
+   \begin{pmatrix} -3 \\ -3 \\ 0 \\ 1 \\ 0 \end{pmatrix} = \begin{pmatrix}0 \\10 \end{pmatrix}
+\end{align*}
+Das LGS $A'^T A' z' = A'^T y'$ hat die Lösung $z'_0 = 0$ und $z'_1 = 1$. Das
+Ausgleichspolynom lautet also im verschobenen Koordinatensystem $y' = 1 \cdot z'$.
+Einsetzen von $y' = y - 3$ und $z' = z - 2$ liefert dann $y - 3 = z - 2$ bzw. $y = z + 1 = p_1(z)$.
+
+
