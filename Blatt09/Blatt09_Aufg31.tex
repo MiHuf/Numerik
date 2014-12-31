@@ -1,5 +1,5 @@
 \subsection*{Aufgabe 31}
-
+Michaels-Version:
 \paragraph*{a) Newton Verfahren} Gegeben sind
 \begin{align*}
   F(x, y) = \begin{pmatrix}f(x,y) \\ g(x,y)\end{pmatrix} =
@@ -68,4 +68,61 @@ while (it < NMax) && (norm(dx) > tol))
   dx = - inv(DF(x(1),x(2))) * F(x(1),x(2));
   x = x+dx;
 end
-\end{verbatim}
+\end{verbatim}\\\\
+im Folgenden Annika-Version: Aufgabenteil b) mit Einzelschrittverfahren
+\paragraph*{a) Newton Verfahren}\hfill\\ Gegeben:
+\begin{align*}
+  F(x, y) = \begin{pmatrix}f(x,y) \\ g(x,y)\end{pmatrix} =
+  \begin{pmatrix}x^2 +3 y^2 - 6 y + 2 \\ x^2 - 4 y^2 + x + y + 1\end{pmatrix}
+\end{align*}
+gesucht ist die Nullstelle von $F$ mit dem Newton-Verfahren.\\
+\newline
+Die allgmeine Berechnungsvorschrift für das Newton-Verfahren lautet im mehrdimensionalen Fall:\\ $X^{(k+1)} = X^{(k)} - J^{-1}(X^{(k)}) \cdot F(X^{(k)})$ mit $X^{(k)} = \begin{pmatrix}x^{(k)} \\ y^{(k)} \end{pmatrix}$\\
+Mit der Bezeichnung $\Delta X=X^{(k+1)} - X^{(k)}$ folgt dann:
+\begin{align*}
+&\Delta X=- J^{-1}(X^{(k)}) \cdot F(X^{(k)})\\
+&X^{(k+1)}=\Delta X + X^{(k)}
+\end{align*}
+Im konkreten Fall gilt für die Jacobi-Matrix:
+\begin{align*}
+ & J(x,y) = \frac{dF(x,y)}{d(x,y)} =
+\begin{pmatrix}\frac{\partial f}{\partial x}& \frac{\partial f}{\partial y}\\
+  \frac{\partial g}{\partial x}& \frac{\partial g}{\partial y} \end{pmatrix} =
+\begin{pmatrix}2 x & 6 y - 6 \\ 2 x + 1 & -8 y + 1 \end{pmatrix}
+\end{align*}
+Also ergibt sich hier folgende Berechnungsvorschrift:
+\begin{align*}
+&\Delta X=- \begin{pmatrix}2 x & 6 y - 6 \\ 2 x + 1 & -8 y + 1 \end{pmatrix}^{-1} \cdot \begin{pmatrix}x^2 +3 y^2 - 6 y + 2 \\ x^2 - 4 y^2 + x + y + 1\end{pmatrix}\\\\
+&\text{ bzw. in der Form } J (X^{(k)})\cdot \Delta X= -F(X^{(k)})\\
+&\begin{pmatrix}2 x & 6 y - 6 \\ 2 x + 1 & -8 y + 1 \end{pmatrix} \cdot \Delta X=-\begin{pmatrix}x^2 +3 y^2 - 6 y + 2 \\ x^2 - 4 y^2 + x + y + 1\end{pmatrix}
+\end{align*}
+\paragraph{b)}
+Wir wenden nun obige Berechnungsvorschrift mit dem Startvektor $\begin{pmatrix}
+\frac{1}{2}\\1
+\end{pmatrix}$an.
+\begin{align*}
+ \begin{pmatrix}2 \cdot \frac{1}{2} & 6 - 6 \\ 2 \cdot \frac{1}{2} + 1 & -8 + 1 \end{pmatrix} \cdot \Delta X &= - \begin{pmatrix}(\frac{1}{2})^2 +3 \cdot1^2 - 6 + 2 \\ (\frac{1}{2})^2 - 4 \cdot 1^2 + \frac{1}{2} + 1 + 1\end{pmatrix} \\\\ \begin{pmatrix}1 & 0 \\ 2& -7 \end{pmatrix} \cdot \Delta X &=-\begin{pmatrix}-\frac{3}{4} \\ -\frac{5}{4}\end{pmatrix}
+\end{align*}
+Das Gleichungssystem der Form $Ax=b$ lösen wir mithilfe des Einzelschrittverfahrens:
+Dafür stellen wir folgende Gleichung für das Einzelschrittverfahren mit der Zerlegung $A=L+D+R$ auf:
+\begin{align*}
+\Delta X^{(k+1)}&=(D+L)^{-1}(-R\Delta X^{(k)}+b) \text{ mit }D=\begin{pmatrix} 1 & 0\\0 & -7 \end{pmatrix},\; L=\begin{pmatrix}
+0 & 0 \\ 2 & 0\end{pmatrix} \text{ und } R=\begin{pmatrix}
+0 & 0 \\ 0 & 0 \end{pmatrix}\\
+\Delta X^{(k+1)}&= \begin{pmatrix} 1 & 0\\2 & -7 \end{pmatrix}^{-1}\cdot\left(-\begin{pmatrix}0 & 0 \\ 0 & 0 \end{pmatrix} \Delta X^{(k)}+ \begin{pmatrix}\frac{3}{4} \\ \frac{5}{4}\end{pmatrix}\right)\\
+&= \begin{pmatrix} 1 & 0\\2 & -7 \end{pmatrix}^{-1}\cdot \begin{pmatrix}\frac{3}{4} \\ \frac{5}{4}\end{pmatrix}=\begin{pmatrix} 1 & 0\\\frac{2}{7} & -\frac{1}{7} \end{pmatrix}\cdot \begin{pmatrix}\frac{3}{4} \\ \frac{5}{4}\end{pmatrix}=\begin{pmatrix}
+\frac{3}{4}\\\frac{1}{28}
+\end{pmatrix}
+\end{align*}
+Aus $\Delta X^{(k+1)}=\begin{pmatrix}
+\frac{3}{4}\\\frac{1}{28}
+\end{pmatrix}$ ergibt sich dann:
+\begin{align*}
+&\Delta X^{(k+1)}=\begin{pmatrix}
+x^{(k+1)}-x^{(k)} \\ y^{(k+1)}-y^{(k)}\end{pmatrix}=\begin{pmatrix}
+\frac{3}{4}\\\frac{1}{28}
+\end{pmatrix}\\
+&\Rightarrow x^{(1)}=x^{(0)}+\frac{3}{4} \text{ und } y^{(1)}=y^{(0)}+\frac{31}{28}\\
+&\Rightarrow x^{(1)}=\frac{5}{4} \text{ und } y^{(1)}=\frac{29}{28}
+\end{align*}
+\paragraph{c)} analog zu Michaels Lösung
