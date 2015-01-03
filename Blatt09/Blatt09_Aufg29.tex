@@ -1,10 +1,76 @@
 \subsection*{Aufgabe 29}
+Gegeben $f(x) = \sin(x)$  im Intervall $x \in [0, \frac{\pi}{2}]$.
 
 \paragraph*{a)}
+Bestimme das Interpolationspolynom für die Stützstellen $x = 0,  \frac{\pi}{4},  \frac{\pi}{2}$.
+Wertetabelle $i = 0, 1, 2$ für Teil a), $i = 0, 1, 2, 3$ für Teil c): \newline
+\begin{tabular}{l|cccc}
+  $i$ & 0 & 1 & 2 & 3 \\
+  \hline
+  $x_i$ & 0 & $\frac{\pi}{4}$ &  $\frac{\pi}{2}$ &  $\frac{\pi}{6}$\\
+  \hline
+  $f(x_i)$ & 0 & $\frac{1}{2}\sqrt{2}$ &  $1$  &  $\frac{1}{2}$
+\end{tabular} \\\\
+Bestimmung der Koeffizienten $\gamma_i$ nach der Methode der dividierten
+Differenzen (Neville-Aitken-Schema):
+\begin{align}
+\label{eq-schema}
+\begin{array}{l|l|l|l|l}
+  i & x_i & f[x_i] & f[x_i , \cdot] & f[x_i , \cdot, \cdot]\\
+ \hline
+  0 & 0 & f[x_0] = 0 = \gamma_0 &
+    f[x_0, x_1] = \frac{f[x_0] - f[x_1]}{x_0 - x_1} = \frac{2 \sqrt{2}}{\pi} = \gamma_1&
+    \frac{f[x_0, x_1] - f[x_1, x_2]}{x_0 - x_2} = \frac{8 - 8 \sqrt{2}}{\pi^2} = \gamma_2\\
+  1 & \frac{\pi}{4} & f[x_1] = \frac{1}{2}\sqrt{2} &
+    f[x_1, x_2] = \frac{f[x_1] - f[x_2]}{x_1 - x_2} = \frac{4 - 2 \sqrt{2}}{\pi} & \nearrow\\
+  2 & \frac{\pi}{2} & f[x_2] = 1 & \nearrow
+% \\ 3 & \frac{\pi}{6} & f[x_2] = \frac{1}{2} &
+\end{array}
+\end{align}
+Damit ergibt sich das Ausgleichspolynom $p(x) = \gamma_0 + \gamma_1(x-x_0) + \gamma_2(x-x_0)(x-x_1)$ zu:
+\begin{align*}
+p(x) & = 0 +  \frac{2 \sqrt{2}}{\pi} \left(x - 0\right) +
+\left.\frac{8 - 8 \sqrt{2}}{\pi^2} \left(x- 0\right)\left(x-\frac{\pi}{4}\right)\right. \\
+& = \frac{2 \sqrt{2}}{\pi} x + \frac{8 - 8 \sqrt{2}}{\pi^2} x^2 - \frac{8 - 8 \sqrt{2}}{\pi^2} \frac{\pi}{4} x
+= \frac{4 \sqrt{2} - 2}{\pi} x + \frac{8 - 8 \sqrt{2}}{\pi^2} x^2
+\end{align*}
 
 \paragraph*{b)}
+Der Fehler $|f(x)-p(x)|$ im Intervall $[0, \frac{\pi}{2}]$ beträgt
+\begin{align}
+\nonumber
+  & |f(x)-p(x)| = \frac{f^{(n)}(\xi)}{(n+1)!} \prod_{i = 0}^n (\xi - x_i) \quad
+  \text{mit einem unbekannten $\xi \in \left[0, \frac{\pi}{2}\right]$.}
+\intertext{Er lässt sich abschätzen, mit $\left|\sin^{(n)}(\xi)\right| \le 1$,
+ $\left|\prod_{i = 0}^n (\xi - x_i)\right| \le n! \cdot (\max(x_{i+1} - x_i))^n$ und $n = 2$:}
+ \label{eq_schaetz}
+ & |f(x)-p(x)| \le \frac{1}{n+1} \left(\frac{\pi}{4}\right)^n = \frac{\pi^2}{60}
+\approx 0,164
+\end{align}
 
 \paragraph*{c)}
+Wir ergänzen \eqref{eq-schema} um eine weitere Zeile:
+\begin{align*}
+& \begin{array}{l|l|l|l|l}
+ i & x_i & f[x_i] & f[x_i , \cdot] & f[x_i , \cdot, \cdot]\\
+ \hline
+  0 & 0 & f[x_0] = 0 = \gamma_0 &
+    \frac{f[x_0] - f[x_1]}{x_0 - x_1} = \frac{2 \sqrt{2}}{\pi} = \gamma_1&
+    \frac{f[x_0, x_1] - f[x_1, x_2]}{x_0 - x_2} = \frac{8 - 8 \sqrt{2}}{\pi^2} = \gamma_2\\
+  1 & \frac{\pi}{4} & f[x_1] = \frac{1}{2}\sqrt{2} &
+    \frac{f[x_1] - f[x_2]}{x_1 - x_2} = \frac{4 - 2 \sqrt{2}}{\pi} &
+    \frac{f[x_1, x_2] - f[x_2, x_3]}{x_1 - x_3} =  ???\\
+  2 & \frac{\pi}{2} & f[x_2] = 1 &
+  \frac{f[x_2] - f[x_3]}{x_2 - x_3} =  ???\\
+  3 & \frac{\pi}{6} & f[x_2] = \frac{1}{2} &\nearrow
+\end{array} \\
+&f[x_0, x_1, x_2, x_3] = \frac{f[x_0, x_1, x_2] - f[x_1, x_2, x_3]}{x_0 - x_3} = ??? = \gamma_3
+\end{align*}
+TODO: Morgen ist auch noch ein Tag!
+
 
 \paragraph*{d)}
-
+Eine ähnliche Abschätzung wie \eqref{eq_schaetz} liefert, nun mit $n = 3$:
+\begin{align*}
+  |f(x)-p(x)| \le \frac{1}{4} \left(\frac{\pi}{4}\right)^3 = \frac{\pi^3}{256} \approx 0,121
+\end{align*}

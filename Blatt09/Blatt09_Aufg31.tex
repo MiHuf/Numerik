@@ -21,26 +21,27 @@ diesem Fall:
 \begin{pmatrix}2 x & 6 y - 6 \\ 2 x + 1 & -8 y + 1 \end{pmatrix} \\
   & X^{(n+1)} = X^{(n)} - J^{-1}(X^{(n)}) \cdot F(X^{(n)}) \quad
   \text{= mehrdimensionales Newton-Verfahren}
-\intertext{oder mit $D^{(n+1)} := X^{(n+1)} - X^{(n)}$}
+\intertext{oder mit $\Delta^{(n+1)} := X^{(n+1)} - X^{(n)}$}
 \nonumber
-& D^{(n+1)} = - J^{-1}(X^{(n)}) \cdot F(X^{(n)}) \; ; \;\Rightarrow\;
-    J(X^{(n)}) \cdot D^{(n+1)} = -F(X^{(n)})
+& \Delta^{(n+1)} = - J^{-1}(X^{(n)}) \cdot F(X^{(n)}) \\
+\intertext{Multiplilation mit $J(X^{(n)})$ von links liefert dann ein LGS für $\Delta^{(n+1)}$:}
+& J(X^{(n)}) \cdot \Delta^{(n+1)} = -F(X^{(n)})
 \intertext{und mit $X^{(0)}$ aus der Aufgabenstellung:}
 & F(X^{(0)}) = \begin{pmatrix}-\frac{3}{4} \\ -\frac{5}{4}\end{pmatrix}\; ; \quad
  J(X^{(0)}) = \begin{pmatrix}1 & 0 \\ 2 & -7\end{pmatrix}
 \end{align}
 
 \paragraph*{b) LGS lösen}
-Somit ergibt sich $D^{(1)}$ als Lösung des LGS:
+Somit ergibt sich $\Delta^{(1)}$ als Lösung des LGS:
 \begin{align*}
   \begin{pmatrix}1 & 0 \\ 2 & -7\end{pmatrix} \cdot
-  \begin{pmatrix}d_x^{(1)} \\ d_y^{(1)}\end{pmatrix} =
+  \begin{pmatrix}\Delta_x^{(1)} \\ \Delta_y^{(1)}\end{pmatrix} =
   - \begin{pmatrix}-\frac{3}{4} \\ -\frac{5}{4}\end{pmatrix} =
   \begin{pmatrix}\frac{3}{4} \\ \frac{5}{4}\end{pmatrix} \; ; \quad
-  \text{mit } D^{(n)} = \begin{pmatrix}d_x^{(n)} \\ d_y^{(n)}\end{pmatrix}
+  \text{mit } \Delta^{(n)} = \begin{pmatrix}\Delta_x^{(n)} \\\Delta_y^{(n)}\end{pmatrix}
 \end{align*}
-Die Lösung ergibt sich direkt durch Vorwärtseinsetzen: $d_x^{(1)} = \frac{3}{4}$
-und $d_y^{(1)} = \frac{1}{28}$. Mit $X^{(1)} = D^{(1)} + X^{(0)}$ ergibt sich dann
+Die Lösung ergibt sich direkt durch Vorwärtseinsetzen: $\Delta_x^{(1)} = \frac{3}{4}$
+und $\Delta_y^{(1)} = \frac{1}{28}$. Mit $X^{(1)} = \Delta^{(1)} + X^{(0)}$ ergibt sich dann
 für den ersten Newton-Iterationsschritt:
 $x^{(1)} = \frac{5}{4}$ und $^{(1)} = \frac{29}{28}$.
 
@@ -68,7 +69,8 @@ while (it < NMax) && (norm(dx) > tol))
   dx = - inv(DF(x(1),x(2))) * F(x(1),x(2));
   x = x+dx;
 end
-\end{verbatim}\\\\
+\end{verbatim}
+
 im Folgenden Annika-Version: Aufgabenteil b) mit Einzelschrittverfahren
 \paragraph*{a) Newton Verfahren}\hfill\\ Gegeben:
 \begin{align*}
