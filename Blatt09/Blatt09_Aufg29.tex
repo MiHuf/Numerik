@@ -27,7 +27,7 @@ Differenzen (Neville-Aitken-Schema):
 % \\ 3 & \frac{\pi}{6} & f[x_2] = \frac{1}{2} &
 \end{array}
 \end{align}
-Damit ergibt sich das Ausgleichspolynom $p(x) = \gamma_0 + \gamma_1(x-x_0) + \gamma_2(x-x_0)(x-x_1)$ zu:
+Damit ergibt sich das Interpolationspolynom $p(x) = \gamma_0 + \gamma_1(x-x_0) + \gamma_2(x-x_0)(x-x_1)$ zu:
 \begin{align*}
 p(x) & = 0 +  \frac{2 \sqrt{2}}{\pi} \left(x - 0\right) +
 \left.\frac{8 - 8 \sqrt{2}}{\pi^2} \left(x- 0\right)\left(x-\frac{\pi}{4}\right)\right. \\
@@ -44,8 +44,8 @@ Der Fehler $|f(x)-p(x)|$ im Intervall $[0, \frac{\pi}{2}]$ beträgt
 \intertext{Er lässt sich abschätzen, mit $\left|\sin^{(n)}(\xi)\right| \le 1$,
  $\left|\prod_{i = 0}^n (\xi - x_i)\right| \le n! \cdot (\max(x_{i+1} - x_i))^n$ und $n = 2$:}
  \label{eq_schaetz}
- & |f(x)-p(x)| \le \frac{1}{n+1} \left(\frac{\pi}{4}\right)^n = \frac{\pi^2}{60}
-\approx 0,164
+ & |f(x)-p(x)| \le \frac{1}{n+1} \left(\frac{\pi}{4}\right)^n = \frac{\pi^2}{48}
+\approx 0{,}206
 \end{align}
 
 \paragraph*{c)}
@@ -59,18 +59,24 @@ Wir ergänzen \eqref{eq-schema} um eine weitere Zeile:
     \frac{f[x_0, x_1] - f[x_1, x_2]}{x_0 - x_2} = \frac{8 - 8 \sqrt{2}}{\pi^2} = \gamma_2\\
   1 & \frac{\pi}{4} & f[x_1] = \frac{1}{2}\sqrt{2} &
     \frac{f[x_1] - f[x_2]}{x_1 - x_2} = \frac{4 - 2 \sqrt{2}}{\pi} &
-    \frac{f[x_1, x_2] - f[x_2, x_3]}{x_1 - x_3} =  ???\\
+    \frac{f[x_1, x_2] - f[x_2, x_3]}{x_1 - x_3} =  \frac{30-24\sqrt{2}}{\pi^2}\\
   2 & \frac{\pi}{2} & f[x_2] = 1 &
-  \frac{f[x_2] - f[x_3]}{x_2 - x_3} =  ???\\
-  3 & \frac{\pi}{6} & f[x_2] = \frac{1}{2} &\nearrow
+  \frac{f[x_2] - f[x_3]}{x_2 - x_3} =  \frac{3}{2 \pi} & \nearrow\\
+  3 & \frac{\pi}{6} & f[x_2] = \frac{1}{2} & \nearrow
 \end{array} \\
-&f[x_0, x_1, x_2, x_3] = \frac{f[x_0, x_1, x_2] - f[x_1, x_2, x_3]}{x_0 - x_3} = ??? = \gamma_3
+&f[x_0, x_1, x_2, x_3] = \frac{f[x_0, x_1, x_2] - f[x_1, x_2, x_3]}{x_0 - x_3}
+= \frac{132 - 96 \sqrt{2}}{\pi^3} = \gamma_3
 \end{align*}
-TODO: Morgen ist auch noch ein Tag!
-
+Damit wird das Interpolationspolynom
+\begin{align*}
+  p(x) &= \gamma_0 + \gamma_1(x - x_0) + \gamma_2(x - x_0)(x - x_1) + \gamma_3(x - x_0)(x - x_1)(x - x_3)\\
+  &= \frac{2 \sqrt{2}}{\pi} x +  \frac{8 - 8 \sqrt{2}}{\pi^2} x \left(x - \frac{\pi}{4}\right)
+  + \frac{132 - 96 \sqrt{2}}{\pi^3} x\left(x - \frac{\pi}{4}\right) \left(x - \frac{1}{2}\right)
+\end{align*}
+Das ergibt nach Ausmultiplizieren das gesuchte Polynom 3. Grades in $x$.
 
 \paragraph*{d)}
 Eine ähnliche Abschätzung wie \eqref{eq_schaetz} liefert, nun mit $n = 3$:
 \begin{align*}
-  |f(x)-p(x)| \le \frac{1}{4} \left(\frac{\pi}{4}\right)^3 = \frac{\pi^3}{256} \approx 0,121
+  |f(x)-p(x)| \le \frac{1}{4} \left(\frac{\pi}{4}\right)^3 = \frac{\pi^3}{256} \approx 0{,}121
 \end{align*}
