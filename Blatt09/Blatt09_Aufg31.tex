@@ -1,5 +1,5 @@
 \subsection*{Aufgabe 31}
-Michaels-Version:
+% Michaels-Version:
 \paragraph*{a) Newton Verfahren} Gegeben sind
 \begin{align*}
   F(x, y) = \begin{pmatrix}f(x,y) \\ g(x,y)\end{pmatrix} =
@@ -19,18 +19,21 @@ diesem Fall:
 \begin{pmatrix}\frac{\partial f}{\partial x}& \frac{\partial f}{\partial y}\\
   \frac{\partial g}{\partial x}& \frac{\partial g}{\partial y} \end{pmatrix} =
 \begin{pmatrix}2 x & 6 y - 6 \\ 2 x + 1 & -8 y + 1 \end{pmatrix} \\
+  \label{eq-mehrdim1}
   & X^{(n+1)} = X^{(n)} - J^{-1}(X^{(n)}) \cdot F(X^{(n)}) \quad
   \text{= mehrdimensionales Newton-Verfahren}
-\intertext{oder mit $\Delta^{(n+1)} := X^{(n+1)} - X^{(n)}$}
+\intertext{oder mit $\Delta X^{(n+1)} := X^{(n+1)} - X^{(n)}$}
 \nonumber
-& \Delta^{(n+1)} = - J^{-1}(X^{(n)}) \cdot F(X^{(n)}) \\
-\intertext{Multiplilation mit $J(X^{(n)})$ von links liefert dann ein LGS für $\Delta^{(n+1)}$:}
-& J(X^{(n)}) \cdot \Delta^{(n+1)} = -F(X^{(n)})
-\intertext{und mit $X^{(0)}$ aus der Aufgabenstellung:}
+& \Delta X^{(n+1)} = - J^{-1}(X^{(n)}) \cdot F(X^{(n)}) \\
+\intertext{Multiplilation mit $J(X^{(n)})$ von links liefert dann ein LGS für $\Delta X^{(n+1)}$:}
+  \label{eq-mehrdim2}
+& J(X^{(n)}) \cdot \Delta X^{(n+1)} = -F(X^{(n)})
+\intertext{Gleichung \eqref{eq-mehrdim2} vermeidet die Inversion von $J$. Mit $X^{(0)}$ aus der Aufgabenstellung:}
 & F(X^{(0)}) = \begin{pmatrix}-\frac{3}{4} \\ -\frac{5}{4}\end{pmatrix}\; ; \quad
  J(X^{(0)}) = \begin{pmatrix}1 & 0 \\ 2 & -7\end{pmatrix}
 \end{align}
 
+\begin{comment}
 \paragraph*{b) LGS lösen}
 Somit ergibt sich $\Delta^{(1)}$ als Lösung des LGS:
 \begin{align*}
@@ -45,33 +48,8 @@ und $\Delta_y^{(1)} = \frac{1}{28}$. Mit $X^{(1)} = \Delta^{(1)} + X^{(0)}$ ergi
 für den ersten Newton-Iterationsschritt:
 $x^{(1)} = \frac{5}{4}$ und $^{(1)} = \frac{29}{28}$.
 
-\paragraph*{c) Matlab}
-Alter Code:
-\begin{verbatim}
-...
-tol = 1e-5; Nmax = 50; x = x0;
-%
-for it = 1:Nmax
-  dx = -DF(x(1),x(2))\F(x(1),x(2));
-  x = x+dx;
-end
-\end{verbatim}
-Neuer Code:
-\begin{verbatim}
-...
-tol = 1e-5; Nmax = 50; x = x0;
-%
-it = 0 ;
-dx = [1.0 ; 1.0] ;
-while (it < NMax) && (norm(dx) > tol))
-  it = it + 1 ;
-  % dx = -DF(x(1),x(2))\F(x(1),x(2));
-  dx = - inv(DF(x(1),x(2))) * F(x(1),x(2));
-  x = x+dx;
-end
-\end{verbatim}
-
 im Folgenden Annika-Version: Aufgabenteil b) mit Einzelschrittverfahren
+
 \paragraph*{a) Newton Verfahren}\hfill\\ Gegeben:
 \begin{align*}
   F(x, y) = \begin{pmatrix}f(x,y) \\ g(x,y)\end{pmatrix} =
@@ -99,11 +77,13 @@ Also ergibt sich hier folgende Berechnungsvorschrift:
 &\begin{pmatrix}2 x & 6 y - 6 \\ 2 x + 1 & -8 y + 1 \end{pmatrix} \cdot \Delta X=-\begin{pmatrix}x^2 +3 y^2 - 6 y + 2 \\ x^2 - 4 y^2 + x + y + 1\end{pmatrix}
 \end{align*}
 \paragraph{b)}
-Wir wenden nun obige Berechnungsvorschrift mit dem Startvektor $\begin{pmatrix}
+\end{comment}
+\paragraph*{b) LGS in Einzelschrittverfahren lösen}
+Wir wenden nun obige Berechnungsvorschrift mit dem Startvektor $X^{(0)} = \begin{pmatrix}
 \frac{1}{2}\\1
 \end{pmatrix}$an.
 \begin{align*}
- \begin{pmatrix}2 \cdot \frac{1}{2} & 6 - 6 \\ 2 \cdot \frac{1}{2} + 1 & -8 + 1 \end{pmatrix} \cdot \Delta X &= - \begin{pmatrix}(\frac{1}{2})^2 +3 \cdot1^2 - 6 + 2 \\ (\frac{1}{2})^2 - 4 \cdot 1^2 + \frac{1}{2} + 1 + 1\end{pmatrix} \\\\ \begin{pmatrix}1 & 0 \\ 2& -7 \end{pmatrix} \cdot \Delta X &=-\begin{pmatrix}-\frac{3}{4} \\ -\frac{5}{4}\end{pmatrix}
+ \begin{pmatrix}2 \cdot \frac{1}{2} & 6 - 6 \\ 2 \cdot \frac{1}{2} + 1 & -8 + 1 \end{pmatrix} \cdot \Delta X^{(1)} &= - \begin{pmatrix}(\frac{1}{2})^2 +3 \cdot1^2 - 6 + 2 \\ (\frac{1}{2})^2 - 4 \cdot 1^2 + \frac{1}{2} + 1 + 1\end{pmatrix} \\\\ \begin{pmatrix}1 & 0 \\ 2& -7 \end{pmatrix} \cdot \Delta X^{(1)} &=-\begin{pmatrix}-\frac{3}{4} \\ -\frac{5}{4}\end{pmatrix}
 \end{align*}
 Das Gleichungssystem der Form $Ax=b$ lösen wir mithilfe des Einzelschrittverfahrens:
 Dafür stellen wir folgende Gleichung für das Einzelschrittverfahren mit der Zerlegung $A=L+D+R$ auf:
@@ -127,4 +107,30 @@ x^{(k+1)}-x^{(k)} \\ y^{(k+1)}-y^{(k)}\end{pmatrix}=\begin{pmatrix}
 &\Rightarrow x^{(1)}=x^{(0)}+\frac{3}{4} \text{ und } y^{(1)}=y^{(0)}+\frac{31}{28}\\
 &\Rightarrow x^{(1)}=\frac{5}{4} \text{ und } y^{(1)}=\frac{29}{28}
 \end{align*}
-\paragraph{c)} analog zu Michaels Lösung
+
+% \paragraph{c)} analog zu Michaels Lösung
+\paragraph*{c) Matlab}
+Alter Code:
+\begin{verbatim}
+...
+tol = 1e-5; Nmax = 50; x = x0;
+%
+for it = 1:Nmax
+  dx = -DF(x(1),x(2))\F(x(1),x(2));
+  x = x+dx;
+end
+\end{verbatim}
+Neuer Code:
+\begin{verbatim}
+...
+tol = 1e-5; Nmax = 50; x = x0;
+%
+it = 0 ;
+dx = [1.0 ; 1.0] ;
+while (it < NMax) && (norm(dx) > tol))
+  it = it + 1 ;
+  % dx = -DF(x(1),x(2))\F(x(1),x(2));
+  dx = - inv(DF(x(1),x(2))) * F(x(1),x(2));
+  x = x+dx;
+end
+\end{verbatim}
