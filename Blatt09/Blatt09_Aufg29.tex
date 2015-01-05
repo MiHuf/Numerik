@@ -39,10 +39,10 @@ p(x) & = 0 +  \frac{2 \sqrt{2}}{\pi} \left(x - 0\right) +
 Der Fehler $|f(x)-p(x)|$ im Intervall $[0, \frac{\pi}{2}]$ beträgt
 \begin{align}
 \nonumber
-  & |f(x)-p(x)| = \frac{f^{(n)}(\xi)}{(n+1)!} \prod_{i = 0}^n (\xi - x_i) \quad
+  & |f(x)-p(x)| = \frac{f^{(n)}(\xi)}{(n+1)!} \prod_{i = 0}^n (x - x_i) \quad
   \text{mit einem unbekannten $\xi \in \left[0, \frac{\pi}{2}\right]$.}
-\intertext{Er lässt sich abschätzen, mit $\left|\sin^{(n)}(\xi)\right| \le 1$,
- $\left|\prod_{i = 0}^n (\xi - x_i)\right| \le n! \cdot (\max(x_{i+1} - x_i))^n$ und $n = 2$:}
+\intertext{Er lässt sich abschätzen, mit $\left|\sin^{(n)}(\xi)\right| \le 1$ und
+ $\prod_{i = 0}^n  \left| (x - x_i)\right| \le n! \cdot (\max_{i = 0 \cdots n-1}|x_i - x_{i-1}|)^n$ und $n = 2$:}
  \label{eq_schaetz}
  & |f(x)-p(x)| \le \frac{1}{n+1} \left(\frac{\pi}{4}\right)^n = \frac{\pi^2}{48}
 \approx 0{,}206
