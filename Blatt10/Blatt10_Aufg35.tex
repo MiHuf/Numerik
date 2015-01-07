@@ -1,1 +1,53 @@
 \subsection*{Aufgabe 35}
+Gegeben: Interpolationsproblem mit kubischen Splines und natürlichen Randbedingungen für
+die $n + 1$ äquidistanten Stützstellen
+$x_j = \frac{j}{n}\; ;\; j = 0, \cdots , n$ im Intervall $[0,1]$ für die Funktion
+$f(x) = \sqrt{x}$. Diese hat also die Stützwerte $\left\lbrace f_0, f_1, f_2 , \cdots , f_n \right\rbrace = \left\lbrace 0, \sqrt{\frac{1}{n}}, \sqrt{\frac{2}{n}} , \cdots , 1\right\rbrace$.
+Für die Länge der $n$ Intervalle gilt also
+$h_j = x_j - x_{j-1} = \frac{1}{n} =: h \; ;\; j = 1, \cdots , n$.
+Die Momente $M_j$ sind die zweiten Ableitungen der Splines $s_j$ an den Stützstellen:
+$M_j := s_j^{''}(x_j) = s_{j+1}^{''}(x_j) \; ;\; j = 1, \cdots , n-1$ mit den natürlichen
+Randbedingungen $M_0 = 0$ und $M_n = 0$.
+In der Vorlesung wurde das LGS für die $M_j\; ;\; j = 1, \cdots , n-1$
+mit einer $(n-1)\times(n-1)$-Matrix wie folgt hergeleitet:
+\begin{align}
+ & \begin{pmatrix}
+ \label{eq-spline}
+   2k_1&h_1& 0 &\cdots&0\\
+   h_1&2k_1&h_2& & \vdots\\
+  \vdots & \ddots &\ddots&\ddots&\vdots\\
+   \vdots & &\ddots&2k_{n-2}&h_{n-2}\\
+  0 & \cdots &\cdots&h_{n-2}&2k_{n-1}
+  \end{pmatrix} \cdot
+  \begin{pmatrix}M_1\\M_2 \\ \vdots \\M_{n-2} \\M_{n-1}\end{pmatrix} =
+  \begin{pmatrix}c_1\\c_2 \\ \vdots \\c_{n-2} \\c_{n-1}\end{pmatrix} \\
+\intertext{hierbei bedeuten, jeweils für $j = 1, \cdots , n-1$:}
+\nonumber
+& k_j = h_{j-1} + h_j\\
+\nonumber
+& c_j = 6 \left(\frac{f_{j+1}- f_j}{h_j} - \frac{f_{j}- f_{j-1}}{h_{j-1}} \right)
+\end{align}
+Mit den äquidistanten Stützstellen und den Stützwerten der Aufgabenstellung ergibt das:
+\begin{align*}
+& k_j = \frac{2}{n}\; ; \quad \Rightarrow \; 2 k_j = 4 h\\
+& c_j = 6 n \left(f_{j+1} - 2 f_j+ f_{j-1}\right) = 6 \sqrt{n} \left(\sqrt{j+1} - 2 \sqrt{j} + \sqrt{j-1}  \right)
+\end{align*}
+Der gemeinsame Faktor $h$ lässt sich vor die Matrix ziehen, damit wird \eqref{eq-spline}
+nach Division durch $h = \frac{1}{n}$:
+\begin{align*}
+\begin{pmatrix}
+   4 &1 & 0 &\cdots&0\\
+   1 &4 &1 & & \vdots\\
+  \vdots & \ddots &\ddots&\ddots&\vdots\\
+   \vdots & &\ddots&4 &1\\
+  0 & \cdots &\cdots& 1&4
+\end{pmatrix} \cdot
+  \begin{pmatrix}M_1\\M_2 \\ \vdots \\M_{n-2} \\M_{n-1}\end{pmatrix} =
+  6 n \sqrt{n}
+  \begin{pmatrix}  \sqrt{2} -2\sqrt{1} + \sqrt{0}\\
+    \sqrt{3  } - 2\sqrt{2  } + \sqrt{1  } \\ \vdots \\
+    \sqrt{n-1} - 2\sqrt{n-2} + \sqrt{n-3} \\
+    \sqrt{n  } - 2\sqrt{n-1} + \sqrt{n-2}
+  \end{pmatrix}
+\end{align*}
+Das ist das gesuchte LGS für die $M_j$.
