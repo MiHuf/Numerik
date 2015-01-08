@@ -10,7 +10,30 @@ Mit der Ergebnissen aus Aufgabe 33 gilt:
 \end{align*}
 
 \paragraph*{b)}
+zu zeigen:\begin{align*}
+\sum_{\underset{|i/n-x|\ge \delta}{i=0}}^n B_i^n(x) \le \frac{1}{4n\delta^2} \qquad \text{für } x \in[0,1], \delta >0
+\end{align*}
 
-
+Beweis:\\\newline
+Vorbereitung:
+\begin{align}\label{eq_max}
+x(1-x) \le \max_{x\in[0,1]}(x(1-x))=\frac{1}{4}
+\end{align}
+Dies gilt da: \begin{align*}
+&f(x)=(x(1-x))\\
+&f'(x)=(x(1-x))'=(x-x^2)=1-2x\\
+&1-2x=0 \Rightarrow 2x=1 \Rightarrow x=\frac{1}{2}, f\left(\frac{1}{2}\right)=\frac{1}{4}
+\end{align*}
+Weiterhin nutzen wir hier die Erkenntnisse aus Aufgabenteil a)
+$ \sum_{i = 0}^n (i - n x)^2 B_i^n(x)  = nx (1-x)$ und kommen damit auf folgende Ungleichung:
+\begin{align}
+nx (1-x) &=\sum_{i = 0}^n (i - n x)^2 B_i^n(x) \\&=\sum_{i = 0}^n n(i/n - x)n(i/n-x) B_i^n(x)\\&=\sum_{i = 0}^n n^2(i/n - x )^2 B_i^n(x) \\&\ge \sum_{\underset{|i/n-x|\ge \delta}{i=0}}^n (n\delta)^2 B_i^n(x)
+\end{align}
+Nach dem Umformen nach $\sum_{\underset{|i/n-x|\ge \delta}{i=0}}^n B_i^n(x)$ ergibt sich:
+\begin{align}
+\sum_{\underset{|i/n-x|\ge \delta}{i=0}}^n B_i^n(x) \le\frac{nx(1-x)}{(nd)^2}\overset{\eqref{eq_max}}{\le} \frac{n\cdot\frac{1}{4}}{(nd)^2}=\frac{n}{4(nd)^2}=\frac{n}{4n\delta^2}
+\end{align}
 \paragraph*{c)}
-
+zu zeigen: Für alle $f \in C[0,1]$ und $\eps >0$ gibt es ein $n\in \NN$, so dass\begin{align*}
+\|f-B_nf\|_\infty < \eps
+\end{align*}
