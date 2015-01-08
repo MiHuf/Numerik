@@ -17,7 +17,7 @@ Berechne $(B_n f)(x)$ für $f_0(x) = x^0, f_1(x) = x^1, f_2(x) = x^2$.
     \sum_{i = 1}^n \frac{i}{n} \; \frac{n!}{i! (n-i)!} x^i(1 - x)^{n-i} \\
     & = \sum_{i = 1}^n \frac{(n-1)!}{(i-1)! (n-i)!} \cdot x \cdot x^{(i-1)}(1 - x)^{n-i}
     \quad \text{mit $k = i - 1$} \\
-    & = x  \cdot \sum_{k = 0}^{n-1} \frac{n!}{k! (n-k)!} x^k(1 - x)^{n-k}
+    & = x  \cdot \sum_{k = 0}^{n-1} \frac{(n-1)!}{k! (n-1-k)!} x^k(1 - x)^{n-1-k}
     = x \cdot \left( x + (1 -x) \right)^{n-1} = x \cdot 1^{n-1} = x  \quad \Box\\
   f_2(x) &= \sum_{i = 0}^n \left(\frac{i}{n}\right)^2 \frac{n!}{i! (n-i)!} x^i(1 - x)^{n-i} =
   \text{TODO} = \frac{x}{n} + \frac{n-1}{n} x^2  \quad \Box
