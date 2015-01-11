@@ -1,20 +1,66 @@
 \subsection*{Aufgabe Z1}
-Hier fehlt noch die Tipparbeit: Matrix A ist fertig, jemand müsste dass dann nochmal als Gleichungssystem fertig ausschreiben:
-\begin{align*}
-&\mathcal{A}=\frac{1}{h^2} \begin{bmatrix}
-D & -I_n & 0 & \cdots & 0 & -I_n\\
+Partielle Laplace-DGLen $-\Delta u(x,y) = f(x,y)$ mit Dirichlet-Randbedingungen
+$u(x,y) = 0$ lassen sich, wie in Aufgabe 20a gezeigt, auf dem Intervall $(0,1)$
+mit einem diskretisierten Laplace-Operator lösen: In einem Gitter mit
+$n \times n$ Punkten im Abstand $h = \frac{1}{n+1}$, also $x_i=i\cdot h$ und
+$y_j = j \cdot h$ für $i, j = 1, \cdots, n$ für das Intervall
+$x, y \in [h, \frac{n}{n+1}]$
+ist das die blocktridiagonale $n^2 \times n^2$ Matrix
+\begin{align}
+\label{eq-A}
+A_n&=\frac{1}{h^2} \begin{pmatrix}
+D & -I_n & 0 & \cdots & 0 & 0\\
 -I_n & D & -I_n & 0 & \cdots & 0\\
 0 & -I_n& \ddots & \ddots & \ddots &\vdots\\
 \vdots & 0 & \ddots& \ddots & -I_n & 0\\
 0 & \vdots & \ddots & -I_n & D & -I_n\\
--I_n & 0 & \cdots & 0 & -I_n & D
-\end{bmatrix} + I_{n^2}\\\\
-&\text{ mit } D=\begin{bmatrix}
+0 & 0 & \cdots & 0 & -I_n & D
+\end{pmatrix} \\
+\intertext{ mit der $n^2 \times n^2$ Matrix }
+\label{eq-D}
+D &=\begin{pmatrix}
 4 & -1 & 0 & \cdots & 0 & -1\\
 -1 & 4 & -1 & 0 &\cdots & 0\\
 0 & -1 & \ddots & \ddots & \ddots & \vdots\\
 \vdots & 0 & \ddots & \ddots &-1 & 0\\
 0 & \vdots & \ddots & -1 & 4 & -1\\
 -1 & 0 & \cdots & 0 & -1 & 4
-\end{bmatrix}
-\end{align*}
+\end{pmatrix}
+\end{align}
+Die $u_{i,j}$ ergeben sich nach Lösung des LGS $A \cdot \vec u = \vec f$
+mit den $n^2$-dimensionalen Vektoren $\vec u $ und $\vec f$, welche zeilenweise
+alle Matrix-Elemente $u_{i,j}$ und $f_{i, j} = f_{x_i, y_j} \; i, j = 1, \cdots, n$
+enthalten.
+\paragraph{}
+Im vorliegenden Fall liegen periodische Randbedingungen für $x = 0, 1$ und  $y = 0, 1$ vor.
+Wenn wir wieder $n \times n$ Punkte  $i, j = 1, \cdots, n$ berücksichtigen,
+sind die diskretisierten Koordinaten $x_i=(i-1)\cdot h$ und $y_j = (j-1)\cdot h$
+für das Intervall $x, y \in [0, \frac{n-1}{n}]$ mit einer Gitterweite $h = \frac{1}{n}$.
+
+Mit periodischen Randbedingungen lautet die Matrix$A'_n$ aber nun:
+\begin{align}
+\label{eq-A2}
+A'_n&=\frac{1}{h^2} \begin{pmatrix}
+D & -I_n & 0 & \cdots & 0 & -I_n\\
+-I_n & D & -I_n & 0 & \cdots & 0\\
+0 & -I_n& \ddots & \ddots & \ddots &\vdots\\
+\vdots & 0 & \ddots& \ddots & -I_n & 0\\
+0 & \vdots & \ddots & -I_n & D & -I_n\\
+-I_n & 0 & \cdots & 0 & -I_n & D
+\end{pmatrix}
+\end{align}
+mit $D$ wie in \eqref{eq-D}.
+Wiederum enthalten die $n^2$-dimensionalen Vektoren $\vec u $ und $\vec f$
+zeilenweise die Elemente von $u_{i,j} = u(x_i, y_j)$ und $f_{i, j} = f(x_i, y_j)$;
+die DGL $- \Delta u(x,y) + u(x,y) = f(x, y)$ lautet dann diskretisiert:
+\begin{align}
+\label{eq-B}
+& \left(A'_n + I_{n^2} \right) \vec u = \vec f \quad \text{mit} \\
+\nonumber
+& \vec u = \left(u_{1,1}, \cdots , u_{1,n}, u_{2,1}, \cdots , u_{2,n}, \cdots , \cdots u_{n,1}, \cdots , u_{n,n} \right)^T \\
+\nonumber
+& \vec f = \left(f_{1,1}, \cdots , f_{1,n}, f_{2,1}, \cdots , f_{2,n}, \cdots , \cdots f_{n,1}, \cdots , f_{n,n} \right)^T
+\end{align}
+mit der Matrix $A'_n$ wie \eqref{eq-A2}. Nach Lösen von \eqref{eq-B} mit einem
+geeigneten Verfahren erhält man dann die gesuchten  $u_{i,j}$ ähnlich wie
+in Aufgabe 20a.
