@@ -18,9 +18,7 @@ Berechne $(B_n f)(x)$ für $f_0(x) = x^0, f_1(x) = x^1, f_2(x) = x^2$.
     & = \sum_{i = 1}^n \frac{(n-1)!}{(i-1)! (n-i)!} \cdot x \cdot x^{(i-1)}(1 - x)^{n-i}
     \quad \text{mit $k = i - 1$} \\
     & = x  \cdot \sum_{k = 0}^{n-1} \frac{(n-1)!}{k! (n-1-k)!} x^k(1 - x)^{n-1-k}
-    = x \cdot \left( x + (1 -x) \right)^{n-1} = x \cdot 1^{n-1} = x  \quad \Box
-\end{align*}
-\begin{align*}
+    = x \cdot \left( x + (1 -x) \right)^{n-1} = x \cdot 1^{n-1} = x  \quad \Box \\
   (B_n f_2)(x) &= \sum_{i = 0}^n \left(\frac{i}{n}\right)^2 \frac{n!}{i! (n-i)!} x^i(1 - x)^{n-i} =
     \sum_{i = 1}^n \left(\frac{i}{n}\right)^2 \frac{n!}{i! (n-i)!} x^i(1 - x)^{n-i} \\
   & = \frac{1}{n} \sum_{i = 1}^n \left(\frac{i}{n}\right) \frac{n!}{(i-1)! (n-i)!} x \cdot x^{i-1}(1 - x)^{n-i}
@@ -28,7 +26,7 @@ Berechne $(B_n f)(x)$ für $f_0(x) = x^0, f_1(x) = x^1, f_2(x) = x^2$.
    & = \frac{x}{n} \sum_{k = 0}^{n-1} \frac{k+1}{n} \cdot \frac{n!}{k! (n-1-k)!} x^{k}(1 - x)^{n -1-k}\\
    & = \frac{x}{n} \sum_{k = 0}^{n-1} \frac{n-1}{n-1} \cdot (k+1) \cdot \frac{(n-1)!}{k! (n-1-k)!} x^{k}(1 - x)^{n -1-k}\quad \text{mit $m = n - 1$} \\
    & = \frac{x}{n} \left[\sum_{k = 0}^{m} (n-1) \cdot \frac{k+1}{m} \frac{m!}{k! (m-k)!} x^{k}(1 - x)^{m-k} \right]\\
-   & = \frac{x}{n} \left[(n-1) \underbrace{\sum_{k = 0}^{m} \frac{k}{m} B_k^m}_{= x} +
+   & = \frac{x}{n} \left[(n-1) \underbrace{\sum_{k = 0}^{m} \frac{k}{m} B_k^m}_{= x} \; + \;
    \underbrace{(n-1)\frac{1}{m}}_{= 1} \underbrace{\sum_{k = 0}^{m} B_k^m}_{= 1}\right]\\
    & = \frac{n-1}{n} x^2   + \frac{x}{n} \quad \Box
 \end{align*}
