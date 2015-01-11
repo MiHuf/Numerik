@@ -1,40 +1,63 @@
-% Uebungen zur Numerischen Mathematik, WS 2014/15
-% Blatt 04, Aufgabe 14
-%   x = gv(A, b, eps)
-% Gegeben A in Gl_n(K), b in K^n, Abbruchparameter eps > 0.
-% Bestimme Loesung von A x = b mittels Gesamt-
-% und Einzelschrittverfahren.
-%
-% Autoren:
-%   Janina Geiser, Mat Nr. 6420269
-%   Michael Hufschmidt, Mat.Nr. 6436122
-%   Farina Ohm, Mat Nr. 6314051
-%   Annika Seidel, Mat Nr. 6420536
-% Uebungsleiter:
-%   Thomas Berger <thomas.berger@uni-hamburg.de>
-%
 
-function[x] = ev(A, b, eps)
-% Loest A x = b mittels Einzelschrittverfahren
-max_steps = 10000 ;
-n = length(b) ;
-x_alt = zeros(n,1) ; % Spaltenvektor
-x_neu = zeros(n,1) ; % Spaltenvektor
-xx = A \ b ;         % die exakte Loesung
-fi = fopen('ev.dat','w') ;
+% Gauss–Seidel method (Einzelschrittverfahren) for solving
+% the system of linear equations Ax=b up to a desired 
+% accuracy norm(Ax-b,inf)<eps
+%
+% Input:
+%   A:   square matrix, size(A) = [n,n]
+%   b:   column vector, size(b) = [n,1]
+%   eps: desired tolerance, eps>0
+%
+% Input (optional):
+%   x0:    initial vector (default: zeros(size(b)))
+%   maxit: maximum number of iterations (default: 1000)
+%
+function x = ev(A,b,eps,x0,maxit)
 
-steps = 0;
-r = 100.0;  % Residuum
-while (r > eps) && (steps < max_steps)
-    steps = steps + 1;
-    for i = 1 : n
-        x_neu(i) = (b(i) - A(i, 1:i-1) * x_neu(1:i-1) - A(i, i+1:n) * x_alt(i+1:n))/ A(i,i) ;
+if nargin<5
+    maxit=1000;
+    
+    if nargin<4 ||  any(size(x0) -size(b))
+        x0 = zeros(size(b));
     end
-    r = norm(x_alt - x_neu) ;
-    r_apriori = norm(x_neu - xx) ;
-    fprintf(fi, '%d \t %e\n', steps, r_apriori) ;
-    x_alt = x_neu ;
 end
-fclose(fi) ;
-x = x_neu;
+
+%NOTE: no check of the sizes of A and b,
+%      since the algorithm will fail anyway if 
+%      the do not match
+
+
+
+%A = L+D+R
+D = diag(diag(A));
+L = tril(A,-1);
+R = triu(A,1);
+
+% A = M-N 
+% Ax=b -> Mx-Nx = b -> Mx = Nx+b
+% -> x^{k+1} = M\(N*x^k+b) = M\(N*x^k)+M\b
+
+N = -R;
+M = (D+L);
+
+c = M\b;
+
+x=x0;
+
+it=1;%iteration counter
+
+
+while it<maxit && norm(A*x-b,'inf')>eps
+    
+    
+
+    x = M\(N*x) + c;
+    
+  
+    it = it+1;
 end
+
+
+
+end
+
