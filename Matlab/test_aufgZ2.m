@@ -13,7 +13,7 @@ clc
 clear all
 
 n =  20 ;      % Anzahl Intervalle, somit n+1 Grid-Punkte
-eps = 1.0e-10 ; % Fehler beim Einzelschritt-Verfahren
+eps = 1.0e-8 ; % Fehler beim Einzelschritt-Verfahren
 h = 1/n ;      % Intervall-Länge
 
 [A b] = RWP(n) ;
@@ -31,15 +31,24 @@ for i=1:n
     end
 end
 Diff = U_Matrix - U_Exact ;
+
 % U_Matrix
 subplot(3, 1, 1)
+
 surf(U_Matrix)
+xlabel('x', 'FontSize', 12); ylabel('y', 'FontSize', 12) ; zlabel('u', 'FontSize', 12) ;
+title('u(x,y) - Numerisch') ;
 hold on
-% U_Exact
+% U_Exact 
 subplot(3, 1, 2)
 surf(U_Exact)
+xlabel('x', 'FontSize', 12); ylabel('y', 'FontSize', 12) ; zlabel('u', 'FontSize', 12) ;
+title('u(x,y) - Exakt') ;
+% U_Differenz
 subplot(3, 1, 3)
 surf(Diff)
+xlabel('x', 'FontSize', 12); ylabel('y', 'FontSize', 12) ; zlabel('d u', 'FontSize', 12) ;
+title('Fehler') ;
 
 D = norm(Diff, 2) ;
 fprintf('Fehler (Spektralnorm der Differenz-Matrix) = %e\n',D) ;

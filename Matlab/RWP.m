@@ -13,9 +13,9 @@
 % Matrix und Inhomogenität für diskrete Poisson-Gleichung
 function [A,b] = RWP(n)
     h = 1/n;
-    % Laut Aufgabenblatt:
+    % Original Aufgabenblatt:
     % f = @(x,y) cos(2*pi*y) * ((4*pi^2 + 1) * x^2 * (1-x^2) - (2-12*x+12*x^2));
-    % Korrigiert:
+    % Korrigiertes Aufgabenblatt:
     f = @(x,y) cos(2*pi*y) * ((4*pi^2 + 1) * x^2 * (1-x)^2 - (2-12*x+12*x^2));
     
     A = DiscreteLaplacian(n, h);
@@ -34,7 +34,7 @@ function L = DiscreteLaplacian(n, h)
 end
 
 % Füllt den Vektor b mit den Funktionswerten der Inhomogenität
-% f an den Stützstellen (i*h, j*h) für i,j = 1,...,n
+% f an den Stützstellen x_i=(i-1)*h, y_j=(j-1)*h für i,j = 1,...,n
 function b = DiscreteInhomogenity(f, n, h)
     b = zeros(n*n, 1);
     k = 1;
