@@ -36,13 +36,55 @@ nx (1-x) &=\sum_{i = 0}^n (i - n x)^2 B_i^n(x) %\\
 \end{align}
 Nach dem Umformen nach $\sum_{\underset{|i/n-x|\ge \delta}{i=0}}^n B_i^n(x)$ ergibt sich:
 \begin{align}
+\label{eq-delta}
 \sum_{\underset{|i/n-x|\ge \delta}{i=0}}^n B_i^n(x) \le
 \frac{nx(1-x)}{(n\delta)^2}\overset{\eqref{eq_max}}{\le}
 \frac{n\cdot\frac{1}{4}}{(n\delta)^2}=\frac{n}{4(n\delta)^2}=\frac{1}{4n\delta^2}
 \end{align}
-\paragraph*{c)}
-zu zeigen: Für alle $f \in C[0,1]$ und $\eps >0$ gibt es ein $n\in \NN$, so dass\begin{align*}
-\|f-B_nf\|_\infty < \eps
-\end{align*}
 
-TODO Michael
+\paragraph*{c)}
+zu zeigen: Für alle $f \in C[0,1]$ und $\eps >0$ gibt es ein $n\in \NN$, so dass
+\begin{align*}\|f-B_nf\|_\infty < \eps \end{align*}
+
+\paragraph*{}
+Es gilt:
+\begin{align*}
+ \|f-B_nf\|_\infty &= \sup_{x \in [0,1]} \left|f(x) - \sum_{i = 0}^n f\left(\frac{i}{n}\right)B_i^n(x) \right| \\
+  & = \sup_{x \in [0,1]} \left|  f(x) \underbrace{\sum_{i = 0}^n B_i^n(x)}_{=1} - \sum_{i = 0}^n f\left(\frac{i}{n}\right)B_i^n(x)\right| \\
+  & = \sup_{x \in [0,1]} \left|  \sum_{i = 0}^n \left( f(x) - f\left(\frac{i}{n}\right) \right) B_i^n(x) \right|
+\intertext{Da $B_i^n(x) \ge 0$ auf $[0,1]$ gilt mit der Dreiecksungleichung:}
+  &\le \sup_{x \in [0,1]} \sum_{i = 0}^n  \left| f(x) - f\left(\frac{i}{n}\right) \right| B_i^n(x)
+\end{align*}
+Wir definieren  nun zwei Teilmengen von $i \in \NN$:
+\begin{align*}
+  A_n & := \left\lbrace i : 0 \le i \le n ; \left| x - \frac{i}{n} \right| < \delta \right\rbrace \\
+  B_n & := \left\lbrace i : 0 \le i \le n ; \left| x - \frac{i}{n} \right| \ge \delta \right\rbrace
+\end{align*}
+Damit wird:
+\begin{align*}
+  & \sum_{i = 0}^n  \left| f(x) - f\left(\frac{i}{n}\right) \right| B_i^n(x) =
+  \sum_{i \in A_n} \underbrace{\left| f(x) - f\left(\frac{i}{n}\right) \right|}_{=S_A} B_i^n(x) +
+  \sum_{i \in B_n} \underbrace{\left| f(x) - f\left(\frac{i}{n}\right) \right|}_{=S_B} B_i^n(x)
+\end{align*}
+Da $f$ auf $[0,1]$ gleichmäßig stetig ist, gibt es zu jedem $\delta > 0$ ein $\epsilon >0 $
+so dass für alle $|x_1 - x_2 | < \delta$ gilt $|f(x_1) - f(x_2) | < \frac{\epsilon}{2}$.
+Insbesondere kann man $|x - \frac{i}{n}| < \delta$ wählen und erhält damit $S_A < \frac{\epsilon}{2}$.
+Mit der umgekehrten Dreiecksungleichung und $M := \max_{x \in [0,1]} |f(x)|$ kann man $S_B$ abschätzen:
+\begin{align*}
+  S_B = \left| f(x) - f\left(\frac{i}{n}\right) \right|
+  \le  |f(x)| + \left| f\left(\frac{i}{n}\right) \right| \le M + M = 2 M
+\end{align*}
+Mit Gleichung \eqref{eq-delta} wird dann die Summe
+\begin{align*}
+  & \sum_{i \in B_n} \left| f(x) - f\left(\frac{i}{n}\right) \right| B_i^n(x) \le
+  \sum_{i \in B_n} 2 M B_i^n(x) = 2 M \sum_{i \in B_n} B_i^n(x) \le  \frac{2 M}{4n\delta^2}
+\intertext{Insgesamt also:}
+ & \sum_{i = 0}^n \left| f(x) - f\left(\frac{i}{n}\right) \right| B_i^n(x) \le \frac{\epsilon}{2} + \frac{M}{2 n\delta^2}
+\intertext{und für $n > n_0 = \frac{M}{\epsilon \delta^2}$ wird dann}
+ & \sum_{i = 0}^n \left| f(x) - f\left(\frac{i}{n}\right) \right| B_i^n(x) \le \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon
+\end{align*}
+Also gilt auch
+\begin{align*}
+\|f-B_nf\|_\infty  \le \epsilon \quad \text{ für }
+   n > \max_{x \in [0,1]} |f(x)| \cdot \frac{1}{\epsilon \cdot \delta^2}
+\end{align*}
