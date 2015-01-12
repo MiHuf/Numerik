@@ -17,7 +17,8 @@ zu zeigen:\begin{align*}
 Beweis:\\\newline
 Vorbereitung:
 \begin{align}\label{eq_max}
-x(1-x) \le \max_{x\in[0,1]}(x(1-x))=\frac{1}{4}
+% x(1-x) \le \max_{x\in[0,1]}(x(1-x))=\frac{1}{4}
+\max_{x\in[0,1]}(x(1-x))=\frac{1}{4}
 \end{align}
 Dies gilt da: \begin{align*}
 &f(x)=(x(1-x))\\
@@ -27,11 +28,17 @@ Dies gilt da: \begin{align*}
 Weiterhin nutzen wir hier die Erkenntnisse aus Aufgabenteil a)
 $ \sum_{i = 0}^n (i - n x)^2 B_i^n(x)  = nx (1-x)$ und kommen damit auf folgende Ungleichung:
 \begin{align}
-nx (1-x) &=\sum_{i = 0}^n (i - n x)^2 B_i^n(x) \\&=\sum_{i = 0}^n n(i/n - x)n(i/n-x) B_i^n(x)\\&=\sum_{i = 0}^n n^2(i/n - x )^2 B_i^n(x) \\&\ge \sum_{\underset{|i/n-x|\ge \delta}{i=0}}^n (n\delta)^2 B_i^n(x)
+nx (1-x) &=\sum_{i = 0}^n (i - n x)^2 B_i^n(x) %\\
+% &=\sum_{i = 0}^n n(i/n - x)n(i/n-x) B_i^n(x)\\ &
+=\sum_{i = 0}^n n^2 {\underbrace{(i/n - x )}_{= \delta}}^2 B_i^n(x) \\
+&= \sum_{i=0}^n (n\delta)^2 B_i^n(x)
+\ge \sum_{\underset{|i/n-x|\ge \delta}{i=0}}^n (n\delta)^2 B_i^n(x)
 \end{align}
 Nach dem Umformen nach $\sum_{\underset{|i/n-x|\ge \delta}{i=0}}^n B_i^n(x)$ ergibt sich:
 \begin{align}
-\sum_{\underset{|i/n-x|\ge \delta}{i=0}}^n B_i^n(x) \le\frac{nx(1-x)}{(nd)^2}\overset{\eqref{eq_max}}{\le} \frac{n\cdot\frac{1}{4}}{(nd)^2}=\frac{n}{4(nd)^2}=\frac{n}{4n\delta^2}
+\sum_{\underset{|i/n-x|\ge \delta}{i=0}}^n B_i^n(x) \le
+\frac{nx(1-x)}{(n\delta)^2}\overset{\eqref{eq_max}}{\le}
+\frac{n\cdot\frac{1}{4}}{(n\delta)^2}=\frac{n}{4(n\delta)^2}=\frac{1}{4n\delta^2}
 \end{align}
 \paragraph*{c)}
 zu zeigen: Für alle $f \in C[0,1]$ und $\eps >0$ gibt es ein $n\in \NN$, so dass\begin{align*}
