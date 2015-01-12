@@ -12,7 +12,7 @@
 clc
 clear all
 
-n =  20 ;      % Anzahl Intervalle, somit n+1 Grid-Punkte
+n =  20 ;      % Anzahl Grid-Punkte, somit n-1 Intervalle
 eps = 1.0e-8 ; % Fehler beim Einzelschritt-Verfahren
 h = 1/n ;      % Intervall-Länge
 
