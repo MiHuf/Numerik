@@ -10,5 +10,18 @@
 %   Thomas Berger <thomas.berger@uni-hamburg.de>
 %
 function [y] = splineval(x, xs, fs)
-
+n = length(xs)  ;               % Anzahl n von Stuetzstellen
+M = spline(xs, fs) ;
+if (x < xs(1)) || (x > xs(n))
+     error('x muss im Bereich der Stützstellen liegen')
+end
+i = 1;
+while x > xs(i+1)
+    i = i +1 ;
+end
+% Jetzt liegt x im Intervall xs(i) ... xs(i+1)
+dx = x - xs(i) ;
+% Berechne den i-ten Spline an der Stelle x
+%      delta          gamma          beta           alpha
+y = (((M(i,4) * dx) + M(i,3)) * dx + M(i,2)) * dx + M(i,1) ;
 end
