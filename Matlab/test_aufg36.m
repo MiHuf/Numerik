@@ -14,10 +14,11 @@
 clc
 clear all
 % Hier kann man verschiedene Funtkionen ausprobieren!
-f = @(x) sin(pi * x / 180)
-xs = [0 10 30 40 70 90]     % Stützstellen
+% f = @(x) sin(pi * x / 180) ;  % Das sieht gut aus
+f = @(x) cos(pi * x / 180)   % aber hier gibt es Probleme bei 30°
+xs = [0 30 60 65 70 90]  ;   % Stützstellen
 
-fs = f(xs);                 % Stützwerte
+fs = f(xs);                  % Stützwerte
 n = length(xs);
 x = linspace(xs(1), xs(n), 100) ;
 y = zeros (100);
