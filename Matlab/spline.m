@@ -25,9 +25,9 @@ for j = 1:n-1
     end
 end
 A = zeros(n-1, n-1) ;           % Matrix für das LGS der Momente
-k = zeros (n-1,1) ;             % Hauptdiagonal-Elemente
+k = zeros (n-1,1) ;             % Vektor für Hauptdiagonal-Elemente
 k(1) = h(1) ;
-for j = 1 : n-1
+for j = 1 : n-1                 % Zeilenweise
     if j > 1
         k(j) = h(j-1) + h(j) ;  % Hauptdiagonal-Elemente
     end
@@ -37,19 +37,25 @@ for j = 1 : n-1
         A(j+1,j) = h(j) ;       % untere Nebendiagonale
     end
 end
+% Hier geht's mit den Indizes etwas durcheinander!
 c = zeros (n-1,1) ;
-c(1) = 0 ;                      % ???
-for j = 2 : n-1                 % rechte Seite des LGS 
-    c(j) = 6*((fs(j+1)-fs(j))/h(j) - (fs(j)-fs(j-1))/h(j-1)) ;
+c(1) = 6*(fs(2)-fs(1))/h(2) ;   % ??? 
+for j = 2 : n-1                 % rechte Seite des LGS
+    c(j) = 6*(fs(j+1)-fs(j))/h(j) - 6*(fs(j)-fs(j-1))/h(j-1) ;
 end
-m = A\c ;                       % Lösung des LGS: Momente m_1 ... m_n-1  
-m = [0;m;0] ;                   % Natürliche Randbed: Momente m_0 ... m_n 
-
-M = zeros(n, 4) ;               % Ergebnis-Matrix
-for j = 1 : n-1
-    M(j,1) = fs(j) ;            % alpha
-    M(j,2) = (fs(j+1)-fs(j))/h(j) - h(j)*(2*m(j) + m(j+1))/6 ; % beta
-    M(j,3) = m(j) / 2 ;         % gamma
-    M(j,4) = (m(j+1) - m(j))/(6*h(j)) ; % delta
+% c(n-1) = 6*(fs(n)-fs(n-1))/h(n-1); % geht nicht!
+m = A\c ;                       % Lösung des LGS: Momente m(1) ... m(n-1)
+m = [0;m;0] ;                   % Natürliche Randbed: Momente m(1) = m(n+2) = 0
+% Neu-Indizierung der Momente: statt j=1:n-1 jetzt j=1:n+1
+M = zeros(4, n-1) ;             % Ergebnis-Matrix für n-1 Intervalle
+for i = 1 : n-1
+    M(1,j) = fs(j) ;            % alpha
+    M(2,j) = (fs(j+1)-fs(j))/h(j) - h(j)*(2*m(j+1) + m(j+2))/6 ; % beta
+    M(3,j) = m(j+1) / 2 ;         % gamma
+    M(4,j) = (m(j+2) - m(j+1))/(6*h(j)) ; % delta
 end
+% Zum  Testen, dann muss spline.m in spline1.m unbenannt werden
+% und der Aufruf in splineval entsprechend modifiziert werden.
+% pp = spline(xs,fs) ;          % built-in function
+% M = transpose(pp.coefs) ;     % Achtung: Umgekehrte Spalten-Reihenfolge
 end

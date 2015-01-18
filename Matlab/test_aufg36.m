@@ -14,19 +14,16 @@
 clc
 clear all
 % Hier kann man verschiedene Funtkionen ausprobieren!
-% f = @(x) sin(pi * x / 180) ;  % Das sieht gut aus
-f = @(x) cos(pi * x / 180)   % aber hier gibt es Probleme bei 30°
-xs = [0 30 60 65 70 90]  ;   % Stützstellen
+% f = @(x) sin(pi * x / 180) ;  % Das sieht noch gut aus
+f = @(x) cos(pi * x / 180)      % aber hier gibt es Probleme bei 75°
+xs = [0 30 60 65 70 75 90] ;    % 7 Stützstellen
 
-fs = f(xs);                  % Stützwerte
-n = length(xs);
-x = linspace(xs(1), xs(n), 100) ;
-y = zeros (100);
+fs = f(xs) ;                    % Stützwerte
+n = length(xs) ;
+x = linspace(xs(1), xs(n), 100) ; % zum Plotten
+y_ex = zeros (100) ;
 for i = 1:length(x)
-    y1(i) = splineval(x(i), xs, fs) ; % Splines
+    ys(i) = splineval(x(i), xs, fs) ; % Plot der Splines
 end
-y2 = f(x) ;                 % Exakte Funktion
-plot(xs, fs, '*');
-hold on
-plot(x,y1,'-r')
-plot(x,y2,'-g')
+y_ex = f(x) ;                   % Exakte Funktion
+plot(xs, fs, '*b', x,ys,'-r', x,y_ex,'-g');

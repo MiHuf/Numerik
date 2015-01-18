@@ -23,5 +23,8 @@ end
 dx = x - xs(i) ;
 % Berechne den i-ten Spline an der Stelle x
 %      delta          gamma          beta           alpha
-y = (((M(i,4) * dx) + M(i,3)) * dx + M(i,2)) * dx + M(i,1) ;
+y = (((M(4,i) * dx) + M(3,i)) * dx + M(2,i)) * dx + M(1,i) ;
+% Fuer die spline-Funktion aus Matlab:
+% y = (((M(1,i) * dx) + M(2,i)) * dx + M(3,i)) * dx + M(4,i) ;
+
 end
