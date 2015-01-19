@@ -48,7 +48,7 @@ m = A\c ;                       % Lösung des LGS: Momente m(1) ... m(n-1)
 m = [0;m;0] ;                   % Natürliche Randbed: Momente m(1) = m(n+2) = 0
 % Neu-Indizierung der Momente: statt j=1:n-1 jetzt j=1:n+1
 M = zeros(4, n-1) ;             % Ergebnis-Matrix für n-1 Intervalle
-for i = 1 : n-1
+for j = 1 : n-1
     M(1,j) = fs(j) ;            % alpha
     M(2,j) = (fs(j+1)-fs(j))/h(j) - h(j)*(2*m(j+1) + m(j+2))/6 ; % beta
     M(3,j) = m(j+1) / 2 ;         % gamma
