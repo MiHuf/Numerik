@@ -1,1 +1,32 @@
 \subsection*{Aufgabe 38}
+Gegeben seien Stützstellen $a \le x_0 <  x_1 <  \cdots < x_{n-1} < x_n \le b$, eine positive Gewichtsfunktion $ \omega \in L_1[a,b]$ und eine zugehörige Interpolations-Quadraturformel
+\begin{align*}
+Q_n(f)=\sum_{j=0}^{n}a_jf(x_j)
+\end{align*}
+Außerdem gilt\\
+(i) $\omega(x)=\omega(a+b-x)$ für alle $x \in [a,b]$, und\\
+(ii) $x_j-a=b-x_{n-j}$ für alle $j\in\{0,\cdots,n\}$.
+\paragraph{a)} zu zeigen: Die Interpolations-Quadraturformel ist symmetrisch; d.h., es gilt $a_j=a_{n-j}$ für $j=\{0,\cdots,n\}$ \\
+\newline
+Wir definieren $\tilde{Q}_n(f)=\sum_{j=0}^{n}a_{n-j}f(x_j)$. Dann reicht es zu zeigen, dass $\tilde{Q}$ auf $\Pi_n$ exakt ist.\\
+\begin{align*}
+&\tilde{Q}_n \left[\left(x-\frac{a+b}{2}\right)^i \right]\qquad i=0,\cdots, n\\
+&=\sum_{j=0}^{n}a_{n-j}\left(x_j-\frac{a+b}{2}\right)^i\overset{(ii)}{=}\sum_{j=0}^{n}a_{n-j}\left(\frac{a+b}{2}-x_{n-j}\right)^i=Q_n\left[\left(\frac{a+b}{2}-x\right)^i \right]\\
+&=\int_a^b \omega(x)\left(\frac{a+b}{2}-x\right)^i dx\\
+&\overset{w \text{ symmetrisch}}{=}\int_a^b \omega (x)\left(x-\frac{a+b}{2}\right)^i dx \Rightarrow \tilde{Q_n} \text{ exakt} \Rightarrow a_j=a_{n-j} \text{ für } j=\{0,\cdots,n\} 
+\end{align*}
+\paragraph{b)} zu zeigen: Ist $n$ gerade, so ist $Q_n$ sogar exakt auf $\Pi_{n+1}$\\
+\newline
+Wir definieren $R_n(f)=I(f)-Q_n(f)$ mit $n=2m$. Dann reicht es zu zeigen, dass $R_{2m}(x^{2m+1})=0$.\\
+Es gilt:\begin{align}
+x^{2m+1}=\left(x-\frac{a+b}{2}\right)^{2m+1}+q(x) \text{ mit } q\in \Pi_{2m}
+\end{align}
+Daher gilt also:\begin{align*}
+&R_{2m}\left(x^{2m+1}\right)\\&=R_{2m}\left[\left(x-\frac{a+b}{2}\right)^{2m+1}\right]\\
+&=\underbrace{\int_0^{b}\omega (x)\left(x-\frac{a+b}{2}\right)^{2m+1}dx}_{=0}-\sum_{j=0}^{2m}a_j\left(x_j-\frac{a+b}{2}\right)^{2m+1}\\
+&=-\sum_{j=1}^{m}\left[a_{m-j}\left(x_{m-j}-\frac{a+b}{2}\right)^{2m+1}+a_{m+j}\left(x_{m+j}-\frac{a+b}{2}\right)^{2m+1}\right]\\
+&\underset{a_{m-j}=a_{m+j}}{=}-\sum_{j=1}^{m}\left[a_{m-j}\left(x_{m-j}-\frac{a+b}{2}\right)^{2m+1}+a_{m-j}\left(x_{m+j}-\frac{a+b}{2}\right)^{2m+1}\right]\\
+&=-\sum_{j=1}^{m}\left[a_{m-j}\left(x_{m-j}-\frac{a+b}{2}+x_{m+j}-\frac{a+b}{2}\right)^{2m+1}\right]\\
+&\underset{x_{m-j}+x_{m+j}=a+b}{=}-\sum_{j=1}^{m}\left[a_{m-j}\left(-\frac{a+b}{2}-\frac{a+b}{2}+a+b\right)^{2m+1}\right]=0\\
+&\Rightarrow R_{2m}(x^{2m+1})=0 \\&\Rightarrow Q_n \text{ ist exakt auf } \Pi_{n+1}
+\end{align*} 
