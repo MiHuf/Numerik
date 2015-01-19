@@ -1,1 +1,35 @@
 \subsection*{Aufgabe 40}
+Gesucht ist die Interpolations-Quadraturformel $Q_3(f) = \sum_{j=0}^3 a_j f(x_j)$
+mit den Stützstellen:
+\begin{align*}
+  x_j = a + (j + 1) h\;;\quad 0 \le j \le 3 \;;\quad h = \frac{b-a}{5}
+\end{align*}
+und mit der Gewichtsfunktion $\omega \equiv 1$. Laut Vorlesung ergeben sich die $a_j$ gemäß
+\begin{align*}
+  a_j = \int \limits_a^b \omega(x) L_j(x) dx \quad \text{mit} \quad
+ L_j(x) = \prod_{\substack{k = 0 \\k \neq j}}^n \frac{x - x_k}{x_j - x_k}
+\end{align*}
+Um das Integral zu vereinfachen substituieren wir
+\begin{align*}
+  & x' := \frac{x - a}{b - a} = \frac{x - a}{5 h} \;;\quad x = 5 h x' + a \;;\quad dx = 5 h dx' \;;\quad
+  [a,b] \rightarrow [0,1]
+\end{align*}
+Damit wird:
+\begin{align*}
+  a_j = \int \limits_0^1 \prod_{\substack{k = 0 \\k \neq j}}^3
+  \frac{5 h x' + a - (a + (k+1) h)}{a + (j+1)h - a - (k+1) h } 5 h dx' =
+  125 h^3 \int \limits_0^1 \prod_{\substack{k = 0 \\k \neq j}}^3
+  \frac{5 x' - k - 1}{j-k} d x'
+\end{align*}
+Die Stützstellen $x_j$ liegen symmetrisch zum Intervall-Mittelpunkt, es gilt
+$x_j + x_{3-j} = a + b$. Nach der vorigen Aufgabe gilt dann auch $a_j = a_{3-j}$,
+es genügt also, $a_0$ und $a_1$ zu bestimmen:
+\begin{align*}
+  & a_0 = a_3 = 125 h^3 \int \limits_0^1 \left(\frac{5x'-2}{0-1} \cdot \frac{5x'-3}{0-2} \cdot \frac{5x'-4}{0-3} \right) dx' \\
+  & a_1 = a_2 = 125 h^3 \int \limits_0^1 \left(\frac{5x'-1}{1-0} \cdot \frac{5x'-3}{1-2} \cdot \frac{5x'-4}{1-3} \right) dx'
+\end{align*}
+Nach Auswerten der Integrale erhält man die gesuchten Koeffizienten.
+
+
+
+
