@@ -37,13 +37,12 @@ for j = 1 : n-1                 % Zeilenweise
         A(j+1,j) = h(j) ;       % untere Nebendiagonale
     end
 end
-% Hier geht's mit den Indizes etwas durcheinander!
+% 
 c = zeros (n-1,1) ;
-c(1) = 6*(fs(2)-fs(1))/h(2) ;   % ??? 
 for j = 2 : n-1                 % rechte Seite des LGS
     c(j) = 6*(fs(j+1)-fs(j))/h(j) - 6*(fs(j)-fs(j-1))/h(j-1) ;
 end
-% c(n-1) = 6*(fs(n)-fs(n-1))/h(n-1); % geht nicht!
+% 
 m = A\c ;                       % Lösung des LGS: Momente m(1) ... m(n-1)
 m = [0;m;0] ;                   % Natürliche Randbed: Momente m(1) = m(n+2) = 0
 % Neu-Indizierung der Momente: statt j=1:n-1 jetzt j=1:n+1
