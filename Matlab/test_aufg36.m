@@ -14,8 +14,8 @@
 clc
 clear all
 % Hier kann man verschiedene Funtkionen ausprobieren!
-% f = @(x) sin(pi * x / 180) ;  % Entweder so
-f = @(x) cos(pi * x / 180)      % oder so
+ f = @(x) sin(pi * x / 180) ;  % Entweder so
+%f = @(x) cos(pi * x / 180)      % oder so
 xs = [0 30 60 65 70 75 90] ;    % 7 Stützstellen
 
 fs = f(xs) ;                    % Stützwerte
