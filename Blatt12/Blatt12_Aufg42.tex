@@ -2,8 +2,8 @@
 
 Gegeben:
 \begin{align*}
-  A = \begin{pmatrix}20&10&-29\\ -9&1&0\\ 10&10&-19\end{pmatrix}\; ;  \qquad
-  B = \begin{pmatrix}12&2&-13\\ -9&1&0\\ 2&2&-3\end{pmatrix}
+  A = \begin{pmatrix}20&10&-29\\ -9&1&9\\ 10&10&-19\end{pmatrix}\; ;  \qquad
+  B = \begin{pmatrix}12&2&-13\\ -9&1&9\\ 2&2&-3\end{pmatrix}
 \end{align*}
 Gesucht: Eine Abschätzung für die Eigenwerte mit Hilfe des Satzes von Gerschgorin.
 Wir definieren für $M \in \CC$ und $r \in \RR$:
@@ -15,24 +15,24 @@ in Kreisen
 \begin{align*}
   K(a_{ii}, r_i) \quad \text{mit} \quad r_i = \sum_{\substack{i = 1\\j \ne i}}^n |a_{ij} |
 \end{align*}
-enthalten. Da $A$ und $A^T$ die gleicehn Eigenwerte haben, sind sie aich in den Kreisen
+enthalten. Da $A$ und $A^T$ die gleichen Eigenwerte haben, sind sie auch in den Kreisen
 \begin{align*}
   K(a_{ii}, r'_i) \quad \text{mit} \quad r'_i = \sum_{\substack{i = 1\\j \ne i}}^n |a_{ji} |
 \end{align*}
 entalten. Somit ergibt sich für $A$:
 \begin{align*}
   r_1 &= |10| + |-29| = 39\;; \quad r'_1 = |-9| + |10| = 19\;; \quad\min(r_1, r'_1) = 19\\
-  r_2 &= |-9| + |0| = 9\;; \quad r'_2 = |10| + |10| = 20\;; \quad \min(r_2, r'_2) = 9\\
-  r_3 &= |10| + |10| = 20\;; \quad r'_3 = |-29| + |0| = 29\;; \quad \min(r_3, r'_3) = 20\\
+  r_2 &= |-9| + |9| = 18\;; \quad r'_2 = |10| + |10| = 20\;; \quad \min(r_2, r'_2) = 18\\
+  r_3 &= |10| + |10| = 20\;; \quad r'_3 = |-29| + |9| = 38\;; \quad \min(r_3, r'_3) = 20\\
 \end{align*}
-Eigenwerte liegen also in den Intervallen [20-19, 20+19], [1-9, 1+9] und [-19-20,-19+20].
-Eine Rechnung mit MATLAB liefert $\sigma = \{10, -9, 1\}$.
+Eigenwerte liegen also in den Intervallen [20-19, 20+19], [1-18, 1+18] und [-19-20,-19+20].
+Eine Rechnung mit MATLAB liefert $\sigma = \{10, 1, -9\}$.
 
 Für $B$ ergibt sich :
 \begin{align*}
   r_1 &= |2| + |-13| = 15\;; \quad r'_1 = |-9| + |2| = 11\;; \quad\min(r_1, r'_1) = 11\\
-  r_2 &= |-9| + |0| = 9\;; \quad r'_2 = |12| + |2| = 14\;; \quad \min(r_2, r'_2) = 9\\
-  r_3 &= |2| + |2| = 4\;; \quad r'_3 = |0| + |-13| = 13\;; \quad \min(r_3, r'_3) = 4\\
+  r_2 &= |-9| + |9| = 18\;; \quad r'_2 = |2| + |2| = 4\;; \quad \min(r_2, r'_2) = 4\\
+  r_3 &= |2| + |2| = 4\;; \quad r'_3 = |-13| + |9| = 22\;; \quad \min(r_3, r'_3) = 4\\
 \end{align*}
-Eigenwerte liegen also in den Intervallen [12-11, 12+11], [1-9, 1+9] und [-3-4,-3+4].
+Eigenwerte liegen also in den Intervallen [12-11, 12+11], [1-4, 1+4] und [-3-4,-3+4].
 Eine Rechnung mit MATLAB liefert $\sigma = \{10, 1, 1\}$.
